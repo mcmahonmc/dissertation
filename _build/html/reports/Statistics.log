@@ -1,0 +1,63 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/usr/local/lib/python3.7/site-packages/nbclient/client.py", line 1093, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/local/Cellar/python@3.7/3.7.9_2/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.7/site-packages/nbclient/client.py", line 560, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/usr/local/lib/python3.7/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/local/lib/python3.7/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import re
+mod = pd.read_csv('/Volumes/psybrain/ADM/derivatives/nibs/results/modularity.csv')
+mod['subject'] = mod['subject'].astype(str)
+
+pc0 = pd.read_csv('/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv')
+pc0['subject'] = pc0['subject'].astype(str)
+
+df = pd.read_csv('/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv')
+df['subject'] = df['record_id'].astype(str)
+df.set_index('subject')
+
+mem = pd.read_csv('/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/mri-behavioral/mem_results_06-2021.csv')
+mem['subject'] = mem['record_id'].astype(str)
+mem.set_index('subject')
+
+# edges['subject'] = edges.index.astype(str)
+# edges.reset_index().set_index('subject')
+df = pd.merge(df, mem, how='outer').set_index('subject')
+mod['mod_mean'] = mod.mean(axis=1)
+df = pd.merge(df, mod[['subject', 'mod_mean']].set_index('subject'), left_index=True, right_index=True, how='outer')
+df = pd.merge(df, pc0.set_index('subject'), left_index=True, right_index=True, how = 'outer')
+df = pd.merge(df, edges_df, left_index=True, right_index=True, how = 'outer').drop(['Unnamed: 0', 'record_id', 'files'], axis=1)
+# df = pd.merge(df, pd.DataFrame({'subject': subjects, 'dmn_fpn_fc': x['cue'][dmn][:,fpn].mean(axis=1).mean(axis=0)}).set_index('subject'), left_index=True, right_index=True, how = 'outer')
+df = df.reset_index().dropna(how='all')
+df['Group'] = np.where(df['index'].astype(int) > 40000, "Older Adults", "Young Adults")
+df = df.set_index('index')
+df.columns = [re.sub("[ ,-]", "_", re.sub("[\.,`,\$]", "_", str(c))) for c in df.columns]
+df = df.drop('40930')
+df['acc_mean_test_log'] = np.log(df['acc_mean_test'])
+df
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/var/folders/9c/c825cr816cg14jn4bs40my5h0000gr/T/ipykernel_24395/4002236818.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     20[0m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mmerge[0m[0;34m([0m[0mdf[0m[0;34m,[0m [0mmod[0m[0;34m[[0m[0;34m[[0m[0;34m'subject'[0m[0;34m,[0m [0;34m'mod_mean'[0m[0;34m][0m[0;34m][0m[0;34m.[0m[0mset_index[0m[0;34m([0m[0;34m'subject'[0m[0;34m)[0m[0;34m,[0m [0mleft_index[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mright_index[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mhow[0m[0;34m=[0m[0;34m'outer'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     21[0m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mmerge[0m[0;34m([0m[0mdf[0m[0;34m,[0m [0mpc0[0m[0;34m.[0m[0mset_index[0m[0;34m([0m[0;34m'subject'[0m[0;34m)[0m[0;34m,[0m [0mleft_index[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mright_index[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mhow[0m [0;34m=[0m [0;34m'outer'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 22[0;31m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mmerge[0m[0;34m([0m[0mdf[0m[0;34m,[0m [0medges_df[0m[0;34m,[0m [0mleft_index[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mright_index[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mhow[0m [0;34m=[0m [0;34m'outer'[0m[0;34m)[0m[0;34m.[0m[0mdrop[0m[0;34m([0m[0;34m[[0m[0;34m'Unnamed: 0'[0m[0;34m,[0m [0;34m'record_id'[0m[0;34m,[0m [0;34m'files'[0m[0;34m][0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     23[0m [0;31m# df = pd.merge(df, pd.DataFrame({'subject': subjects, 'dmn_fpn_fc': x['cue'][dmn][:,fpn].mean(axis=1).mean(axis=0)}).set_index('subject'), left_index=True, right_index=True, how = 'outer')[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     24[0m [0mdf[0m [0;34m=[0m [0mdf[0m[0;34m.[0m[0mreset_index[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mdropna[0m[0;34m([0m[0mhow[0m[0;34m=[0m[0;34m'all'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'edges_df' is not defined
+NameError: name 'edges_df' is not defined
+

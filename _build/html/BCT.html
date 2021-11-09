@@ -1,0 +1,3089 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BCT graph metrics &#8212; My sample book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Statistical Analysis" href="Statistics.html" />
+    <link rel="prev" title="NBS" href="NBS.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="NBS.html">
+   NBS
+   <a id="network-based-statistic">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   BCT graph metrics
+   <a id="bct-graph-metrics">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Statistics.html">
+   Statistical Analysis
+   <a id="stats">
+   </a>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/BCT.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBCT.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/BCT.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="bct-graph-metrics-a-id-bct-graph-metrics-a">
+<h1>BCT graph metrics <a id='bct-graph-metrics'></a><a class="headerlink" href="#bct-graph-metrics-a-id-bct-graph-metrics-a" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>  <span class="c1"># load the beta maps in python</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>  <span class="c1"># plot nifti images</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">nbs</span>
+<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">savemat</span>
+<span class="kn">from</span> <span class="nn">mne.viz</span> <span class="kn">import</span> <span class="n">plot_connectivity_circle</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/nilearn/datasets/__init__.py:96: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
+  &quot;Numpy arrays.&quot;, FutureWarning)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/psybrain/ADM/derivatives&#39;</span>
+<span class="n">results_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/analysis/stats/&#39;</span>
+<span class="n">nibs_dir</span><span class="o">=</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/nibetaseries&#39;</span>
+
+<span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MemMatch1&#39;</span><span class="p">,</span> <span class="s1">&#39;MemMatch2&#39;</span><span class="p">,</span> <span class="s1">&#39;MemMatch3&#39;</span><span class="p">]</span>
+<span class="n">trial_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cue&#39;</span><span class="p">,</span> <span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="s1">&#39;mismatch&#39;</span><span class="p">]</span>
+
+<span class="n">atlas_file</span><span class="o">=</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/power264-master/power264MNI.nii.gz&#39;</span>
+<span class="n">atlas_lut</span><span class="o">=</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/power264_labels.tsv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/nibs/subjects.txt&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">subjects</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;30004&#39;, &#39;30008&#39;, &#39;30009&#39;, &#39;30015&#39;, &#39;30019&#39;, &#39;30020&#39;, &#39;30023&#39;,
+       &#39;30040&#39;, &#39;30057&#39;, &#39;30064&#39;, &#39;30066&#39;, &#39;30069&#39;, &#39;30074&#39;, &#39;30085&#39;,
+       &#39;30088&#39;, &#39;30090&#39;, &#39;30091&#39;, &#39;30095&#39;, &#39;30096&#39;, &#39;30105&#39;, &#39;30116&#39;,
+       &#39;30118&#39;, &#39;30119&#39;, &#39;30128&#39;, &#39;30181&#39;, &#39;30217&#39;, &#39;30227&#39;, &#39;30236&#39;,
+       &#39;30242&#39;, &#39;30255&#39;, &#39;30274&#39;, &#39;30283&#39;, &#39;30295&#39;, &#39;30330&#39;, &#39;30346&#39;,
+       &#39;30376&#39;, &#39;30395&#39;, &#39;30400&#39;, &#39;30403&#39;, &#39;30412&#39;, &#39;30426&#39;, &#39;30432&#39;,
+       &#39;30466&#39;, &#39;30469&#39;, &#39;30476&#39;, &#39;30478&#39;, &#39;30568&#39;, &#39;30570&#39;, &#39;30581&#39;,
+       &#39;30584&#39;, &#39;30588&#39;, &#39;40160&#39;, &#39;40170&#39;, &#39;40175&#39;, &#39;40288&#39;, &#39;40351&#39;,
+       &#39;40490&#39;, &#39;40512&#39;, &#39;40519&#39;, &#39;40520&#39;, &#39;40524&#39;, &#39;40547&#39;, &#39;40564&#39;,
+       &#39;40615&#39;, &#39;40619&#39;, &#39;40624&#39;, &#39;40638&#39;, &#39;40649&#39;, &#39;40650&#39;, &#39;40656&#39;,
+       &#39;40658&#39;, &#39;40664&#39;, &#39;40665&#39;, &#39;40668&#39;, &#39;40672&#39;, &#39;40685&#39;, &#39;40694&#39;,
+       &#39;40720&#39;, &#39;40738&#39;, &#39;40743&#39;, &#39;40750&#39;, &#39;40773&#39;, &#39;40778&#39;, &#39;40796&#39;,
+       &#39;40803&#39;, &#39;40855&#39;, &#39;40861&#39;, &#39;40930&#39;, &#39;40961&#39;, &#39;40968&#39;], dtype=&#39;&lt;U5&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atlas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">atlas_lut</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+<span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Uncertain&#39;, &#39;Sensory/somatomotor Hand&#39;,
+       &#39;Sensory/somatomotor Mouth&#39;, &#39;Cingulo-opercular Task Control&#39;,
+       &#39;Auditory&#39;, &#39;Default mode&#39;, &#39;Memory retrieval?&#39;,
+       &#39;Ventral attention&#39;, &#39;Visual&#39;, &#39;Fronto-parietal Task Control&#39;,
+       &#39;Salience&#39;, &#39;Subcortical&#39;, &#39;Cerebellar&#39;, &#39;Dorsal attention&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atlas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">atlas_lut</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+<span class="n">dmn</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">atlas</span><span class="p">[</span><span class="s1">&#39;regions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Default&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">fpn</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">atlas</span><span class="p">[</span><span class="s1">&#39;regions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fronto-parietal&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">dmn_fpn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">dmn</span><span class="p">,</span> <span class="n">fpn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+
+<span class="n">power</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_coords_power_2011</span><span class="p">()</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">power</span><span class="o">.</span><span class="n">rois</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">power</span><span class="o">.</span><span class="n">rois</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">power</span><span class="o">.</span><span class="n">rois</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/memmatch_fc.npy&#39;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fc_subs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/fcsubs.txt&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;30004&#39;, &#39;30008&#39;, &#39;30009&#39;, &#39;30015&#39;, &#39;30019&#39;, &#39;30020&#39;, &#39;30023&#39;,
+       &#39;30040&#39;, &#39;30057&#39;, &#39;30064&#39;, &#39;30066&#39;, &#39;30069&#39;, &#39;30074&#39;, &#39;30085&#39;,
+       &#39;30088&#39;, &#39;30090&#39;, &#39;30091&#39;, &#39;30095&#39;, &#39;30096&#39;, &#39;30105&#39;, &#39;30116&#39;,
+       &#39;30118&#39;, &#39;30119&#39;, &#39;30128&#39;, &#39;30181&#39;, &#39;30217&#39;, &#39;30227&#39;, &#39;30236&#39;,
+       &#39;30242&#39;, &#39;30255&#39;, &#39;30274&#39;, &#39;30283&#39;, &#39;30295&#39;, &#39;30330&#39;, &#39;30346&#39;,
+       &#39;30376&#39;, &#39;30395&#39;, &#39;30400&#39;, &#39;30403&#39;, &#39;30412&#39;, &#39;30426&#39;, &#39;30432&#39;,
+       &#39;30466&#39;, &#39;30469&#39;, &#39;30476&#39;, &#39;30478&#39;, &#39;30568&#39;, &#39;30570&#39;, &#39;30581&#39;,
+       &#39;30584&#39;, &#39;30588&#39;, &#39;40160&#39;, &#39;40170&#39;, &#39;40175&#39;, &#39;40288&#39;, &#39;40351&#39;,
+       &#39;40490&#39;, &#39;40512&#39;, &#39;40519&#39;, &#39;40520&#39;, &#39;40524&#39;, &#39;40547&#39;, &#39;40564&#39;,
+       &#39;40615&#39;, &#39;40619&#39;, &#39;40624&#39;, &#39;40638&#39;, &#39;40649&#39;, &#39;40650&#39;, &#39;40656&#39;,
+       &#39;40658&#39;, &#39;40664&#39;, &#39;40665&#39;, &#39;40668&#39;, &#39;40672&#39;, &#39;40685&#39;, &#39;40694&#39;,
+       &#39;40720&#39;, &#39;40738&#39;, &#39;40743&#39;, &#39;40750&#39;, &#39;40773&#39;, &#39;40778&#39;, &#39;40796&#39;,
+       &#39;40803&#39;, &#39;40855&#39;, &#39;40861&#39;, &#39;40930&#39;, &#39;40961&#39;, &#39;40968&#39;], dtype=&#39;&lt;U5&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">visualization</span>
+
+<span class="n">visualization</span><span class="o">.</span><span class="n">reorderMAT</span><span class="p">(</span><span class="n">nbs_edge_z</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">H</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">9</span><span class="n">c</span><span class="o">/</span><span class="n">c825cr816cg14jn4bs40my5h0000gr</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_24320</span><span class="o">/</span><span class="mf">3497309559.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">visualization</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">visualization</span><span class="o">.</span><span class="n">reorderMAT</span><span class="p">(</span><span class="n">nbs_edge_z</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">H</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;nbs_edge_z&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">modularity</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">centrality</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">other</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">visualization</span>
+
+<span class="n">m_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
+<span class="n">pc_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># thresholds = &#39;nbs&#39;</span>
+<span class="c1"># for thr in thresholds: m_colnames.append(&#39;mod_%s&#39; % thr)</span>
+<span class="c1"># for thr in thresholds: pc_colnames.append(&#39;pc_%s&#39; % thr)</span>
+<span class="c1">#wb = np.array(atlas.regions.index)</span>
+
+<span class="n">mod</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">pc_array</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># m = nbs_edge_z</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dmn_fpn&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">]</span>
+<span class="n">pc_array</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">m0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;cue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">:</span>
+    
+    <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="s1">&#39;wb&#39;</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">ni</span><span class="p">:</span> <span class="n">indi</span> <span class="k">for</span> <span class="n">indi</span><span class="p">,</span> <span class="n">ni</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">))}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">communities</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ni</span><span class="p">]</span> <span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">]</span>
+        
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m0</span><span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">)][:,</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">),:]</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">ni</span><span class="p">:</span> <span class="n">indi</span> <span class="k">for</span> <span class="n">indi</span><span class="p">,</span> <span class="n">ni</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">)]))}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">communities</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ni</span><span class="p">]</span> <span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">)]]</span>
+
+    <span class="k">for</span> <span class="n">subject</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">subjects</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])):</span> <span class="c1">#     print(x[&#39;cue&#39;][dmn_fpn][:,dmn_fpn,idx].shape)</span>
+        
+        <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1">#print(subject, idx)</span>
+        
+        <span class="k">for</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+            <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> 
+            <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> 
+            
+            <span class="n">g</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">threshold_proportional</span><span class="p">(</span><span class="n">m</span><span class="p">[:,:,</span><span class="n">idx</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span><span class="o">*</span><span class="mf">.01</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#     g = visualization.reorderMAT(m[:,:,idx], H=5000, cost=&#39;line&#39;)[0]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">threshold</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            
+            <span class="n">mod</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;subject&#39;</span><span class="p">:</span> <span class="n">subject</span><span class="p">,</span> <span class="s1">&#39;mod_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span> <span class="p">:</span> <span class="n">modularity</span><span class="o">.</span><span class="n">modularity_und</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kci</span><span class="o">=</span><span class="n">communities</span><span class="p">)[</span><span class="mi">1</span><span class="p">]},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="s1">&#39;wb&#39;</span><span class="p">:</span>
+                <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="n">centrality</span><span class="o">.</span><span class="n">participation_coef</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="n">communities</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span>
+                
+            <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="s1">&#39;dmn_fpn&#39;</span><span class="p">:</span>
+                <span class="n">pc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;subject&#39;</span><span class="p">:</span> <span class="n">subject</span><span class="p">,</span> <span class="s1">&#39;pc_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span> <span class="p">:</span> <span class="n">centrality</span><span class="o">.</span><span class="n">participation_coef</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="n">communities</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">mod</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;subject&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;subject&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+<span class="n">pc</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv&#39;</span><span class="p">)</span>
+<span class="n">mod</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/modularity.csv&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient_nodewise.npy&#39;</span><span class="p">,</span> <span class="n">pc_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Default mode&#39;: 0, &#39;Fronto-parietal Task Control&#39;: 1}
+</pre></div>
+</div>
+<img alt="_images/BCT_10_1.png" src="_images/BCT_10_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/bct/algorithms/centrality.py:738: RuntimeWarning: invalid value encountered in true_divide
+  P = np.ones((n,)) - Kc2 / np.square(Ko)
+</pre></div>
+</div>
+<img alt="_images/BCT_10_3.png" src="_images/BCT_10_3.png" />
+<img alt="_images/BCT_10_4.png" src="_images/BCT_10_4.png" />
+<img alt="_images/BCT_10_5.png" src="_images/BCT_10_5.png" />
+<img alt="_images/BCT_10_6.png" src="_images/BCT_10_6.png" />
+<img alt="_images/BCT_10_7.png" src="_images/BCT_10_7.png" />
+<img alt="_images/BCT_10_8.png" src="_images/BCT_10_8.png" />
+<img alt="_images/BCT_10_9.png" src="_images/BCT_10_9.png" />
+<img alt="_images/BCT_10_10.png" src="_images/BCT_10_10.png" />
+<img alt="_images/BCT_10_11.png" src="_images/BCT_10_11.png" />
+<img alt="_images/BCT_10_12.png" src="_images/BCT_10_12.png" />
+<img alt="_images/BCT_10_13.png" src="_images/BCT_10_13.png" />
+<img alt="_images/BCT_10_14.png" src="_images/BCT_10_14.png" />
+<img alt="_images/BCT_10_15.png" src="_images/BCT_10_15.png" />
+<img alt="_images/BCT_10_16.png" src="_images/BCT_10_16.png" />
+<img alt="_images/BCT_10_17.png" src="_images/BCT_10_17.png" />
+<img alt="_images/BCT_10_18.png" src="_images/BCT_10_18.png" />
+<img alt="_images/BCT_10_19.png" src="_images/BCT_10_19.png" />
+<img alt="_images/BCT_10_20.png" src="_images/BCT_10_20.png" />
+<img alt="_images/BCT_10_21.png" src="_images/BCT_10_21.png" />
+<img alt="_images/BCT_10_22.png" src="_images/BCT_10_22.png" />
+<img alt="_images/BCT_10_23.png" src="_images/BCT_10_23.png" />
+<img alt="_images/BCT_10_24.png" src="_images/BCT_10_24.png" />
+<img alt="_images/BCT_10_25.png" src="_images/BCT_10_25.png" />
+<img alt="_images/BCT_10_26.png" src="_images/BCT_10_26.png" />
+<img alt="_images/BCT_10_27.png" src="_images/BCT_10_27.png" />
+<img alt="_images/BCT_10_28.png" src="_images/BCT_10_28.png" />
+<img alt="_images/BCT_10_29.png" src="_images/BCT_10_29.png" />
+<img alt="_images/BCT_10_30.png" src="_images/BCT_10_30.png" />
+<img alt="_images/BCT_10_31.png" src="_images/BCT_10_31.png" />
+<img alt="_images/BCT_10_32.png" src="_images/BCT_10_32.png" />
+<img alt="_images/BCT_10_33.png" src="_images/BCT_10_33.png" />
+<img alt="_images/BCT_10_34.png" src="_images/BCT_10_34.png" />
+<img alt="_images/BCT_10_35.png" src="_images/BCT_10_35.png" />
+<img alt="_images/BCT_10_36.png" src="_images/BCT_10_36.png" />
+<img alt="_images/BCT_10_37.png" src="_images/BCT_10_37.png" />
+<img alt="_images/BCT_10_38.png" src="_images/BCT_10_38.png" />
+<img alt="_images/BCT_10_39.png" src="_images/BCT_10_39.png" />
+<img alt="_images/BCT_10_40.png" src="_images/BCT_10_40.png" />
+<img alt="_images/BCT_10_41.png" src="_images/BCT_10_41.png" />
+<img alt="_images/BCT_10_42.png" src="_images/BCT_10_42.png" />
+<img alt="_images/BCT_10_43.png" src="_images/BCT_10_43.png" />
+<img alt="_images/BCT_10_44.png" src="_images/BCT_10_44.png" />
+<img alt="_images/BCT_10_45.png" src="_images/BCT_10_45.png" />
+<img alt="_images/BCT_10_46.png" src="_images/BCT_10_46.png" />
+<img alt="_images/BCT_10_47.png" src="_images/BCT_10_47.png" />
+<img alt="_images/BCT_10_48.png" src="_images/BCT_10_48.png" />
+<img alt="_images/BCT_10_49.png" src="_images/BCT_10_49.png" />
+<img alt="_images/BCT_10_50.png" src="_images/BCT_10_50.png" />
+<img alt="_images/BCT_10_51.png" src="_images/BCT_10_51.png" />
+<img alt="_images/BCT_10_52.png" src="_images/BCT_10_52.png" />
+<img alt="_images/BCT_10_53.png" src="_images/BCT_10_53.png" />
+<img alt="_images/BCT_10_54.png" src="_images/BCT_10_54.png" />
+<img alt="_images/BCT_10_55.png" src="_images/BCT_10_55.png" />
+<img alt="_images/BCT_10_56.png" src="_images/BCT_10_56.png" />
+<img alt="_images/BCT_10_57.png" src="_images/BCT_10_57.png" />
+<img alt="_images/BCT_10_58.png" src="_images/BCT_10_58.png" />
+<img alt="_images/BCT_10_59.png" src="_images/BCT_10_59.png" />
+<img alt="_images/BCT_10_60.png" src="_images/BCT_10_60.png" />
+<img alt="_images/BCT_10_61.png" src="_images/BCT_10_61.png" />
+<img alt="_images/BCT_10_62.png" src="_images/BCT_10_62.png" />
+<img alt="_images/BCT_10_63.png" src="_images/BCT_10_63.png" />
+<img alt="_images/BCT_10_64.png" src="_images/BCT_10_64.png" />
+<img alt="_images/BCT_10_65.png" src="_images/BCT_10_65.png" />
+<img alt="_images/BCT_10_66.png" src="_images/BCT_10_66.png" />
+<img alt="_images/BCT_10_67.png" src="_images/BCT_10_67.png" />
+<img alt="_images/BCT_10_68.png" src="_images/BCT_10_68.png" />
+<img alt="_images/BCT_10_69.png" src="_images/BCT_10_69.png" />
+<img alt="_images/BCT_10_70.png" src="_images/BCT_10_70.png" />
+<img alt="_images/BCT_10_71.png" src="_images/BCT_10_71.png" />
+<img alt="_images/BCT_10_72.png" src="_images/BCT_10_72.png" />
+<img alt="_images/BCT_10_73.png" src="_images/BCT_10_73.png" />
+<img alt="_images/BCT_10_74.png" src="_images/BCT_10_74.png" />
+<img alt="_images/BCT_10_75.png" src="_images/BCT_10_75.png" />
+<img alt="_images/BCT_10_76.png" src="_images/BCT_10_76.png" />
+<img alt="_images/BCT_10_77.png" src="_images/BCT_10_77.png" />
+<img alt="_images/BCT_10_78.png" src="_images/BCT_10_78.png" />
+<img alt="_images/BCT_10_79.png" src="_images/BCT_10_79.png" />
+<img alt="_images/BCT_10_80.png" src="_images/BCT_10_80.png" />
+<img alt="_images/BCT_10_81.png" src="_images/BCT_10_81.png" />
+<img alt="_images/BCT_10_82.png" src="_images/BCT_10_82.png" />
+<img alt="_images/BCT_10_83.png" src="_images/BCT_10_83.png" />
+<img alt="_images/BCT_10_84.png" src="_images/BCT_10_84.png" />
+<img alt="_images/BCT_10_85.png" src="_images/BCT_10_85.png" />
+<img alt="_images/BCT_10_86.png" src="_images/BCT_10_86.png" />
+<img alt="_images/BCT_10_87.png" src="_images/BCT_10_87.png" />
+<img alt="_images/BCT_10_88.png" src="_images/BCT_10_88.png" />
+<img alt="_images/BCT_10_89.png" src="_images/BCT_10_89.png" />
+<img alt="_images/BCT_10_90.png" src="_images/BCT_10_90.png" />
+<img alt="_images/BCT_10_91.png" src="_images/BCT_10_91.png" />
+<img alt="_images/BCT_10_92.png" src="_images/BCT_10_92.png" />
+<img alt="_images/BCT_10_93.png" src="_images/BCT_10_93.png" />
+<img alt="_images/BCT_10_94.png" src="_images/BCT_10_94.png" />
+<img alt="_images/BCT_10_95.png" src="_images/BCT_10_95.png" />
+<img alt="_images/BCT_10_96.png" src="_images/BCT_10_96.png" />
+<img alt="_images/BCT_10_97.png" src="_images/BCT_10_97.png" />
+<img alt="_images/BCT_10_98.png" src="_images/BCT_10_98.png" />
+<img alt="_images/BCT_10_99.png" src="_images/BCT_10_99.png" />
+<img alt="_images/BCT_10_100.png" src="_images/BCT_10_100.png" />
+<img alt="_images/BCT_10_101.png" src="_images/BCT_10_101.png" />
+<img alt="_images/BCT_10_102.png" src="_images/BCT_10_102.png" />
+<img alt="_images/BCT_10_103.png" src="_images/BCT_10_103.png" />
+<img alt="_images/BCT_10_104.png" src="_images/BCT_10_104.png" />
+<img alt="_images/BCT_10_105.png" src="_images/BCT_10_105.png" />
+<img alt="_images/BCT_10_106.png" src="_images/BCT_10_106.png" />
+<img alt="_images/BCT_10_107.png" src="_images/BCT_10_107.png" />
+<img alt="_images/BCT_10_108.png" src="_images/BCT_10_108.png" />
+<img alt="_images/BCT_10_109.png" src="_images/BCT_10_109.png" />
+<img alt="_images/BCT_10_110.png" src="_images/BCT_10_110.png" />
+<img alt="_images/BCT_10_111.png" src="_images/BCT_10_111.png" />
+<img alt="_images/BCT_10_112.png" src="_images/BCT_10_112.png" />
+<img alt="_images/BCT_10_113.png" src="_images/BCT_10_113.png" />
+<img alt="_images/BCT_10_114.png" src="_images/BCT_10_114.png" />
+<img alt="_images/BCT_10_115.png" src="_images/BCT_10_115.png" />
+<img alt="_images/BCT_10_116.png" src="_images/BCT_10_116.png" />
+<img alt="_images/BCT_10_117.png" src="_images/BCT_10_117.png" />
+<img alt="_images/BCT_10_118.png" src="_images/BCT_10_118.png" />
+<img alt="_images/BCT_10_119.png" src="_images/BCT_10_119.png" />
+<img alt="_images/BCT_10_120.png" src="_images/BCT_10_120.png" />
+<img alt="_images/BCT_10_121.png" src="_images/BCT_10_121.png" />
+<img alt="_images/BCT_10_122.png" src="_images/BCT_10_122.png" />
+<img alt="_images/BCT_10_123.png" src="_images/BCT_10_123.png" />
+<img alt="_images/BCT_10_124.png" src="_images/BCT_10_124.png" />
+<img alt="_images/BCT_10_125.png" src="_images/BCT_10_125.png" />
+<img alt="_images/BCT_10_126.png" src="_images/BCT_10_126.png" />
+<img alt="_images/BCT_10_127.png" src="_images/BCT_10_127.png" />
+<img alt="_images/BCT_10_128.png" src="_images/BCT_10_128.png" />
+<img alt="_images/BCT_10_129.png" src="_images/BCT_10_129.png" />
+<img alt="_images/BCT_10_130.png" src="_images/BCT_10_130.png" />
+<img alt="_images/BCT_10_131.png" src="_images/BCT_10_131.png" />
+<img alt="_images/BCT_10_132.png" src="_images/BCT_10_132.png" />
+<img alt="_images/BCT_10_133.png" src="_images/BCT_10_133.png" />
+<img alt="_images/BCT_10_134.png" src="_images/BCT_10_134.png" />
+<img alt="_images/BCT_10_135.png" src="_images/BCT_10_135.png" />
+<img alt="_images/BCT_10_136.png" src="_images/BCT_10_136.png" />
+<img alt="_images/BCT_10_137.png" src="_images/BCT_10_137.png" />
+<img alt="_images/BCT_10_138.png" src="_images/BCT_10_138.png" />
+<img alt="_images/BCT_10_139.png" src="_images/BCT_10_139.png" />
+<img alt="_images/BCT_10_140.png" src="_images/BCT_10_140.png" />
+<img alt="_images/BCT_10_141.png" src="_images/BCT_10_141.png" />
+<img alt="_images/BCT_10_142.png" src="_images/BCT_10_142.png" />
+<img alt="_images/BCT_10_143.png" src="_images/BCT_10_143.png" />
+<img alt="_images/BCT_10_144.png" src="_images/BCT_10_144.png" />
+<img alt="_images/BCT_10_145.png" src="_images/BCT_10_145.png" />
+<img alt="_images/BCT_10_146.png" src="_images/BCT_10_146.png" />
+<img alt="_images/BCT_10_147.png" src="_images/BCT_10_147.png" />
+<img alt="_images/BCT_10_148.png" src="_images/BCT_10_148.png" />
+<img alt="_images/BCT_10_149.png" src="_images/BCT_10_149.png" />
+<img alt="_images/BCT_10_150.png" src="_images/BCT_10_150.png" />
+<img alt="_images/BCT_10_151.png" src="_images/BCT_10_151.png" />
+<img alt="_images/BCT_10_152.png" src="_images/BCT_10_152.png" />
+<img alt="_images/BCT_10_153.png" src="_images/BCT_10_153.png" />
+<img alt="_images/BCT_10_154.png" src="_images/BCT_10_154.png" />
+<img alt="_images/BCT_10_155.png" src="_images/BCT_10_155.png" />
+<img alt="_images/BCT_10_156.png" src="_images/BCT_10_156.png" />
+<img alt="_images/BCT_10_157.png" src="_images/BCT_10_157.png" />
+<img alt="_images/BCT_10_158.png" src="_images/BCT_10_158.png" />
+<img alt="_images/BCT_10_159.png" src="_images/BCT_10_159.png" />
+<img alt="_images/BCT_10_160.png" src="_images/BCT_10_160.png" />
+<img alt="_images/BCT_10_161.png" src="_images/BCT_10_161.png" />
+<img alt="_images/BCT_10_162.png" src="_images/BCT_10_162.png" />
+<img alt="_images/BCT_10_163.png" src="_images/BCT_10_163.png" />
+<img alt="_images/BCT_10_164.png" src="_images/BCT_10_164.png" />
+<img alt="_images/BCT_10_165.png" src="_images/BCT_10_165.png" />
+<img alt="_images/BCT_10_166.png" src="_images/BCT_10_166.png" />
+<img alt="_images/BCT_10_167.png" src="_images/BCT_10_167.png" />
+<img alt="_images/BCT_10_168.png" src="_images/BCT_10_168.png" />
+<img alt="_images/BCT_10_169.png" src="_images/BCT_10_169.png" />
+<img alt="_images/BCT_10_170.png" src="_images/BCT_10_170.png" />
+<img alt="_images/BCT_10_171.png" src="_images/BCT_10_171.png" />
+<img alt="_images/BCT_10_172.png" src="_images/BCT_10_172.png" />
+<img alt="_images/BCT_10_173.png" src="_images/BCT_10_173.png" />
+<img alt="_images/BCT_10_174.png" src="_images/BCT_10_174.png" />
+<img alt="_images/BCT_10_175.png" src="_images/BCT_10_175.png" />
+<img alt="_images/BCT_10_176.png" src="_images/BCT_10_176.png" />
+<img alt="_images/BCT_10_177.png" src="_images/BCT_10_177.png" />
+<img alt="_images/BCT_10_178.png" src="_images/BCT_10_178.png" />
+<img alt="_images/BCT_10_179.png" src="_images/BCT_10_179.png" />
+<img alt="_images/BCT_10_180.png" src="_images/BCT_10_180.png" />
+<img alt="_images/BCT_10_181.png" src="_images/BCT_10_181.png" />
+<img alt="_images/BCT_10_182.png" src="_images/BCT_10_182.png" />
+<img alt="_images/BCT_10_183.png" src="_images/BCT_10_183.png" />
+<img alt="_images/BCT_10_184.png" src="_images/BCT_10_184.png" />
+<img alt="_images/BCT_10_185.png" src="_images/BCT_10_185.png" />
+<img alt="_images/BCT_10_186.png" src="_images/BCT_10_186.png" />
+<img alt="_images/BCT_10_187.png" src="_images/BCT_10_187.png" />
+<img alt="_images/BCT_10_188.png" src="_images/BCT_10_188.png" />
+<img alt="_images/BCT_10_189.png" src="_images/BCT_10_189.png" />
+<img alt="_images/BCT_10_190.png" src="_images/BCT_10_190.png" />
+<img alt="_images/BCT_10_191.png" src="_images/BCT_10_191.png" />
+<img alt="_images/BCT_10_192.png" src="_images/BCT_10_192.png" />
+<img alt="_images/BCT_10_193.png" src="_images/BCT_10_193.png" />
+<img alt="_images/BCT_10_194.png" src="_images/BCT_10_194.png" />
+<img alt="_images/BCT_10_195.png" src="_images/BCT_10_195.png" />
+<img alt="_images/BCT_10_196.png" src="_images/BCT_10_196.png" />
+<img alt="_images/BCT_10_197.png" src="_images/BCT_10_197.png" />
+<img alt="_images/BCT_10_198.png" src="_images/BCT_10_198.png" />
+<img alt="_images/BCT_10_199.png" src="_images/BCT_10_199.png" />
+<img alt="_images/BCT_10_200.png" src="_images/BCT_10_200.png" />
+<img alt="_images/BCT_10_201.png" src="_images/BCT_10_201.png" />
+<img alt="_images/BCT_10_202.png" src="_images/BCT_10_202.png" />
+<img alt="_images/BCT_10_203.png" src="_images/BCT_10_203.png" />
+<img alt="_images/BCT_10_204.png" src="_images/BCT_10_204.png" />
+<img alt="_images/BCT_10_205.png" src="_images/BCT_10_205.png" />
+<img alt="_images/BCT_10_206.png" src="_images/BCT_10_206.png" />
+<img alt="_images/BCT_10_207.png" src="_images/BCT_10_207.png" />
+<img alt="_images/BCT_10_208.png" src="_images/BCT_10_208.png" />
+<img alt="_images/BCT_10_209.png" src="_images/BCT_10_209.png" />
+<img alt="_images/BCT_10_210.png" src="_images/BCT_10_210.png" />
+<img alt="_images/BCT_10_211.png" src="_images/BCT_10_211.png" />
+<img alt="_images/BCT_10_212.png" src="_images/BCT_10_212.png" />
+<img alt="_images/BCT_10_213.png" src="_images/BCT_10_213.png" />
+<img alt="_images/BCT_10_214.png" src="_images/BCT_10_214.png" />
+<img alt="_images/BCT_10_215.png" src="_images/BCT_10_215.png" />
+<img alt="_images/BCT_10_216.png" src="_images/BCT_10_216.png" />
+<img alt="_images/BCT_10_217.png" src="_images/BCT_10_217.png" />
+<img alt="_images/BCT_10_218.png" src="_images/BCT_10_218.png" />
+<img alt="_images/BCT_10_219.png" src="_images/BCT_10_219.png" />
+<img alt="_images/BCT_10_220.png" src="_images/BCT_10_220.png" />
+<img alt="_images/BCT_10_221.png" src="_images/BCT_10_221.png" />
+<img alt="_images/BCT_10_222.png" src="_images/BCT_10_222.png" />
+<img alt="_images/BCT_10_223.png" src="_images/BCT_10_223.png" />
+<img alt="_images/BCT_10_224.png" src="_images/BCT_10_224.png" />
+<img alt="_images/BCT_10_225.png" src="_images/BCT_10_225.png" />
+<img alt="_images/BCT_10_226.png" src="_images/BCT_10_226.png" />
+<img alt="_images/BCT_10_227.png" src="_images/BCT_10_227.png" />
+<img alt="_images/BCT_10_228.png" src="_images/BCT_10_228.png" />
+<img alt="_images/BCT_10_229.png" src="_images/BCT_10_229.png" />
+<img alt="_images/BCT_10_230.png" src="_images/BCT_10_230.png" />
+<img alt="_images/BCT_10_231.png" src="_images/BCT_10_231.png" />
+<img alt="_images/BCT_10_232.png" src="_images/BCT_10_232.png" />
+<img alt="_images/BCT_10_233.png" src="_images/BCT_10_233.png" />
+<img alt="_images/BCT_10_234.png" src="_images/BCT_10_234.png" />
+<img alt="_images/BCT_10_235.png" src="_images/BCT_10_235.png" />
+<img alt="_images/BCT_10_236.png" src="_images/BCT_10_236.png" />
+<img alt="_images/BCT_10_237.png" src="_images/BCT_10_237.png" />
+<img alt="_images/BCT_10_238.png" src="_images/BCT_10_238.png" />
+<img alt="_images/BCT_10_239.png" src="_images/BCT_10_239.png" />
+<img alt="_images/BCT_10_240.png" src="_images/BCT_10_240.png" />
+<img alt="_images/BCT_10_241.png" src="_images/BCT_10_241.png" />
+<img alt="_images/BCT_10_242.png" src="_images/BCT_10_242.png" />
+<img alt="_images/BCT_10_243.png" src="_images/BCT_10_243.png" />
+<img alt="_images/BCT_10_244.png" src="_images/BCT_10_244.png" />
+<img alt="_images/BCT_10_245.png" src="_images/BCT_10_245.png" />
+<img alt="_images/BCT_10_246.png" src="_images/BCT_10_246.png" />
+<img alt="_images/BCT_10_247.png" src="_images/BCT_10_247.png" />
+<img alt="_images/BCT_10_248.png" src="_images/BCT_10_248.png" />
+<img alt="_images/BCT_10_249.png" src="_images/BCT_10_249.png" />
+<img alt="_images/BCT_10_250.png" src="_images/BCT_10_250.png" />
+<img alt="_images/BCT_10_251.png" src="_images/BCT_10_251.png" />
+<img alt="_images/BCT_10_252.png" src="_images/BCT_10_252.png" />
+<img alt="_images/BCT_10_253.png" src="_images/BCT_10_253.png" />
+<img alt="_images/BCT_10_254.png" src="_images/BCT_10_254.png" />
+<img alt="_images/BCT_10_255.png" src="_images/BCT_10_255.png" />
+<img alt="_images/BCT_10_256.png" src="_images/BCT_10_256.png" />
+<img alt="_images/BCT_10_257.png" src="_images/BCT_10_257.png" />
+<img alt="_images/BCT_10_258.png" src="_images/BCT_10_258.png" />
+<img alt="_images/BCT_10_259.png" src="_images/BCT_10_259.png" />
+<img alt="_images/BCT_10_260.png" src="_images/BCT_10_260.png" />
+<img alt="_images/BCT_10_261.png" src="_images/BCT_10_261.png" />
+<img alt="_images/BCT_10_262.png" src="_images/BCT_10_262.png" />
+<img alt="_images/BCT_10_263.png" src="_images/BCT_10_263.png" />
+<img alt="_images/BCT_10_264.png" src="_images/BCT_10_264.png" />
+<img alt="_images/BCT_10_265.png" src="_images/BCT_10_265.png" />
+<img alt="_images/BCT_10_266.png" src="_images/BCT_10_266.png" />
+<img alt="_images/BCT_10_267.png" src="_images/BCT_10_267.png" />
+<img alt="_images/BCT_10_268.png" src="_images/BCT_10_268.png" />
+<img alt="_images/BCT_10_269.png" src="_images/BCT_10_269.png" />
+<img alt="_images/BCT_10_270.png" src="_images/BCT_10_270.png" />
+<img alt="_images/BCT_10_271.png" src="_images/BCT_10_271.png" />
+<img alt="_images/BCT_10_272.png" src="_images/BCT_10_272.png" />
+<img alt="_images/BCT_10_273.png" src="_images/BCT_10_273.png" />
+<img alt="_images/BCT_10_274.png" src="_images/BCT_10_274.png" />
+<img alt="_images/BCT_10_275.png" src="_images/BCT_10_275.png" />
+<img alt="_images/BCT_10_276.png" src="_images/BCT_10_276.png" />
+<img alt="_images/BCT_10_277.png" src="_images/BCT_10_277.png" />
+<img alt="_images/BCT_10_278.png" src="_images/BCT_10_278.png" />
+<img alt="_images/BCT_10_279.png" src="_images/BCT_10_279.png" />
+<img alt="_images/BCT_10_280.png" src="_images/BCT_10_280.png" />
+<img alt="_images/BCT_10_281.png" src="_images/BCT_10_281.png" />
+<img alt="_images/BCT_10_282.png" src="_images/BCT_10_282.png" />
+<img alt="_images/BCT_10_283.png" src="_images/BCT_10_283.png" />
+<img alt="_images/BCT_10_284.png" src="_images/BCT_10_284.png" />
+<img alt="_images/BCT_10_285.png" src="_images/BCT_10_285.png" />
+<img alt="_images/BCT_10_286.png" src="_images/BCT_10_286.png" />
+<img alt="_images/BCT_10_287.png" src="_images/BCT_10_287.png" />
+<img alt="_images/BCT_10_288.png" src="_images/BCT_10_288.png" />
+<img alt="_images/BCT_10_289.png" src="_images/BCT_10_289.png" />
+<img alt="_images/BCT_10_290.png" src="_images/BCT_10_290.png" />
+<img alt="_images/BCT_10_291.png" src="_images/BCT_10_291.png" />
+<img alt="_images/BCT_10_292.png" src="_images/BCT_10_292.png" />
+<img alt="_images/BCT_10_293.png" src="_images/BCT_10_293.png" />
+<img alt="_images/BCT_10_294.png" src="_images/BCT_10_294.png" />
+<img alt="_images/BCT_10_295.png" src="_images/BCT_10_295.png" />
+<img alt="_images/BCT_10_296.png" src="_images/BCT_10_296.png" />
+<img alt="_images/BCT_10_297.png" src="_images/BCT_10_297.png" />
+<img alt="_images/BCT_10_298.png" src="_images/BCT_10_298.png" />
+<img alt="_images/BCT_10_299.png" src="_images/BCT_10_299.png" />
+<img alt="_images/BCT_10_300.png" src="_images/BCT_10_300.png" />
+<img alt="_images/BCT_10_301.png" src="_images/BCT_10_301.png" />
+<img alt="_images/BCT_10_302.png" src="_images/BCT_10_302.png" />
+<img alt="_images/BCT_10_303.png" src="_images/BCT_10_303.png" />
+<img alt="_images/BCT_10_304.png" src="_images/BCT_10_304.png" />
+<img alt="_images/BCT_10_305.png" src="_images/BCT_10_305.png" />
+<img alt="_images/BCT_10_306.png" src="_images/BCT_10_306.png" />
+<img alt="_images/BCT_10_307.png" src="_images/BCT_10_307.png" />
+<img alt="_images/BCT_10_308.png" src="_images/BCT_10_308.png" />
+<img alt="_images/BCT_10_309.png" src="_images/BCT_10_309.png" />
+<img alt="_images/BCT_10_310.png" src="_images/BCT_10_310.png" />
+<img alt="_images/BCT_10_311.png" src="_images/BCT_10_311.png" />
+<img alt="_images/BCT_10_312.png" src="_images/BCT_10_312.png" />
+<img alt="_images/BCT_10_313.png" src="_images/BCT_10_313.png" />
+<img alt="_images/BCT_10_314.png" src="_images/BCT_10_314.png" />
+<img alt="_images/BCT_10_315.png" src="_images/BCT_10_315.png" />
+<img alt="_images/BCT_10_316.png" src="_images/BCT_10_316.png" />
+<img alt="_images/BCT_10_317.png" src="_images/BCT_10_317.png" />
+<img alt="_images/BCT_10_318.png" src="_images/BCT_10_318.png" />
+<img alt="_images/BCT_10_319.png" src="_images/BCT_10_319.png" />
+<img alt="_images/BCT_10_320.png" src="_images/BCT_10_320.png" />
+<img alt="_images/BCT_10_321.png" src="_images/BCT_10_321.png" />
+<img alt="_images/BCT_10_322.png" src="_images/BCT_10_322.png" />
+<img alt="_images/BCT_10_323.png" src="_images/BCT_10_323.png" />
+<img alt="_images/BCT_10_324.png" src="_images/BCT_10_324.png" />
+<img alt="_images/BCT_10_325.png" src="_images/BCT_10_325.png" />
+<img alt="_images/BCT_10_326.png" src="_images/BCT_10_326.png" />
+<img alt="_images/BCT_10_327.png" src="_images/BCT_10_327.png" />
+<img alt="_images/BCT_10_328.png" src="_images/BCT_10_328.png" />
+<img alt="_images/BCT_10_329.png" src="_images/BCT_10_329.png" />
+<img alt="_images/BCT_10_330.png" src="_images/BCT_10_330.png" />
+<img alt="_images/BCT_10_331.png" src="_images/BCT_10_331.png" />
+<img alt="_images/BCT_10_332.png" src="_images/BCT_10_332.png" />
+<img alt="_images/BCT_10_333.png" src="_images/BCT_10_333.png" />
+<img alt="_images/BCT_10_334.png" src="_images/BCT_10_334.png" />
+<img alt="_images/BCT_10_335.png" src="_images/BCT_10_335.png" />
+<img alt="_images/BCT_10_336.png" src="_images/BCT_10_336.png" />
+<img alt="_images/BCT_10_337.png" src="_images/BCT_10_337.png" />
+<img alt="_images/BCT_10_338.png" src="_images/BCT_10_338.png" />
+<img alt="_images/BCT_10_339.png" src="_images/BCT_10_339.png" />
+<img alt="_images/BCT_10_340.png" src="_images/BCT_10_340.png" />
+<img alt="_images/BCT_10_341.png" src="_images/BCT_10_341.png" />
+<img alt="_images/BCT_10_342.png" src="_images/BCT_10_342.png" />
+<img alt="_images/BCT_10_343.png" src="_images/BCT_10_343.png" />
+<img alt="_images/BCT_10_344.png" src="_images/BCT_10_344.png" />
+<img alt="_images/BCT_10_345.png" src="_images/BCT_10_345.png" />
+<img alt="_images/BCT_10_346.png" src="_images/BCT_10_346.png" />
+<img alt="_images/BCT_10_347.png" src="_images/BCT_10_347.png" />
+<img alt="_images/BCT_10_348.png" src="_images/BCT_10_348.png" />
+<img alt="_images/BCT_10_349.png" src="_images/BCT_10_349.png" />
+<img alt="_images/BCT_10_350.png" src="_images/BCT_10_350.png" />
+<img alt="_images/BCT_10_351.png" src="_images/BCT_10_351.png" />
+<img alt="_images/BCT_10_352.png" src="_images/BCT_10_352.png" />
+<img alt="_images/BCT_10_353.png" src="_images/BCT_10_353.png" />
+<img alt="_images/BCT_10_354.png" src="_images/BCT_10_354.png" />
+<img alt="_images/BCT_10_355.png" src="_images/BCT_10_355.png" />
+<img alt="_images/BCT_10_356.png" src="_images/BCT_10_356.png" />
+<img alt="_images/BCT_10_357.png" src="_images/BCT_10_357.png" />
+<img alt="_images/BCT_10_358.png" src="_images/BCT_10_358.png" />
+<img alt="_images/BCT_10_359.png" src="_images/BCT_10_359.png" />
+<img alt="_images/BCT_10_360.png" src="_images/BCT_10_360.png" />
+<img alt="_images/BCT_10_361.png" src="_images/BCT_10_361.png" />
+<img alt="_images/BCT_10_362.png" src="_images/BCT_10_362.png" />
+<img alt="_images/BCT_10_363.png" src="_images/BCT_10_363.png" />
+<img alt="_images/BCT_10_364.png" src="_images/BCT_10_364.png" />
+<img alt="_images/BCT_10_365.png" src="_images/BCT_10_365.png" />
+<img alt="_images/BCT_10_366.png" src="_images/BCT_10_366.png" />
+<img alt="_images/BCT_10_367.png" src="_images/BCT_10_367.png" />
+<img alt="_images/BCT_10_368.png" src="_images/BCT_10_368.png" />
+<img alt="_images/BCT_10_369.png" src="_images/BCT_10_369.png" />
+<img alt="_images/BCT_10_370.png" src="_images/BCT_10_370.png" />
+<img alt="_images/BCT_10_371.png" src="_images/BCT_10_371.png" />
+<img alt="_images/BCT_10_372.png" src="_images/BCT_10_372.png" />
+<img alt="_images/BCT_10_373.png" src="_images/BCT_10_373.png" />
+<img alt="_images/BCT_10_374.png" src="_images/BCT_10_374.png" />
+<img alt="_images/BCT_10_375.png" src="_images/BCT_10_375.png" />
+<img alt="_images/BCT_10_376.png" src="_images/BCT_10_376.png" />
+<img alt="_images/BCT_10_377.png" src="_images/BCT_10_377.png" />
+<img alt="_images/BCT_10_378.png" src="_images/BCT_10_378.png" />
+<img alt="_images/BCT_10_379.png" src="_images/BCT_10_379.png" />
+<img alt="_images/BCT_10_380.png" src="_images/BCT_10_380.png" />
+<img alt="_images/BCT_10_381.png" src="_images/BCT_10_381.png" />
+<img alt="_images/BCT_10_382.png" src="_images/BCT_10_382.png" />
+<img alt="_images/BCT_10_383.png" src="_images/BCT_10_383.png" />
+<img alt="_images/BCT_10_384.png" src="_images/BCT_10_384.png" />
+<img alt="_images/BCT_10_385.png" src="_images/BCT_10_385.png" />
+<img alt="_images/BCT_10_386.png" src="_images/BCT_10_386.png" />
+<img alt="_images/BCT_10_387.png" src="_images/BCT_10_387.png" />
+<img alt="_images/BCT_10_388.png" src="_images/BCT_10_388.png" />
+<img alt="_images/BCT_10_389.png" src="_images/BCT_10_389.png" />
+<img alt="_images/BCT_10_390.png" src="_images/BCT_10_390.png" />
+<img alt="_images/BCT_10_391.png" src="_images/BCT_10_391.png" />
+<img alt="_images/BCT_10_392.png" src="_images/BCT_10_392.png" />
+<img alt="_images/BCT_10_393.png" src="_images/BCT_10_393.png" />
+<img alt="_images/BCT_10_394.png" src="_images/BCT_10_394.png" />
+<img alt="_images/BCT_10_395.png" src="_images/BCT_10_395.png" />
+<img alt="_images/BCT_10_396.png" src="_images/BCT_10_396.png" />
+<img alt="_images/BCT_10_397.png" src="_images/BCT_10_397.png" />
+<img alt="_images/BCT_10_398.png" src="_images/BCT_10_398.png" />
+<img alt="_images/BCT_10_399.png" src="_images/BCT_10_399.png" />
+<img alt="_images/BCT_10_400.png" src="_images/BCT_10_400.png" />
+<img alt="_images/BCT_10_401.png" src="_images/BCT_10_401.png" />
+<img alt="_images/BCT_10_402.png" src="_images/BCT_10_402.png" />
+<img alt="_images/BCT_10_403.png" src="_images/BCT_10_403.png" />
+<img alt="_images/BCT_10_404.png" src="_images/BCT_10_404.png" />
+<img alt="_images/BCT_10_405.png" src="_images/BCT_10_405.png" />
+<img alt="_images/BCT_10_406.png" src="_images/BCT_10_406.png" />
+<img alt="_images/BCT_10_407.png" src="_images/BCT_10_407.png" />
+<img alt="_images/BCT_10_408.png" src="_images/BCT_10_408.png" />
+<img alt="_images/BCT_10_409.png" src="_images/BCT_10_409.png" />
+<img alt="_images/BCT_10_410.png" src="_images/BCT_10_410.png" />
+<img alt="_images/BCT_10_411.png" src="_images/BCT_10_411.png" />
+<img alt="_images/BCT_10_412.png" src="_images/BCT_10_412.png" />
+<img alt="_images/BCT_10_413.png" src="_images/BCT_10_413.png" />
+<img alt="_images/BCT_10_414.png" src="_images/BCT_10_414.png" />
+<img alt="_images/BCT_10_415.png" src="_images/BCT_10_415.png" />
+<img alt="_images/BCT_10_416.png" src="_images/BCT_10_416.png" />
+<img alt="_images/BCT_10_417.png" src="_images/BCT_10_417.png" />
+<img alt="_images/BCT_10_418.png" src="_images/BCT_10_418.png" />
+<img alt="_images/BCT_10_419.png" src="_images/BCT_10_419.png" />
+<img alt="_images/BCT_10_420.png" src="_images/BCT_10_420.png" />
+<img alt="_images/BCT_10_421.png" src="_images/BCT_10_421.png" />
+<img alt="_images/BCT_10_422.png" src="_images/BCT_10_422.png" />
+<img alt="_images/BCT_10_423.png" src="_images/BCT_10_423.png" />
+<img alt="_images/BCT_10_424.png" src="_images/BCT_10_424.png" />
+<img alt="_images/BCT_10_425.png" src="_images/BCT_10_425.png" />
+<img alt="_images/BCT_10_426.png" src="_images/BCT_10_426.png" />
+<img alt="_images/BCT_10_427.png" src="_images/BCT_10_427.png" />
+<img alt="_images/BCT_10_428.png" src="_images/BCT_10_428.png" />
+<img alt="_images/BCT_10_429.png" src="_images/BCT_10_429.png" />
+<img alt="_images/BCT_10_430.png" src="_images/BCT_10_430.png" />
+<img alt="_images/BCT_10_431.png" src="_images/BCT_10_431.png" />
+<img alt="_images/BCT_10_432.png" src="_images/BCT_10_432.png" />
+<img alt="_images/BCT_10_433.png" src="_images/BCT_10_433.png" />
+<img alt="_images/BCT_10_434.png" src="_images/BCT_10_434.png" />
+<img alt="_images/BCT_10_435.png" src="_images/BCT_10_435.png" />
+<img alt="_images/BCT_10_436.png" src="_images/BCT_10_436.png" />
+<img alt="_images/BCT_10_437.png" src="_images/BCT_10_437.png" />
+<img alt="_images/BCT_10_438.png" src="_images/BCT_10_438.png" />
+<img alt="_images/BCT_10_439.png" src="_images/BCT_10_439.png" />
+<img alt="_images/BCT_10_440.png" src="_images/BCT_10_440.png" />
+<img alt="_images/BCT_10_441.png" src="_images/BCT_10_441.png" />
+<img alt="_images/BCT_10_442.png" src="_images/BCT_10_442.png" />
+<img alt="_images/BCT_10_443.png" src="_images/BCT_10_443.png" />
+<img alt="_images/BCT_10_444.png" src="_images/BCT_10_444.png" />
+<img alt="_images/BCT_10_445.png" src="_images/BCT_10_445.png" />
+<img alt="_images/BCT_10_446.png" src="_images/BCT_10_446.png" />
+<img alt="_images/BCT_10_447.png" src="_images/BCT_10_447.png" />
+<img alt="_images/BCT_10_448.png" src="_images/BCT_10_448.png" />
+<img alt="_images/BCT_10_449.png" src="_images/BCT_10_449.png" />
+<img alt="_images/BCT_10_450.png" src="_images/BCT_10_450.png" />
+<img alt="_images/BCT_10_451.png" src="_images/BCT_10_451.png" />
+<img alt="_images/BCT_10_452.png" src="_images/BCT_10_452.png" />
+<img alt="_images/BCT_10_453.png" src="_images/BCT_10_453.png" />
+<img alt="_images/BCT_10_454.png" src="_images/BCT_10_454.png" />
+<img alt="_images/BCT_10_455.png" src="_images/BCT_10_455.png" />
+<img alt="_images/BCT_10_456.png" src="_images/BCT_10_456.png" />
+<img alt="_images/BCT_10_457.png" src="_images/BCT_10_457.png" />
+<img alt="_images/BCT_10_458.png" src="_images/BCT_10_458.png" />
+<img alt="_images/BCT_10_459.png" src="_images/BCT_10_459.png" />
+<img alt="_images/BCT_10_460.png" src="_images/BCT_10_460.png" />
+<img alt="_images/BCT_10_461.png" src="_images/BCT_10_461.png" />
+<img alt="_images/BCT_10_462.png" src="_images/BCT_10_462.png" />
+<img alt="_images/BCT_10_463.png" src="_images/BCT_10_463.png" />
+<img alt="_images/BCT_10_464.png" src="_images/BCT_10_464.png" />
+<img alt="_images/BCT_10_465.png" src="_images/BCT_10_465.png" />
+<img alt="_images/BCT_10_466.png" src="_images/BCT_10_466.png" />
+<img alt="_images/BCT_10_467.png" src="_images/BCT_10_467.png" />
+<img alt="_images/BCT_10_468.png" src="_images/BCT_10_468.png" />
+<img alt="_images/BCT_10_469.png" src="_images/BCT_10_469.png" />
+<img alt="_images/BCT_10_470.png" src="_images/BCT_10_470.png" />
+<img alt="_images/BCT_10_471.png" src="_images/BCT_10_471.png" />
+<img alt="_images/BCT_10_472.png" src="_images/BCT_10_472.png" />
+<img alt="_images/BCT_10_473.png" src="_images/BCT_10_473.png" />
+<img alt="_images/BCT_10_474.png" src="_images/BCT_10_474.png" />
+<img alt="_images/BCT_10_475.png" src="_images/BCT_10_475.png" />
+<img alt="_images/BCT_10_476.png" src="_images/BCT_10_476.png" />
+<img alt="_images/BCT_10_477.png" src="_images/BCT_10_477.png" />
+<img alt="_images/BCT_10_478.png" src="_images/BCT_10_478.png" />
+<img alt="_images/BCT_10_479.png" src="_images/BCT_10_479.png" />
+<img alt="_images/BCT_10_480.png" src="_images/BCT_10_480.png" />
+<img alt="_images/BCT_10_481.png" src="_images/BCT_10_481.png" />
+<img alt="_images/BCT_10_482.png" src="_images/BCT_10_482.png" />
+<img alt="_images/BCT_10_483.png" src="_images/BCT_10_483.png" />
+<img alt="_images/BCT_10_484.png" src="_images/BCT_10_484.png" />
+<img alt="_images/BCT_10_485.png" src="_images/BCT_10_485.png" />
+<img alt="_images/BCT_10_486.png" src="_images/BCT_10_486.png" />
+<img alt="_images/BCT_10_487.png" src="_images/BCT_10_487.png" />
+<img alt="_images/BCT_10_488.png" src="_images/BCT_10_488.png" />
+<img alt="_images/BCT_10_489.png" src="_images/BCT_10_489.png" />
+<img alt="_images/BCT_10_490.png" src="_images/BCT_10_490.png" />
+<img alt="_images/BCT_10_491.png" src="_images/BCT_10_491.png" />
+<img alt="_images/BCT_10_492.png" src="_images/BCT_10_492.png" />
+<img alt="_images/BCT_10_493.png" src="_images/BCT_10_493.png" />
+<img alt="_images/BCT_10_494.png" src="_images/BCT_10_494.png" />
+<img alt="_images/BCT_10_495.png" src="_images/BCT_10_495.png" />
+<img alt="_images/BCT_10_496.png" src="_images/BCT_10_496.png" />
+<img alt="_images/BCT_10_497.png" src="_images/BCT_10_497.png" />
+<img alt="_images/BCT_10_498.png" src="_images/BCT_10_498.png" />
+<img alt="_images/BCT_10_499.png" src="_images/BCT_10_499.png" />
+<img alt="_images/BCT_10_500.png" src="_images/BCT_10_500.png" />
+<img alt="_images/BCT_10_501.png" src="_images/BCT_10_501.png" />
+<img alt="_images/BCT_10_502.png" src="_images/BCT_10_502.png" />
+<img alt="_images/BCT_10_503.png" src="_images/BCT_10_503.png" />
+<img alt="_images/BCT_10_504.png" src="_images/BCT_10_504.png" />
+<img alt="_images/BCT_10_505.png" src="_images/BCT_10_505.png" />
+<img alt="_images/BCT_10_506.png" src="_images/BCT_10_506.png" />
+<img alt="_images/BCT_10_507.png" src="_images/BCT_10_507.png" />
+<img alt="_images/BCT_10_508.png" src="_images/BCT_10_508.png" />
+<img alt="_images/BCT_10_509.png" src="_images/BCT_10_509.png" />
+<img alt="_images/BCT_10_510.png" src="_images/BCT_10_510.png" />
+<img alt="_images/BCT_10_511.png" src="_images/BCT_10_511.png" />
+<img alt="_images/BCT_10_512.png" src="_images/BCT_10_512.png" />
+<img alt="_images/BCT_10_513.png" src="_images/BCT_10_513.png" />
+<img alt="_images/BCT_10_514.png" src="_images/BCT_10_514.png" />
+<img alt="_images/BCT_10_515.png" src="_images/BCT_10_515.png" />
+<img alt="_images/BCT_10_516.png" src="_images/BCT_10_516.png" />
+<img alt="_images/BCT_10_517.png" src="_images/BCT_10_517.png" />
+<img alt="_images/BCT_10_518.png" src="_images/BCT_10_518.png" />
+<img alt="_images/BCT_10_519.png" src="_images/BCT_10_519.png" />
+<img alt="_images/BCT_10_520.png" src="_images/BCT_10_520.png" />
+<img alt="_images/BCT_10_521.png" src="_images/BCT_10_521.png" />
+<img alt="_images/BCT_10_522.png" src="_images/BCT_10_522.png" />
+<img alt="_images/BCT_10_523.png" src="_images/BCT_10_523.png" />
+<img alt="_images/BCT_10_524.png" src="_images/BCT_10_524.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/bct/algorithms/modularity.py:1490: RuntimeWarning: invalid value encountered in true_divide
+  B = A - gamma * np.outer(k, k) / m  # initial modularity matrix
+</pre></div>
+</div>
+<img alt="_images/BCT_10_526.png" src="_images/BCT_10_526.png" />
+<img alt="_images/BCT_10_527.png" src="_images/BCT_10_527.png" />
+<img alt="_images/BCT_10_528.png" src="_images/BCT_10_528.png" />
+<img alt="_images/BCT_10_529.png" src="_images/BCT_10_529.png" />
+<img alt="_images/BCT_10_530.png" src="_images/BCT_10_530.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Cingulo-opercular Task Control&#39;: 0, &#39;Uncertain&#39;: 1, &#39;Fronto-parietal Task Control&#39;: 2, &#39;Auditory&#39;: 3, &#39;Default mode&#39;: 4, &#39;Visual&#39;: 5, &#39;Sensory/somatomotor Hand&#39;: 6, &#39;Cerebellar&#39;: 7, &#39;Memory retrieval?&#39;: 8, &#39;Ventral attention&#39;: 9, &#39;Salience&#39;: 10, &#39;Dorsal attention&#39;: 11, &#39;Sensory/somatomotor Mouth&#39;: 12, &#39;Subcortical&#39;: 13}
+</pre></div>
+</div>
+<img alt="_images/BCT_10_532.png" src="_images/BCT_10_532.png" />
+<img alt="_images/BCT_10_533.png" src="_images/BCT_10_533.png" />
+<img alt="_images/BCT_10_534.png" src="_images/BCT_10_534.png" />
+<img alt="_images/BCT_10_535.png" src="_images/BCT_10_535.png" />
+<img alt="_images/BCT_10_536.png" src="_images/BCT_10_536.png" />
+<img alt="_images/BCT_10_537.png" src="_images/BCT_10_537.png" />
+<img alt="_images/BCT_10_538.png" src="_images/BCT_10_538.png" />
+<img alt="_images/BCT_10_539.png" src="_images/BCT_10_539.png" />
+<img alt="_images/BCT_10_540.png" src="_images/BCT_10_540.png" />
+<img alt="_images/BCT_10_541.png" src="_images/BCT_10_541.png" />
+<img alt="_images/BCT_10_542.png" src="_images/BCT_10_542.png" />
+<img alt="_images/BCT_10_543.png" src="_images/BCT_10_543.png" />
+<img alt="_images/BCT_10_544.png" src="_images/BCT_10_544.png" />
+<img alt="_images/BCT_10_545.png" src="_images/BCT_10_545.png" />
+<img alt="_images/BCT_10_546.png" src="_images/BCT_10_546.png" />
+<img alt="_images/BCT_10_547.png" src="_images/BCT_10_547.png" />
+<img alt="_images/BCT_10_548.png" src="_images/BCT_10_548.png" />
+<img alt="_images/BCT_10_549.png" src="_images/BCT_10_549.png" />
+<img alt="_images/BCT_10_550.png" src="_images/BCT_10_550.png" />
+<img alt="_images/BCT_10_551.png" src="_images/BCT_10_551.png" />
+<img alt="_images/BCT_10_552.png" src="_images/BCT_10_552.png" />
+<img alt="_images/BCT_10_553.png" src="_images/BCT_10_553.png" />
+<img alt="_images/BCT_10_554.png" src="_images/BCT_10_554.png" />
+<img alt="_images/BCT_10_555.png" src="_images/BCT_10_555.png" />
+<img alt="_images/BCT_10_556.png" src="_images/BCT_10_556.png" />
+<img alt="_images/BCT_10_557.png" src="_images/BCT_10_557.png" />
+<img alt="_images/BCT_10_558.png" src="_images/BCT_10_558.png" />
+<img alt="_images/BCT_10_559.png" src="_images/BCT_10_559.png" />
+<img alt="_images/BCT_10_560.png" src="_images/BCT_10_560.png" />
+<img alt="_images/BCT_10_561.png" src="_images/BCT_10_561.png" />
+<img alt="_images/BCT_10_562.png" src="_images/BCT_10_562.png" />
+<img alt="_images/BCT_10_563.png" src="_images/BCT_10_563.png" />
+<img alt="_images/BCT_10_564.png" src="_images/BCT_10_564.png" />
+<img alt="_images/BCT_10_565.png" src="_images/BCT_10_565.png" />
+<img alt="_images/BCT_10_566.png" src="_images/BCT_10_566.png" />
+<img alt="_images/BCT_10_567.png" src="_images/BCT_10_567.png" />
+<img alt="_images/BCT_10_568.png" src="_images/BCT_10_568.png" />
+<img alt="_images/BCT_10_569.png" src="_images/BCT_10_569.png" />
+<img alt="_images/BCT_10_570.png" src="_images/BCT_10_570.png" />
+<img alt="_images/BCT_10_571.png" src="_images/BCT_10_571.png" />
+<img alt="_images/BCT_10_572.png" src="_images/BCT_10_572.png" />
+<img alt="_images/BCT_10_573.png" src="_images/BCT_10_573.png" />
+<img alt="_images/BCT_10_574.png" src="_images/BCT_10_574.png" />
+<img alt="_images/BCT_10_575.png" src="_images/BCT_10_575.png" />
+<img alt="_images/BCT_10_576.png" src="_images/BCT_10_576.png" />
+<img alt="_images/BCT_10_577.png" src="_images/BCT_10_577.png" />
+<img alt="_images/BCT_10_578.png" src="_images/BCT_10_578.png" />
+<img alt="_images/BCT_10_579.png" src="_images/BCT_10_579.png" />
+<img alt="_images/BCT_10_580.png" src="_images/BCT_10_580.png" />
+<img alt="_images/BCT_10_581.png" src="_images/BCT_10_581.png" />
+<img alt="_images/BCT_10_582.png" src="_images/BCT_10_582.png" />
+<img alt="_images/BCT_10_583.png" src="_images/BCT_10_583.png" />
+<img alt="_images/BCT_10_584.png" src="_images/BCT_10_584.png" />
+<img alt="_images/BCT_10_585.png" src="_images/BCT_10_585.png" />
+<img alt="_images/BCT_10_586.png" src="_images/BCT_10_586.png" />
+<img alt="_images/BCT_10_587.png" src="_images/BCT_10_587.png" />
+<img alt="_images/BCT_10_588.png" src="_images/BCT_10_588.png" />
+<img alt="_images/BCT_10_589.png" src="_images/BCT_10_589.png" />
+<img alt="_images/BCT_10_590.png" src="_images/BCT_10_590.png" />
+<img alt="_images/BCT_10_591.png" src="_images/BCT_10_591.png" />
+<img alt="_images/BCT_10_592.png" src="_images/BCT_10_592.png" />
+<img alt="_images/BCT_10_593.png" src="_images/BCT_10_593.png" />
+<img alt="_images/BCT_10_594.png" src="_images/BCT_10_594.png" />
+<img alt="_images/BCT_10_595.png" src="_images/BCT_10_595.png" />
+<img alt="_images/BCT_10_596.png" src="_images/BCT_10_596.png" />
+<img alt="_images/BCT_10_597.png" src="_images/BCT_10_597.png" />
+<img alt="_images/BCT_10_598.png" src="_images/BCT_10_598.png" />
+<img alt="_images/BCT_10_599.png" src="_images/BCT_10_599.png" />
+<img alt="_images/BCT_10_600.png" src="_images/BCT_10_600.png" />
+<img alt="_images/BCT_10_601.png" src="_images/BCT_10_601.png" />
+<img alt="_images/BCT_10_602.png" src="_images/BCT_10_602.png" />
+<img alt="_images/BCT_10_603.png" src="_images/BCT_10_603.png" />
+<img alt="_images/BCT_10_604.png" src="_images/BCT_10_604.png" />
+<img alt="_images/BCT_10_605.png" src="_images/BCT_10_605.png" />
+<img alt="_images/BCT_10_606.png" src="_images/BCT_10_606.png" />
+<img alt="_images/BCT_10_607.png" src="_images/BCT_10_607.png" />
+<img alt="_images/BCT_10_608.png" src="_images/BCT_10_608.png" />
+<img alt="_images/BCT_10_609.png" src="_images/BCT_10_609.png" />
+<img alt="_images/BCT_10_610.png" src="_images/BCT_10_610.png" />
+<img alt="_images/BCT_10_611.png" src="_images/BCT_10_611.png" />
+<img alt="_images/BCT_10_612.png" src="_images/BCT_10_612.png" />
+<img alt="_images/BCT_10_613.png" src="_images/BCT_10_613.png" />
+<img alt="_images/BCT_10_614.png" src="_images/BCT_10_614.png" />
+<img alt="_images/BCT_10_615.png" src="_images/BCT_10_615.png" />
+<img alt="_images/BCT_10_616.png" src="_images/BCT_10_616.png" />
+<img alt="_images/BCT_10_617.png" src="_images/BCT_10_617.png" />
+<img alt="_images/BCT_10_618.png" src="_images/BCT_10_618.png" />
+<img alt="_images/BCT_10_619.png" src="_images/BCT_10_619.png" />
+<img alt="_images/BCT_10_620.png" src="_images/BCT_10_620.png" />
+<img alt="_images/BCT_10_621.png" src="_images/BCT_10_621.png" />
+<img alt="_images/BCT_10_622.png" src="_images/BCT_10_622.png" />
+<img alt="_images/BCT_10_623.png" src="_images/BCT_10_623.png" />
+<img alt="_images/BCT_10_624.png" src="_images/BCT_10_624.png" />
+<img alt="_images/BCT_10_625.png" src="_images/BCT_10_625.png" />
+<img alt="_images/BCT_10_626.png" src="_images/BCT_10_626.png" />
+<img alt="_images/BCT_10_627.png" src="_images/BCT_10_627.png" />
+<img alt="_images/BCT_10_628.png" src="_images/BCT_10_628.png" />
+<img alt="_images/BCT_10_629.png" src="_images/BCT_10_629.png" />
+<img alt="_images/BCT_10_630.png" src="_images/BCT_10_630.png" />
+<img alt="_images/BCT_10_631.png" src="_images/BCT_10_631.png" />
+<img alt="_images/BCT_10_632.png" src="_images/BCT_10_632.png" />
+<img alt="_images/BCT_10_633.png" src="_images/BCT_10_633.png" />
+<img alt="_images/BCT_10_634.png" src="_images/BCT_10_634.png" />
+<img alt="_images/BCT_10_635.png" src="_images/BCT_10_635.png" />
+<img alt="_images/BCT_10_636.png" src="_images/BCT_10_636.png" />
+<img alt="_images/BCT_10_637.png" src="_images/BCT_10_637.png" />
+<img alt="_images/BCT_10_638.png" src="_images/BCT_10_638.png" />
+<img alt="_images/BCT_10_639.png" src="_images/BCT_10_639.png" />
+<img alt="_images/BCT_10_640.png" src="_images/BCT_10_640.png" />
+<img alt="_images/BCT_10_641.png" src="_images/BCT_10_641.png" />
+<img alt="_images/BCT_10_642.png" src="_images/BCT_10_642.png" />
+<img alt="_images/BCT_10_643.png" src="_images/BCT_10_643.png" />
+<img alt="_images/BCT_10_644.png" src="_images/BCT_10_644.png" />
+<img alt="_images/BCT_10_645.png" src="_images/BCT_10_645.png" />
+<img alt="_images/BCT_10_646.png" src="_images/BCT_10_646.png" />
+<img alt="_images/BCT_10_647.png" src="_images/BCT_10_647.png" />
+<img alt="_images/BCT_10_648.png" src="_images/BCT_10_648.png" />
+<img alt="_images/BCT_10_649.png" src="_images/BCT_10_649.png" />
+<img alt="_images/BCT_10_650.png" src="_images/BCT_10_650.png" />
+<img alt="_images/BCT_10_651.png" src="_images/BCT_10_651.png" />
+<img alt="_images/BCT_10_652.png" src="_images/BCT_10_652.png" />
+<img alt="_images/BCT_10_653.png" src="_images/BCT_10_653.png" />
+<img alt="_images/BCT_10_654.png" src="_images/BCT_10_654.png" />
+<img alt="_images/BCT_10_655.png" src="_images/BCT_10_655.png" />
+<img alt="_images/BCT_10_656.png" src="_images/BCT_10_656.png" />
+<img alt="_images/BCT_10_657.png" src="_images/BCT_10_657.png" />
+<img alt="_images/BCT_10_658.png" src="_images/BCT_10_658.png" />
+<img alt="_images/BCT_10_659.png" src="_images/BCT_10_659.png" />
+<img alt="_images/BCT_10_660.png" src="_images/BCT_10_660.png" />
+<img alt="_images/BCT_10_661.png" src="_images/BCT_10_661.png" />
+<img alt="_images/BCT_10_662.png" src="_images/BCT_10_662.png" />
+<img alt="_images/BCT_10_663.png" src="_images/BCT_10_663.png" />
+<img alt="_images/BCT_10_664.png" src="_images/BCT_10_664.png" />
+<img alt="_images/BCT_10_665.png" src="_images/BCT_10_665.png" />
+<img alt="_images/BCT_10_666.png" src="_images/BCT_10_666.png" />
+<img alt="_images/BCT_10_667.png" src="_images/BCT_10_667.png" />
+<img alt="_images/BCT_10_668.png" src="_images/BCT_10_668.png" />
+<img alt="_images/BCT_10_669.png" src="_images/BCT_10_669.png" />
+<img alt="_images/BCT_10_670.png" src="_images/BCT_10_670.png" />
+<img alt="_images/BCT_10_671.png" src="_images/BCT_10_671.png" />
+<img alt="_images/BCT_10_672.png" src="_images/BCT_10_672.png" />
+<img alt="_images/BCT_10_673.png" src="_images/BCT_10_673.png" />
+<img alt="_images/BCT_10_674.png" src="_images/BCT_10_674.png" />
+<img alt="_images/BCT_10_675.png" src="_images/BCT_10_675.png" />
+<img alt="_images/BCT_10_676.png" src="_images/BCT_10_676.png" />
+<img alt="_images/BCT_10_677.png" src="_images/BCT_10_677.png" />
+<img alt="_images/BCT_10_678.png" src="_images/BCT_10_678.png" />
+<img alt="_images/BCT_10_679.png" src="_images/BCT_10_679.png" />
+<img alt="_images/BCT_10_680.png" src="_images/BCT_10_680.png" />
+<img alt="_images/BCT_10_681.png" src="_images/BCT_10_681.png" />
+<img alt="_images/BCT_10_682.png" src="_images/BCT_10_682.png" />
+<img alt="_images/BCT_10_683.png" src="_images/BCT_10_683.png" />
+<img alt="_images/BCT_10_684.png" src="_images/BCT_10_684.png" />
+<img alt="_images/BCT_10_685.png" src="_images/BCT_10_685.png" />
+<img alt="_images/BCT_10_686.png" src="_images/BCT_10_686.png" />
+<img alt="_images/BCT_10_687.png" src="_images/BCT_10_687.png" />
+<img alt="_images/BCT_10_688.png" src="_images/BCT_10_688.png" />
+<img alt="_images/BCT_10_689.png" src="_images/BCT_10_689.png" />
+<img alt="_images/BCT_10_690.png" src="_images/BCT_10_690.png" />
+<img alt="_images/BCT_10_691.png" src="_images/BCT_10_691.png" />
+<img alt="_images/BCT_10_692.png" src="_images/BCT_10_692.png" />
+<img alt="_images/BCT_10_693.png" src="_images/BCT_10_693.png" />
+<img alt="_images/BCT_10_694.png" src="_images/BCT_10_694.png" />
+<img alt="_images/BCT_10_695.png" src="_images/BCT_10_695.png" />
+<img alt="_images/BCT_10_696.png" src="_images/BCT_10_696.png" />
+<img alt="_images/BCT_10_697.png" src="_images/BCT_10_697.png" />
+<img alt="_images/BCT_10_698.png" src="_images/BCT_10_698.png" />
+<img alt="_images/BCT_10_699.png" src="_images/BCT_10_699.png" />
+<img alt="_images/BCT_10_700.png" src="_images/BCT_10_700.png" />
+<img alt="_images/BCT_10_701.png" src="_images/BCT_10_701.png" />
+<img alt="_images/BCT_10_702.png" src="_images/BCT_10_702.png" />
+<img alt="_images/BCT_10_703.png" src="_images/BCT_10_703.png" />
+<img alt="_images/BCT_10_704.png" src="_images/BCT_10_704.png" />
+<img alt="_images/BCT_10_705.png" src="_images/BCT_10_705.png" />
+<img alt="_images/BCT_10_706.png" src="_images/BCT_10_706.png" />
+<img alt="_images/BCT_10_707.png" src="_images/BCT_10_707.png" />
+<img alt="_images/BCT_10_708.png" src="_images/BCT_10_708.png" />
+<img alt="_images/BCT_10_709.png" src="_images/BCT_10_709.png" />
+<img alt="_images/BCT_10_710.png" src="_images/BCT_10_710.png" />
+<img alt="_images/BCT_10_711.png" src="_images/BCT_10_711.png" />
+<img alt="_images/BCT_10_712.png" src="_images/BCT_10_712.png" />
+<img alt="_images/BCT_10_713.png" src="_images/BCT_10_713.png" />
+<img alt="_images/BCT_10_714.png" src="_images/BCT_10_714.png" />
+<img alt="_images/BCT_10_715.png" src="_images/BCT_10_715.png" />
+<img alt="_images/BCT_10_716.png" src="_images/BCT_10_716.png" />
+<img alt="_images/BCT_10_717.png" src="_images/BCT_10_717.png" />
+<img alt="_images/BCT_10_718.png" src="_images/BCT_10_718.png" />
+<img alt="_images/BCT_10_719.png" src="_images/BCT_10_719.png" />
+<img alt="_images/BCT_10_720.png" src="_images/BCT_10_720.png" />
+<img alt="_images/BCT_10_721.png" src="_images/BCT_10_721.png" />
+<img alt="_images/BCT_10_722.png" src="_images/BCT_10_722.png" />
+<img alt="_images/BCT_10_723.png" src="_images/BCT_10_723.png" />
+<img alt="_images/BCT_10_724.png" src="_images/BCT_10_724.png" />
+<img alt="_images/BCT_10_725.png" src="_images/BCT_10_725.png" />
+<img alt="_images/BCT_10_726.png" src="_images/BCT_10_726.png" />
+<img alt="_images/BCT_10_727.png" src="_images/BCT_10_727.png" />
+<img alt="_images/BCT_10_728.png" src="_images/BCT_10_728.png" />
+<img alt="_images/BCT_10_729.png" src="_images/BCT_10_729.png" />
+<img alt="_images/BCT_10_730.png" src="_images/BCT_10_730.png" />
+<img alt="_images/BCT_10_731.png" src="_images/BCT_10_731.png" />
+<img alt="_images/BCT_10_732.png" src="_images/BCT_10_732.png" />
+<img alt="_images/BCT_10_733.png" src="_images/BCT_10_733.png" />
+<img alt="_images/BCT_10_734.png" src="_images/BCT_10_734.png" />
+<img alt="_images/BCT_10_735.png" src="_images/BCT_10_735.png" />
+<img alt="_images/BCT_10_736.png" src="_images/BCT_10_736.png" />
+<img alt="_images/BCT_10_737.png" src="_images/BCT_10_737.png" />
+<img alt="_images/BCT_10_738.png" src="_images/BCT_10_738.png" />
+<img alt="_images/BCT_10_739.png" src="_images/BCT_10_739.png" />
+<img alt="_images/BCT_10_740.png" src="_images/BCT_10_740.png" />
+<img alt="_images/BCT_10_741.png" src="_images/BCT_10_741.png" />
+<img alt="_images/BCT_10_742.png" src="_images/BCT_10_742.png" />
+<img alt="_images/BCT_10_743.png" src="_images/BCT_10_743.png" />
+<img alt="_images/BCT_10_744.png" src="_images/BCT_10_744.png" />
+<img alt="_images/BCT_10_745.png" src="_images/BCT_10_745.png" />
+<img alt="_images/BCT_10_746.png" src="_images/BCT_10_746.png" />
+<img alt="_images/BCT_10_747.png" src="_images/BCT_10_747.png" />
+<img alt="_images/BCT_10_748.png" src="_images/BCT_10_748.png" />
+<img alt="_images/BCT_10_749.png" src="_images/BCT_10_749.png" />
+<img alt="_images/BCT_10_750.png" src="_images/BCT_10_750.png" />
+<img alt="_images/BCT_10_751.png" src="_images/BCT_10_751.png" />
+<img alt="_images/BCT_10_752.png" src="_images/BCT_10_752.png" />
+<img alt="_images/BCT_10_753.png" src="_images/BCT_10_753.png" />
+<img alt="_images/BCT_10_754.png" src="_images/BCT_10_754.png" />
+<img alt="_images/BCT_10_755.png" src="_images/BCT_10_755.png" />
+<img alt="_images/BCT_10_756.png" src="_images/BCT_10_756.png" />
+<img alt="_images/BCT_10_757.png" src="_images/BCT_10_757.png" />
+<img alt="_images/BCT_10_758.png" src="_images/BCT_10_758.png" />
+<img alt="_images/BCT_10_759.png" src="_images/BCT_10_759.png" />
+<img alt="_images/BCT_10_760.png" src="_images/BCT_10_760.png" />
+<img alt="_images/BCT_10_761.png" src="_images/BCT_10_761.png" />
+<img alt="_images/BCT_10_762.png" src="_images/BCT_10_762.png" />
+<img alt="_images/BCT_10_763.png" src="_images/BCT_10_763.png" />
+<img alt="_images/BCT_10_764.png" src="_images/BCT_10_764.png" />
+<img alt="_images/BCT_10_765.png" src="_images/BCT_10_765.png" />
+<img alt="_images/BCT_10_766.png" src="_images/BCT_10_766.png" />
+<img alt="_images/BCT_10_767.png" src="_images/BCT_10_767.png" />
+<img alt="_images/BCT_10_768.png" src="_images/BCT_10_768.png" />
+<img alt="_images/BCT_10_769.png" src="_images/BCT_10_769.png" />
+<img alt="_images/BCT_10_770.png" src="_images/BCT_10_770.png" />
+<img alt="_images/BCT_10_771.png" src="_images/BCT_10_771.png" />
+<img alt="_images/BCT_10_772.png" src="_images/BCT_10_772.png" />
+<img alt="_images/BCT_10_773.png" src="_images/BCT_10_773.png" />
+<img alt="_images/BCT_10_774.png" src="_images/BCT_10_774.png" />
+<img alt="_images/BCT_10_775.png" src="_images/BCT_10_775.png" />
+<img alt="_images/BCT_10_776.png" src="_images/BCT_10_776.png" />
+<img alt="_images/BCT_10_777.png" src="_images/BCT_10_777.png" />
+<img alt="_images/BCT_10_778.png" src="_images/BCT_10_778.png" />
+<img alt="_images/BCT_10_779.png" src="_images/BCT_10_779.png" />
+<img alt="_images/BCT_10_780.png" src="_images/BCT_10_780.png" />
+<img alt="_images/BCT_10_781.png" src="_images/BCT_10_781.png" />
+<img alt="_images/BCT_10_782.png" src="_images/BCT_10_782.png" />
+<img alt="_images/BCT_10_783.png" src="_images/BCT_10_783.png" />
+<img alt="_images/BCT_10_784.png" src="_images/BCT_10_784.png" />
+<img alt="_images/BCT_10_785.png" src="_images/BCT_10_785.png" />
+<img alt="_images/BCT_10_786.png" src="_images/BCT_10_786.png" />
+<img alt="_images/BCT_10_787.png" src="_images/BCT_10_787.png" />
+<img alt="_images/BCT_10_788.png" src="_images/BCT_10_788.png" />
+<img alt="_images/BCT_10_789.png" src="_images/BCT_10_789.png" />
+<img alt="_images/BCT_10_790.png" src="_images/BCT_10_790.png" />
+<img alt="_images/BCT_10_791.png" src="_images/BCT_10_791.png" />
+<img alt="_images/BCT_10_792.png" src="_images/BCT_10_792.png" />
+<img alt="_images/BCT_10_793.png" src="_images/BCT_10_793.png" />
+<img alt="_images/BCT_10_794.png" src="_images/BCT_10_794.png" />
+<img alt="_images/BCT_10_795.png" src="_images/BCT_10_795.png" />
+<img alt="_images/BCT_10_796.png" src="_images/BCT_10_796.png" />
+<img alt="_images/BCT_10_797.png" src="_images/BCT_10_797.png" />
+<img alt="_images/BCT_10_798.png" src="_images/BCT_10_798.png" />
+<img alt="_images/BCT_10_799.png" src="_images/BCT_10_799.png" />
+<img alt="_images/BCT_10_800.png" src="_images/BCT_10_800.png" />
+<img alt="_images/BCT_10_801.png" src="_images/BCT_10_801.png" />
+<img alt="_images/BCT_10_802.png" src="_images/BCT_10_802.png" />
+<img alt="_images/BCT_10_803.png" src="_images/BCT_10_803.png" />
+<img alt="_images/BCT_10_804.png" src="_images/BCT_10_804.png" />
+<img alt="_images/BCT_10_805.png" src="_images/BCT_10_805.png" />
+<img alt="_images/BCT_10_806.png" src="_images/BCT_10_806.png" />
+<img alt="_images/BCT_10_807.png" src="_images/BCT_10_807.png" />
+<img alt="_images/BCT_10_808.png" src="_images/BCT_10_808.png" />
+<img alt="_images/BCT_10_809.png" src="_images/BCT_10_809.png" />
+<img alt="_images/BCT_10_810.png" src="_images/BCT_10_810.png" />
+<img alt="_images/BCT_10_811.png" src="_images/BCT_10_811.png" />
+<img alt="_images/BCT_10_812.png" src="_images/BCT_10_812.png" />
+<img alt="_images/BCT_10_813.png" src="_images/BCT_10_813.png" />
+<img alt="_images/BCT_10_814.png" src="_images/BCT_10_814.png" />
+<img alt="_images/BCT_10_815.png" src="_images/BCT_10_815.png" />
+<img alt="_images/BCT_10_816.png" src="_images/BCT_10_816.png" />
+<img alt="_images/BCT_10_817.png" src="_images/BCT_10_817.png" />
+<img alt="_images/BCT_10_818.png" src="_images/BCT_10_818.png" />
+<img alt="_images/BCT_10_819.png" src="_images/BCT_10_819.png" />
+<img alt="_images/BCT_10_820.png" src="_images/BCT_10_820.png" />
+<img alt="_images/BCT_10_821.png" src="_images/BCT_10_821.png" />
+<img alt="_images/BCT_10_822.png" src="_images/BCT_10_822.png" />
+<img alt="_images/BCT_10_823.png" src="_images/BCT_10_823.png" />
+<img alt="_images/BCT_10_824.png" src="_images/BCT_10_824.png" />
+<img alt="_images/BCT_10_825.png" src="_images/BCT_10_825.png" />
+<img alt="_images/BCT_10_826.png" src="_images/BCT_10_826.png" />
+<img alt="_images/BCT_10_827.png" src="_images/BCT_10_827.png" />
+<img alt="_images/BCT_10_828.png" src="_images/BCT_10_828.png" />
+<img alt="_images/BCT_10_829.png" src="_images/BCT_10_829.png" />
+<img alt="_images/BCT_10_830.png" src="_images/BCT_10_830.png" />
+<img alt="_images/BCT_10_831.png" src="_images/BCT_10_831.png" />
+<img alt="_images/BCT_10_832.png" src="_images/BCT_10_832.png" />
+<img alt="_images/BCT_10_833.png" src="_images/BCT_10_833.png" />
+<img alt="_images/BCT_10_834.png" src="_images/BCT_10_834.png" />
+<img alt="_images/BCT_10_835.png" src="_images/BCT_10_835.png" />
+<img alt="_images/BCT_10_836.png" src="_images/BCT_10_836.png" />
+<img alt="_images/BCT_10_837.png" src="_images/BCT_10_837.png" />
+<img alt="_images/BCT_10_838.png" src="_images/BCT_10_838.png" />
+<img alt="_images/BCT_10_839.png" src="_images/BCT_10_839.png" />
+<img alt="_images/BCT_10_840.png" src="_images/BCT_10_840.png" />
+<img alt="_images/BCT_10_841.png" src="_images/BCT_10_841.png" />
+<img alt="_images/BCT_10_842.png" src="_images/BCT_10_842.png" />
+<img alt="_images/BCT_10_843.png" src="_images/BCT_10_843.png" />
+<img alt="_images/BCT_10_844.png" src="_images/BCT_10_844.png" />
+<img alt="_images/BCT_10_845.png" src="_images/BCT_10_845.png" />
+<img alt="_images/BCT_10_846.png" src="_images/BCT_10_846.png" />
+<img alt="_images/BCT_10_847.png" src="_images/BCT_10_847.png" />
+<img alt="_images/BCT_10_848.png" src="_images/BCT_10_848.png" />
+<img alt="_images/BCT_10_849.png" src="_images/BCT_10_849.png" />
+<img alt="_images/BCT_10_850.png" src="_images/BCT_10_850.png" />
+<img alt="_images/BCT_10_851.png" src="_images/BCT_10_851.png" />
+<img alt="_images/BCT_10_852.png" src="_images/BCT_10_852.png" />
+<img alt="_images/BCT_10_853.png" src="_images/BCT_10_853.png" />
+<img alt="_images/BCT_10_854.png" src="_images/BCT_10_854.png" />
+<img alt="_images/BCT_10_855.png" src="_images/BCT_10_855.png" />
+<img alt="_images/BCT_10_856.png" src="_images/BCT_10_856.png" />
+<img alt="_images/BCT_10_857.png" src="_images/BCT_10_857.png" />
+<img alt="_images/BCT_10_858.png" src="_images/BCT_10_858.png" />
+<img alt="_images/BCT_10_859.png" src="_images/BCT_10_859.png" />
+<img alt="_images/BCT_10_860.png" src="_images/BCT_10_860.png" />
+<img alt="_images/BCT_10_861.png" src="_images/BCT_10_861.png" />
+<img alt="_images/BCT_10_862.png" src="_images/BCT_10_862.png" />
+<img alt="_images/BCT_10_863.png" src="_images/BCT_10_863.png" />
+<img alt="_images/BCT_10_864.png" src="_images/BCT_10_864.png" />
+<img alt="_images/BCT_10_865.png" src="_images/BCT_10_865.png" />
+<img alt="_images/BCT_10_866.png" src="_images/BCT_10_866.png" />
+<img alt="_images/BCT_10_867.png" src="_images/BCT_10_867.png" />
+<img alt="_images/BCT_10_868.png" src="_images/BCT_10_868.png" />
+<img alt="_images/BCT_10_869.png" src="_images/BCT_10_869.png" />
+<img alt="_images/BCT_10_870.png" src="_images/BCT_10_870.png" />
+<img alt="_images/BCT_10_871.png" src="_images/BCT_10_871.png" />
+<img alt="_images/BCT_10_872.png" src="_images/BCT_10_872.png" />
+<img alt="_images/BCT_10_873.png" src="_images/BCT_10_873.png" />
+<img alt="_images/BCT_10_874.png" src="_images/BCT_10_874.png" />
+<img alt="_images/BCT_10_875.png" src="_images/BCT_10_875.png" />
+<img alt="_images/BCT_10_876.png" src="_images/BCT_10_876.png" />
+<img alt="_images/BCT_10_877.png" src="_images/BCT_10_877.png" />
+<img alt="_images/BCT_10_878.png" src="_images/BCT_10_878.png" />
+<img alt="_images/BCT_10_879.png" src="_images/BCT_10_879.png" />
+<img alt="_images/BCT_10_880.png" src="_images/BCT_10_880.png" />
+<img alt="_images/BCT_10_881.png" src="_images/BCT_10_881.png" />
+<img alt="_images/BCT_10_882.png" src="_images/BCT_10_882.png" />
+<img alt="_images/BCT_10_883.png" src="_images/BCT_10_883.png" />
+<img alt="_images/BCT_10_884.png" src="_images/BCT_10_884.png" />
+<img alt="_images/BCT_10_885.png" src="_images/BCT_10_885.png" />
+<img alt="_images/BCT_10_886.png" src="_images/BCT_10_886.png" />
+<img alt="_images/BCT_10_887.png" src="_images/BCT_10_887.png" />
+<img alt="_images/BCT_10_888.png" src="_images/BCT_10_888.png" />
+<img alt="_images/BCT_10_889.png" src="_images/BCT_10_889.png" />
+<img alt="_images/BCT_10_890.png" src="_images/BCT_10_890.png" />
+<img alt="_images/BCT_10_891.png" src="_images/BCT_10_891.png" />
+<img alt="_images/BCT_10_892.png" src="_images/BCT_10_892.png" />
+<img alt="_images/BCT_10_893.png" src="_images/BCT_10_893.png" />
+<img alt="_images/BCT_10_894.png" src="_images/BCT_10_894.png" />
+<img alt="_images/BCT_10_895.png" src="_images/BCT_10_895.png" />
+<img alt="_images/BCT_10_896.png" src="_images/BCT_10_896.png" />
+<img alt="_images/BCT_10_897.png" src="_images/BCT_10_897.png" />
+<img alt="_images/BCT_10_898.png" src="_images/BCT_10_898.png" />
+<img alt="_images/BCT_10_899.png" src="_images/BCT_10_899.png" />
+<img alt="_images/BCT_10_900.png" src="_images/BCT_10_900.png" />
+<img alt="_images/BCT_10_901.png" src="_images/BCT_10_901.png" />
+<img alt="_images/BCT_10_902.png" src="_images/BCT_10_902.png" />
+<img alt="_images/BCT_10_903.png" src="_images/BCT_10_903.png" />
+<img alt="_images/BCT_10_904.png" src="_images/BCT_10_904.png" />
+<img alt="_images/BCT_10_905.png" src="_images/BCT_10_905.png" />
+<img alt="_images/BCT_10_906.png" src="_images/BCT_10_906.png" />
+<img alt="_images/BCT_10_907.png" src="_images/BCT_10_907.png" />
+<img alt="_images/BCT_10_908.png" src="_images/BCT_10_908.png" />
+<img alt="_images/BCT_10_909.png" src="_images/BCT_10_909.png" />
+<img alt="_images/BCT_10_910.png" src="_images/BCT_10_910.png" />
+<img alt="_images/BCT_10_911.png" src="_images/BCT_10_911.png" />
+<img alt="_images/BCT_10_912.png" src="_images/BCT_10_912.png" />
+<img alt="_images/BCT_10_913.png" src="_images/BCT_10_913.png" />
+<img alt="_images/BCT_10_914.png" src="_images/BCT_10_914.png" />
+<img alt="_images/BCT_10_915.png" src="_images/BCT_10_915.png" />
+<img alt="_images/BCT_10_916.png" src="_images/BCT_10_916.png" />
+<img alt="_images/BCT_10_917.png" src="_images/BCT_10_917.png" />
+<img alt="_images/BCT_10_918.png" src="_images/BCT_10_918.png" />
+<img alt="_images/BCT_10_919.png" src="_images/BCT_10_919.png" />
+<img alt="_images/BCT_10_920.png" src="_images/BCT_10_920.png" />
+<img alt="_images/BCT_10_921.png" src="_images/BCT_10_921.png" />
+<img alt="_images/BCT_10_922.png" src="_images/BCT_10_922.png" />
+<img alt="_images/BCT_10_923.png" src="_images/BCT_10_923.png" />
+<img alt="_images/BCT_10_924.png" src="_images/BCT_10_924.png" />
+<img alt="_images/BCT_10_925.png" src="_images/BCT_10_925.png" />
+<img alt="_images/BCT_10_926.png" src="_images/BCT_10_926.png" />
+<img alt="_images/BCT_10_927.png" src="_images/BCT_10_927.png" />
+<img alt="_images/BCT_10_928.png" src="_images/BCT_10_928.png" />
+<img alt="_images/BCT_10_929.png" src="_images/BCT_10_929.png" />
+<img alt="_images/BCT_10_930.png" src="_images/BCT_10_930.png" />
+<img alt="_images/BCT_10_931.png" src="_images/BCT_10_931.png" />
+<img alt="_images/BCT_10_932.png" src="_images/BCT_10_932.png" />
+<img alt="_images/BCT_10_933.png" src="_images/BCT_10_933.png" />
+<img alt="_images/BCT_10_934.png" src="_images/BCT_10_934.png" />
+<img alt="_images/BCT_10_935.png" src="_images/BCT_10_935.png" />
+<img alt="_images/BCT_10_936.png" src="_images/BCT_10_936.png" />
+<img alt="_images/BCT_10_937.png" src="_images/BCT_10_937.png" />
+<img alt="_images/BCT_10_938.png" src="_images/BCT_10_938.png" />
+<img alt="_images/BCT_10_939.png" src="_images/BCT_10_939.png" />
+<img alt="_images/BCT_10_940.png" src="_images/BCT_10_940.png" />
+<img alt="_images/BCT_10_941.png" src="_images/BCT_10_941.png" />
+<img alt="_images/BCT_10_942.png" src="_images/BCT_10_942.png" />
+<img alt="_images/BCT_10_943.png" src="_images/BCT_10_943.png" />
+<img alt="_images/BCT_10_944.png" src="_images/BCT_10_944.png" />
+<img alt="_images/BCT_10_945.png" src="_images/BCT_10_945.png" />
+<img alt="_images/BCT_10_946.png" src="_images/BCT_10_946.png" />
+<img alt="_images/BCT_10_947.png" src="_images/BCT_10_947.png" />
+<img alt="_images/BCT_10_948.png" src="_images/BCT_10_948.png" />
+<img alt="_images/BCT_10_949.png" src="_images/BCT_10_949.png" />
+<img alt="_images/BCT_10_950.png" src="_images/BCT_10_950.png" />
+<img alt="_images/BCT_10_951.png" src="_images/BCT_10_951.png" />
+<img alt="_images/BCT_10_952.png" src="_images/BCT_10_952.png" />
+<img alt="_images/BCT_10_953.png" src="_images/BCT_10_953.png" />
+<img alt="_images/BCT_10_954.png" src="_images/BCT_10_954.png" />
+<img alt="_images/BCT_10_955.png" src="_images/BCT_10_955.png" />
+<img alt="_images/BCT_10_956.png" src="_images/BCT_10_956.png" />
+<img alt="_images/BCT_10_957.png" src="_images/BCT_10_957.png" />
+<img alt="_images/BCT_10_958.png" src="_images/BCT_10_958.png" />
+<img alt="_images/BCT_10_959.png" src="_images/BCT_10_959.png" />
+<img alt="_images/BCT_10_960.png" src="_images/BCT_10_960.png" />
+<img alt="_images/BCT_10_961.png" src="_images/BCT_10_961.png" />
+<img alt="_images/BCT_10_962.png" src="_images/BCT_10_962.png" />
+<img alt="_images/BCT_10_963.png" src="_images/BCT_10_963.png" />
+<img alt="_images/BCT_10_964.png" src="_images/BCT_10_964.png" />
+<img alt="_images/BCT_10_965.png" src="_images/BCT_10_965.png" />
+<img alt="_images/BCT_10_966.png" src="_images/BCT_10_966.png" />
+<img alt="_images/BCT_10_967.png" src="_images/BCT_10_967.png" />
+<img alt="_images/BCT_10_968.png" src="_images/BCT_10_968.png" />
+<img alt="_images/BCT_10_969.png" src="_images/BCT_10_969.png" />
+<img alt="_images/BCT_10_970.png" src="_images/BCT_10_970.png" />
+<img alt="_images/BCT_10_971.png" src="_images/BCT_10_971.png" />
+<img alt="_images/BCT_10_972.png" src="_images/BCT_10_972.png" />
+<img alt="_images/BCT_10_973.png" src="_images/BCT_10_973.png" />
+<img alt="_images/BCT_10_974.png" src="_images/BCT_10_974.png" />
+<img alt="_images/BCT_10_975.png" src="_images/BCT_10_975.png" />
+<img alt="_images/BCT_10_976.png" src="_images/BCT_10_976.png" />
+<img alt="_images/BCT_10_977.png" src="_images/BCT_10_977.png" />
+<img alt="_images/BCT_10_978.png" src="_images/BCT_10_978.png" />
+<img alt="_images/BCT_10_979.png" src="_images/BCT_10_979.png" />
+<img alt="_images/BCT_10_980.png" src="_images/BCT_10_980.png" />
+<img alt="_images/BCT_10_981.png" src="_images/BCT_10_981.png" />
+<img alt="_images/BCT_10_982.png" src="_images/BCT_10_982.png" />
+<img alt="_images/BCT_10_983.png" src="_images/BCT_10_983.png" />
+<img alt="_images/BCT_10_984.png" src="_images/BCT_10_984.png" />
+<img alt="_images/BCT_10_985.png" src="_images/BCT_10_985.png" />
+<img alt="_images/BCT_10_986.png" src="_images/BCT_10_986.png" />
+<img alt="_images/BCT_10_987.png" src="_images/BCT_10_987.png" />
+<img alt="_images/BCT_10_988.png" src="_images/BCT_10_988.png" />
+<img alt="_images/BCT_10_989.png" src="_images/BCT_10_989.png" />
+<img alt="_images/BCT_10_990.png" src="_images/BCT_10_990.png" />
+<img alt="_images/BCT_10_991.png" src="_images/BCT_10_991.png" />
+<img alt="_images/BCT_10_992.png" src="_images/BCT_10_992.png" />
+<img alt="_images/BCT_10_993.png" src="_images/BCT_10_993.png" />
+<img alt="_images/BCT_10_994.png" src="_images/BCT_10_994.png" />
+<img alt="_images/BCT_10_995.png" src="_images/BCT_10_995.png" />
+<img alt="_images/BCT_10_996.png" src="_images/BCT_10_996.png" />
+<img alt="_images/BCT_10_997.png" src="_images/BCT_10_997.png" />
+<img alt="_images/BCT_10_998.png" src="_images/BCT_10_998.png" />
+<img alt="_images/BCT_10_999.png" src="_images/BCT_10_999.png" />
+<img alt="_images/BCT_10_1000.png" src="_images/BCT_10_1000.png" />
+<img alt="_images/BCT_10_1001.png" src="_images/BCT_10_1001.png" />
+<img alt="_images/BCT_10_1002.png" src="_images/BCT_10_1002.png" />
+<img alt="_images/BCT_10_1003.png" src="_images/BCT_10_1003.png" />
+<img alt="_images/BCT_10_1004.png" src="_images/BCT_10_1004.png" />
+<img alt="_images/BCT_10_1005.png" src="_images/BCT_10_1005.png" />
+<img alt="_images/BCT_10_1006.png" src="_images/BCT_10_1006.png" />
+<img alt="_images/BCT_10_1007.png" src="_images/BCT_10_1007.png" />
+<img alt="_images/BCT_10_1008.png" src="_images/BCT_10_1008.png" />
+<img alt="_images/BCT_10_1009.png" src="_images/BCT_10_1009.png" />
+<img alt="_images/BCT_10_1010.png" src="_images/BCT_10_1010.png" />
+<img alt="_images/BCT_10_1011.png" src="_images/BCT_10_1011.png" />
+<img alt="_images/BCT_10_1012.png" src="_images/BCT_10_1012.png" />
+<img alt="_images/BCT_10_1013.png" src="_images/BCT_10_1013.png" />
+<img alt="_images/BCT_10_1014.png" src="_images/BCT_10_1014.png" />
+<img alt="_images/BCT_10_1015.png" src="_images/BCT_10_1015.png" />
+<img alt="_images/BCT_10_1016.png" src="_images/BCT_10_1016.png" />
+<img alt="_images/BCT_10_1017.png" src="_images/BCT_10_1017.png" />
+<img alt="_images/BCT_10_1018.png" src="_images/BCT_10_1018.png" />
+<img alt="_images/BCT_10_1019.png" src="_images/BCT_10_1019.png" />
+<img alt="_images/BCT_10_1020.png" src="_images/BCT_10_1020.png" />
+<img alt="_images/BCT_10_1021.png" src="_images/BCT_10_1021.png" />
+<img alt="_images/BCT_10_1022.png" src="_images/BCT_10_1022.png" />
+<img alt="_images/BCT_10_1023.png" src="_images/BCT_10_1023.png" />
+<img alt="_images/BCT_10_1024.png" src="_images/BCT_10_1024.png" />
+<img alt="_images/BCT_10_1025.png" src="_images/BCT_10_1025.png" />
+<img alt="_images/BCT_10_1026.png" src="_images/BCT_10_1026.png" />
+<img alt="_images/BCT_10_1027.png" src="_images/BCT_10_1027.png" />
+<img alt="_images/BCT_10_1028.png" src="_images/BCT_10_1028.png" />
+<img alt="_images/BCT_10_1029.png" src="_images/BCT_10_1029.png" />
+<img alt="_images/BCT_10_1030.png" src="_images/BCT_10_1030.png" />
+<img alt="_images/BCT_10_1031.png" src="_images/BCT_10_1031.png" />
+<img alt="_images/BCT_10_1032.png" src="_images/BCT_10_1032.png" />
+<img alt="_images/BCT_10_1033.png" src="_images/BCT_10_1033.png" />
+<img alt="_images/BCT_10_1034.png" src="_images/BCT_10_1034.png" />
+<img alt="_images/BCT_10_1035.png" src="_images/BCT_10_1035.png" />
+<img alt="_images/BCT_10_1036.png" src="_images/BCT_10_1036.png" />
+<img alt="_images/BCT_10_1037.png" src="_images/BCT_10_1037.png" />
+<img alt="_images/BCT_10_1038.png" src="_images/BCT_10_1038.png" />
+<img alt="_images/BCT_10_1039.png" src="_images/BCT_10_1039.png" />
+<img alt="_images/BCT_10_1040.png" src="_images/BCT_10_1040.png" />
+<img alt="_images/BCT_10_1041.png" src="_images/BCT_10_1041.png" />
+<img alt="_images/BCT_10_1042.png" src="_images/BCT_10_1042.png" />
+<img alt="_images/BCT_10_1043.png" src="_images/BCT_10_1043.png" />
+<img alt="_images/BCT_10_1044.png" src="_images/BCT_10_1044.png" />
+<img alt="_images/BCT_10_1045.png" src="_images/BCT_10_1045.png" />
+<img alt="_images/BCT_10_1046.png" src="_images/BCT_10_1046.png" />
+<img alt="_images/BCT_10_1047.png" src="_images/BCT_10_1047.png" />
+<img alt="_images/BCT_10_1048.png" src="_images/BCT_10_1048.png" />
+<img alt="_images/BCT_10_1049.png" src="_images/BCT_10_1049.png" />
+<img alt="_images/BCT_10_1050.png" src="_images/BCT_10_1050.png" />
+<img alt="_images/BCT_10_1051.png" src="_images/BCT_10_1051.png" />
+<img alt="_images/BCT_10_1052.png" src="_images/BCT_10_1052.png" />
+<img alt="_images/BCT_10_1053.png" src="_images/BCT_10_1053.png" />
+<img alt="_images/BCT_10_1054.png" src="_images/BCT_10_1054.png" />
+<img alt="_images/BCT_10_1055.png" src="_images/BCT_10_1055.png" />
+<img alt="_images/BCT_10_1056.png" src="_images/BCT_10_1056.png" />
+<img alt="_images/BCT_10_1057.png" src="_images/BCT_10_1057.png" />
+<img alt="_images/BCT_10_1058.png" src="_images/BCT_10_1058.png" />
+<img alt="_images/BCT_10_1059.png" src="_images/BCT_10_1059.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         mod_dmn_fpn_10  mod_dmn_fpn_12  mod_dmn_fpn_14  mod_dmn_fpn_16  \
+subject                                                                   
+30004          0.260968        0.251841        0.238911        0.231706   
+30008          0.147741        0.140433        0.143314        0.140903   
+30009          0.241790        0.246238        0.221749        0.217246   
+30015          0.200473        0.191177        0.171439        0.167738   
+30019          0.144170        0.129389        0.127038        0.121707   
+30020          0.102649        0.096728        0.100399        0.093313   
+30023          0.110217        0.098334        0.100076        0.093761   
+30040          0.091225        0.097394        0.093996        0.091560   
+30057          0.174341        0.166170        0.164828        0.155836   
+30064          0.123293        0.109342        0.103771        0.098443   
+30066          0.130606        0.125359        0.115402        0.110361   
+30069          0.188923        0.168533        0.161431        0.154461   
+30074          0.194078        0.184263        0.184813        0.183115   
+30085          0.198053        0.198068        0.177049        0.178953   
+30088          0.267618        0.245086        0.234540        0.227828   
+30090          0.171960        0.171966        0.165886        0.158530   
+30091          0.046996        0.048070        0.043834        0.044164   
+30095          0.151648        0.145254        0.141741        0.135132   
+30096          0.188766        0.175560        0.163659        0.153286   
+30105          0.177670        0.156153        0.145879        0.153732   
+30116          0.340255        0.324692        0.316798        0.300198   
+30118          0.142317        0.139735        0.125478        0.119894   
+30119          0.179606        0.162543        0.163906        0.159225   
+30128          0.111219        0.110065        0.098258        0.086932   
+30181          0.187705        0.181704        0.173465        0.160834   
+30217          0.163166        0.142651        0.144769        0.135195   
+30227          0.173356        0.177136        0.167375        0.173415   
+30236          0.049432        0.050134        0.049118        0.049734   
+30242          0.056988        0.051390        0.056036        0.044052   
+30255          0.181693        0.184408        0.180963        0.167753   
+...                 ...             ...             ...             ...   
+40519          0.057486        0.057928        0.061760        0.057037   
+40520          0.096295        0.085500        0.085340        0.078557   
+40524          0.170525        0.161644        0.154431        0.145661   
+40547          0.188384        0.176148        0.156955        0.149306   
+40564          0.243215        0.241680        0.230787        0.214035   
+40615          0.155356        0.156501        0.158482        0.147963   
+40619          0.132380        0.122026        0.111627        0.099007   
+40624          0.046476        0.046355        0.048054        0.046427   
+40638          0.125659        0.130191        0.119558        0.111548   
+40649          0.104143        0.098877        0.092724        0.085591   
+40650          0.225155        0.210532        0.200182        0.185837   
+40656          0.076794        0.067749        0.061211        0.057350   
+40658          0.166658        0.160934        0.162855        0.159628   
+40664          0.015716        0.018572        0.025941        0.020215   
+40665          0.088893        0.081253        0.075044        0.082995   
+40668          0.105610        0.104137        0.107605        0.107271   
+40672          0.126511        0.114167        0.107361        0.110033   
+40685          0.117922        0.112788        0.111538        0.101536   
+40694          0.120637        0.117274        0.100669        0.098300   
+40720          0.263958        0.252200        0.244926        0.239032   
+40738          0.123052        0.113291        0.125929        0.127854   
+40743          0.181617        0.192964        0.191992        0.172310   
+40750          0.187207        0.180791        0.172113        0.172335   
+40773          0.108741        0.107266        0.095047        0.087946   
+40778          0.085923        0.085652        0.087097        0.082608   
+40796          0.182845        0.174574        0.170366        0.164718   
+40803          0.073619        0.063974        0.063811        0.060262   
+40855          0.289187        0.253745        0.242743        0.228906   
+40861          0.186016        0.183004        0.177492        0.168639   
+40930          0.000000        0.000000        0.000000        0.000000   
+
+         mod_dmn_fpn_18  mod_dmn_fpn_20  mod_wb_10  mod_wb_12  mod_wb_14  \
+subject                                                                    
+30004          0.220950        0.208927   0.210110   0.191444   0.176786   
+30008          0.134009        0.134322   0.263825   0.243335   0.224432   
+30009          0.209860        0.206563   0.166938   0.154896   0.143349   
+30015          0.163096        0.156740   0.190873   0.172044   0.158240   
+30019          0.115896        0.115526   0.135883   0.123333   0.117152   
+30020          0.088210        0.083964   0.138912   0.128052   0.116929   
+30023          0.098789        0.095577   0.179888   0.166072   0.152975   
+30040          0.087274        0.086258   0.133983   0.124297   0.117806   
+30057          0.143547        0.133056   0.216364   0.200556   0.186392   
+30064          0.085838        0.086826   0.000000   0.000000   0.000000   
+30066          0.096020        0.091912   0.157758   0.145851   0.137746   
+30069          0.145055        0.137368   0.133601   0.118967   0.111940   
+30074          0.178114        0.165995   0.147988   0.137624   0.126396   
+30085          0.169664        0.164158   0.146342   0.132174   0.120830   
+30088          0.216993        0.215090   0.142532   0.131738   0.122908   
+30090          0.157562        0.150264   0.173433   0.160045   0.151724   
+30091          0.039306        0.029981   0.138644   0.127832   0.118606   
+30095          0.128429        0.117104   0.223109   0.204632   0.192529   
+30096          0.145088        0.139573   0.153516   0.140781   0.130730   
+30105          0.142016        0.133859   0.162427   0.150448   0.138278   
+30116          0.282272        0.267139   0.208642   0.195758   0.183530   
+30118          0.100944        0.096344   0.117138   0.105243   0.093755   
+30119          0.157527        0.155221   0.123152   0.109325   0.100610   
+30128          0.089955        0.089883   0.139016   0.124559   0.113007   
+30181          0.153246        0.146445   0.138179   0.125966   0.117637   
+30217          0.132964        0.127087   0.198118   0.181175   0.169156   
+30227          0.173107        0.168302   0.212837   0.192306   0.180035   
+30236          0.048520        0.051145   0.181294   0.167815   0.158338   
+30242          0.037972        0.034170   0.132205   0.121147   0.110058   
+30255          0.173718        0.167900   0.180973   0.166357   0.154346   
+...                 ...             ...        ...        ...        ...   
+40519          0.057304        0.052733   0.000000   0.000000   0.000000   
+40520          0.075239        0.073763   0.000000   0.000000   0.000000   
+40524          0.141304        0.134279   0.109376   0.100682   0.095911   
+40547          0.143033        0.147862   0.102703   0.095988   0.091275   
+40564          0.216293        0.213937   0.096859   0.087860   0.079668   
+40615          0.139555        0.139223   0.101973   0.091811   0.086605   
+40619          0.095566        0.096156   0.066308   0.060489   0.054359   
+40624          0.045094        0.046899   0.076388   0.070333   0.065454   
+40638          0.103587        0.102346   0.078868   0.069856   0.063778   
+40649          0.078520        0.082808   0.141480   0.132287   0.124559   
+40650          0.177672        0.169414   0.099317   0.089717   0.081177   
+40656          0.055578        0.047914   0.077414   0.072716   0.068058   
+40658          0.161157        0.152969   0.187429   0.171810   0.160007   
+40664          0.024406        0.017007   0.073541   0.070792   0.066005   
+40665          0.084420        0.085009   0.109073   0.097298   0.089515   
+40668          0.103687        0.095247   0.096983   0.088986   0.081031   
+40672          0.106198        0.105856   0.104037   0.096908   0.091601   
+40685          0.094674        0.090377   0.107328   0.100059   0.094821   
+40694          0.083736        0.079637   0.077450   0.073897   0.071709   
+40720          0.232553        0.219230   0.104797   0.094852   0.087964   
+40738          0.123365        0.126633   0.143701   0.131451   0.118824   
+40743          0.172314        0.170134   0.103285   0.097251   0.090712   
+40750          0.167161        0.164484   0.134636   0.126766   0.118858   
+40773          0.083941        0.080341   0.098974   0.092413   0.089359   
+40778          0.081929        0.077546   0.000000   0.000000   0.000000   
+40796          0.162253        0.153586   0.113531   0.103724   0.094131   
+40803          0.050972        0.046191   0.096701   0.089942   0.083534   
+40855          0.218708        0.214773   0.140948   0.126932   0.117863   
+40861          0.166501        0.158938   0.125792   0.114216   0.106747   
+40930          0.000000        0.000000   0.000000   0.000000   0.000000   
+
+         mod_wb_16  mod_wb_18  mod_wb_20  
+subject                                   
+30004     0.164238   0.153246   0.144201  
+30008     0.210006   0.197491   0.186810  
+30009     0.134929   0.127862   0.120439  
+30015     0.145758   0.136056   0.127046  
+30019     0.110555   0.101522   0.093597  
+30020     0.109438   0.101446   0.095505  
+30023     0.141840   0.132486   0.126783  
+30040     0.111182   0.105705   0.099600  
+30057     0.176045   0.167719   0.157924  
+30064     0.000000   0.000000   0.000000  
+30066     0.127899   0.118990   0.111509  
+30069     0.104164   0.097422   0.092316  
+30074     0.118996   0.113048   0.107070  
+30085     0.110903   0.102557   0.096249  
+30088     0.115772   0.107636   0.102616  
+30090     0.143523   0.136492   0.130508  
+30091     0.111413   0.101257   0.095245  
+30095     0.183288   0.173459   0.164193  
+30096     0.121447   0.114047   0.109052  
+30105     0.127772   0.119166   0.113427  
+30116     0.172570   0.163043   0.154027  
+30118     0.088317   0.082549   0.077027  
+30119     0.092415   0.085474   0.080607  
+30128     0.105339   0.097686   0.091067  
+30181     0.108499   0.101480   0.097270  
+30217     0.156035   0.146133   0.137356  
+30227     0.170373   0.159798   0.150161  
+30236     0.149401   0.140839   0.132826  
+30242     0.099584   0.094354   0.087870  
+30255     0.146968   0.138925   0.132759  
+...            ...        ...        ...  
+40519     0.000000   0.000000   0.000000  
+40520     0.000000   0.000000   0.000000  
+40524     0.088764   0.084278   0.079367  
+40547     0.083462   0.079163   0.074992  
+40564     0.074993   0.072294   0.070398  
+40615     0.080645   0.076856   0.072859  
+40619     0.049829   0.047137   0.044550  
+40624     0.062555   0.057845   0.053895  
+40638     0.059028   0.055138   0.050953  
+40649     0.116711   0.107852   0.102817  
+40650     0.075721   0.071465   0.066519  
+40656     0.062175   0.059715   0.057136  
+40658     0.149244   0.138044   0.130185  
+40664     0.062550   0.059974   0.056544  
+40665     0.081815   0.075395   0.071138  
+40668     0.077171   0.073060   0.068242  
+40672     0.086336   0.080518   0.075249  
+40685     0.088265   0.081283   0.076927  
+40694     0.067948   0.065697   0.060984  
+40720     0.081656   0.076779   0.072652  
+40738     0.109314   0.102825   0.096159  
+40743     0.084364   0.079596   0.076814  
+40750     0.115424   0.107850   0.101495  
+40773     0.085074   0.081248   0.077381  
+40778     0.000000   0.000000   0.000000  
+40796     0.087873   0.080047   0.074561  
+40803     0.079050   0.075030   0.069753  
+40855     0.108297   0.101799   0.094883  
+40861     0.100430   0.095364   0.090268  
+40930     0.000000   0.000000   0.000000  
+
+[88 rows x 12 columns]
+         pc_dmn_fpn_10  pc_dmn_fpn_12  pc_dmn_fpn_14  pc_dmn_fpn_16  \
+subject                                                               
+30004         0.133083       0.150129       0.175267       0.189694   
+30008         0.164194       0.179114       0.194050       0.203449   
+30009         0.149404       0.170291       0.195783       0.203531   
+30015         0.179652       0.215331       0.236555       0.252904   
+30019         0.256892       0.290491       0.304593       0.312835   
+30020         0.183445       0.198443       0.212673       0.219212   
+30023         0.198789       0.227489       0.246323       0.251347   
+30040         0.256539       0.280670       0.294189       0.314133   
+30057         0.221792       0.253445       0.256582       0.274776   
+30064         0.199675       0.211500       0.212293       0.224824   
+30066         0.225162       0.248402       0.263883       0.282219   
+30069         0.179156       0.234778       0.241046       0.255723   
+30074         0.206725       0.218012       0.227890       0.238627   
+30085         0.193415       0.199436       0.216671       0.223552   
+30088         0.175548       0.187264       0.200064       0.207088   
+30090         0.136094       0.153586       0.182188       0.192320   
+30091         0.273508       0.286791       0.311400       0.354187   
+30095         0.187818       0.191772       0.224002       0.235997   
+30096         0.222224       0.228443       0.249932       0.269266   
+30105         0.211510       0.248873       0.256363       0.264915   
+30116         0.131349       0.138503       0.149393       0.175342   
+30118         0.207441       0.216434       0.237074       0.262465   
+30119         0.211479       0.228016       0.237332       0.241103   
+30128         0.270713       0.276872       0.298984       0.310428   
+30181         0.183332       0.191663       0.211563       0.222401   
+30217         0.194492       0.212391       0.229566       0.244119   
+30227         0.089519       0.114408       0.122703       0.139373   
+30236         0.235840       0.250040       0.255039       0.273540   
+30242         0.211605       0.239198       0.257623       0.274870   
+30255         0.141518       0.156021       0.198318       0.213449   
+...                ...            ...            ...            ...   
+40519         0.263510       0.307434       0.314381       0.332081   
+40520         0.247048       0.261188       0.260302       0.265082   
+40524         0.206104       0.223814       0.255644       0.279449   
+40547         0.205715       0.214170       0.237671       0.251395   
+40564         0.191020       0.209472       0.221124       0.231981   
+40615         0.184098       0.199121       0.219724       0.247923   
+40619         0.274510       0.286188       0.301656       0.310415   
+40624         0.232400       0.250736       0.271412       0.283834   
+40638         0.262939       0.285609       0.291172       0.298336   
+40649         0.254614       0.276558       0.302966       0.311653   
+40650         0.205110       0.219285       0.238105       0.261308   
+40656         0.263454       0.293154       0.310974       0.324805   
+40658         0.136599       0.153949       0.154391       0.159532   
+40664         0.306546       0.337444       0.337071       0.351031   
+40665         0.161244       0.195086       0.205820       0.223952   
+40668         0.266155       0.278022       0.298889       0.312054   
+40672         0.302744       0.321083       0.336583       0.344380   
+40685         0.238827       0.255502       0.283774       0.292182   
+40694         0.201712       0.208300       0.227153       0.275927   
+40720         0.175193       0.185883       0.198617       0.214391   
+40738         0.112694       0.159633       0.174533       0.206205   
+40743         0.231500       0.258863       0.266554       0.280276   
+40750         0.210551       0.226629       0.244559       0.250693   
+40773         0.252968       0.263530       0.286691       0.293286   
+40778         0.218516       0.239810       0.244769       0.249209   
+40796         0.191762       0.207262       0.232851       0.245809   
+40803         0.264470       0.281718       0.304164       0.314789   
+40855         0.172914       0.205340       0.214981       0.225995   
+40861         0.246075       0.254787       0.274314       0.283158   
+40930         0.000000       0.000000       0.000000       0.000000   
+
+         pc_dmn_fpn_18  pc_dmn_fpn_20  
+subject                                
+30004         0.205587       0.218853  
+30008         0.206955       0.218107  
+30009         0.211377       0.222053  
+30015         0.261610       0.277564  
+30019         0.318376       0.331827  
+30020         0.234516       0.238569  
+30023         0.259999       0.278324  
+30040         0.324340       0.327024  
+30057         0.287274       0.293760  
+30064         0.239595       0.257184  
+30066         0.290717       0.301039  
+30069         0.265093       0.276495  
+30074         0.254669       0.281467  
+30085         0.236239       0.249632  
+30088         0.222175       0.225642  
+30090         0.208964       0.219493  
+30091         0.364996       0.365819  
+30095         0.253845       0.276657  
+30096         0.283944       0.297537  
+30105         0.281065       0.291438  
+30116         0.197964       0.221281  
+30118         0.277329       0.288303  
+30119         0.246751       0.259512  
+30128         0.314186       0.322733  
+30181         0.244196       0.252811  
+30217         0.254657       0.261715  
+30227         0.155570       0.172438  
+30236         0.280844       0.292396  
+30242         0.285973       0.298519  
+30255         0.216235       0.220418  
+...                ...            ...  
+40519         0.349709       0.349556  
+40520         0.274627       0.303576  
+40524         0.295708       0.304227  
+40547         0.274884       0.280357  
+40564         0.237474       0.245131  
+40615         0.270132       0.282880  
+40619         0.323066       0.324948  
+40624         0.304736       0.308685  
+40638         0.308285       0.318926  
+40649         0.325893       0.325014  
+40650         0.266049       0.276452  
+40656         0.326536       0.350078  
+40658         0.168101       0.187758  
+40664         0.360696       0.369715  
+40665         0.237314       0.248957  
+40668         0.320379       0.328387  
+40672         0.345997       0.350689  
+40685         0.302593       0.310041  
+40694         0.280596       0.288008  
+40720         0.227517       0.245714  
+40738         0.228381       0.241940  
+40743         0.282909       0.301409  
+40750         0.264967       0.271843  
+40773         0.295707       0.309972  
+40778         0.280793       0.282507  
+40796         0.250201       0.264484  
+40803         0.333685       0.338055  
+40855         0.234215       0.247611  
+40861         0.290175       0.298779  
+40930         0.000000       0.000000  
+
+[88 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">10</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">16</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">18</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">20</span><span class="p">])</span><span class="o">/</span><span class="mi">6</span>
+    
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient_nodewise.npy&#39;</span><span class="p">,</span> <span class="n">pc_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc0</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;pc_dmn_fpn_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc0</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="n">rowIndex</span> <span class="o">=</span> <span class="n">pc0</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">subject</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="n">pc0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rowIndex</span><span class="p">,</span> <span class="s1">&#39;pc_dmn_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">][</span><span class="n">dmn</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">pc0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rowIndex</span><span class="p">,</span> <span class="s1">&#39;pc_fpn_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">][</span><span class="n">fpn</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">pc0</span> <span class="o">=</span> <span class="n">pc0</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;subject&#39;</span><span class="p">])</span>
+<span class="n">pc0</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv&#39;</span><span class="p">)</span>
+<span class="n">pc0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pc_dmn_fpn_10</th>
+      <th>pc_dmn_fpn_12</th>
+      <th>pc_dmn_fpn_14</th>
+      <th>pc_dmn_fpn_16</th>
+      <th>pc_dmn_fpn_18</th>
+      <th>pc_dmn_fpn_20</th>
+      <th>pc_dmn_fpn_mean</th>
+      <th>pc_dmn_mean</th>
+      <th>pc_fpn_mean</th>
+    </tr>
+    <tr>
+      <th>subject</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30004</th>
+      <td>0.133083</td>
+      <td>0.150129</td>
+      <td>0.175267</td>
+      <td>0.189694</td>
+      <td>0.205587</td>
+      <td>0.218853</td>
+      <td>0.178769</td>
+      <td>0.585333</td>
+      <td>0.755358</td>
+    </tr>
+    <tr>
+      <th>30008</th>
+      <td>0.164194</td>
+      <td>0.179114</td>
+      <td>0.194050</td>
+      <td>0.203449</td>
+      <td>0.206955</td>
+      <td>0.218107</td>
+      <td>0.194311</td>
+      <td>0.586016</td>
+      <td>0.720762</td>
+    </tr>
+    <tr>
+      <th>30009</th>
+      <td>0.149404</td>
+      <td>0.170291</td>
+      <td>0.195783</td>
+      <td>0.203531</td>
+      <td>0.211377</td>
+      <td>0.222053</td>
+      <td>0.192073</td>
+      <td>0.482981</td>
+      <td>0.814453</td>
+    </tr>
+    <tr>
+      <th>30015</th>
+      <td>0.179652</td>
+      <td>0.215331</td>
+      <td>0.236555</td>
+      <td>0.252904</td>
+      <td>0.261610</td>
+      <td>0.277564</td>
+      <td>0.237269</td>
+      <td>0.651844</td>
+      <td>0.738657</td>
+    </tr>
+    <tr>
+      <th>30019</th>
+      <td>0.256892</td>
+      <td>0.290491</td>
+      <td>0.304593</td>
+      <td>0.312835</td>
+      <td>0.318376</td>
+      <td>0.331827</td>
+      <td>0.302502</td>
+      <td>0.715599</td>
+      <td>0.830522</td>
+    </tr>
+    <tr>
+      <th>30020</th>
+      <td>0.183445</td>
+      <td>0.198443</td>
+      <td>0.212673</td>
+      <td>0.219212</td>
+      <td>0.234516</td>
+      <td>0.238569</td>
+      <td>0.214476</td>
+      <td>0.690589</td>
+      <td>0.742340</td>
+    </tr>
+    <tr>
+      <th>30023</th>
+      <td>0.198789</td>
+      <td>0.227489</td>
+      <td>0.246323</td>
+      <td>0.251347</td>
+      <td>0.259999</td>
+      <td>0.278324</td>
+      <td>0.243712</td>
+      <td>0.608987</td>
+      <td>0.779721</td>
+    </tr>
+    <tr>
+      <th>30040</th>
+      <td>0.256539</td>
+      <td>0.280670</td>
+      <td>0.294189</td>
+      <td>0.314133</td>
+      <td>0.324340</td>
+      <td>0.327024</td>
+      <td>0.299483</td>
+      <td>0.685136</td>
+      <td>0.810084</td>
+    </tr>
+    <tr>
+      <th>30057</th>
+      <td>0.221792</td>
+      <td>0.253445</td>
+      <td>0.256582</td>
+      <td>0.274776</td>
+      <td>0.287274</td>
+      <td>0.293760</td>
+      <td>0.264605</td>
+      <td>0.610554</td>
+      <td>0.768614</td>
+    </tr>
+    <tr>
+      <th>30064</th>
+      <td>0.199675</td>
+      <td>0.211500</td>
+      <td>0.212293</td>
+      <td>0.224824</td>
+      <td>0.239595</td>
+      <td>0.257184</td>
+      <td>0.224179</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30066</th>
+      <td>0.225162</td>
+      <td>0.248402</td>
+      <td>0.263883</td>
+      <td>0.282219</td>
+      <td>0.290717</td>
+      <td>0.301039</td>
+      <td>0.268570</td>
+      <td>0.706609</td>
+      <td>0.782234</td>
+    </tr>
+    <tr>
+      <th>30069</th>
+      <td>0.179156</td>
+      <td>0.234778</td>
+      <td>0.241046</td>
+      <td>0.255723</td>
+      <td>0.265093</td>
+      <td>0.276495</td>
+      <td>0.242048</td>
+      <td>0.714717</td>
+      <td>0.741703</td>
+    </tr>
+    <tr>
+      <th>30074</th>
+      <td>0.206725</td>
+      <td>0.218012</td>
+      <td>0.227890</td>
+      <td>0.238627</td>
+      <td>0.254669</td>
+      <td>0.281467</td>
+      <td>0.237898</td>
+      <td>0.588815</td>
+      <td>0.769115</td>
+    </tr>
+    <tr>
+      <th>30085</th>
+      <td>0.193415</td>
+      <td>0.199436</td>
+      <td>0.216671</td>
+      <td>0.223552</td>
+      <td>0.236239</td>
+      <td>0.249632</td>
+      <td>0.219824</td>
+      <td>0.601120</td>
+      <td>0.714416</td>
+    </tr>
+    <tr>
+      <th>30088</th>
+      <td>0.175548</td>
+      <td>0.187264</td>
+      <td>0.200064</td>
+      <td>0.207088</td>
+      <td>0.222175</td>
+      <td>0.225642</td>
+      <td>0.202964</td>
+      <td>0.546176</td>
+      <td>0.688633</td>
+    </tr>
+    <tr>
+      <th>30090</th>
+      <td>0.136094</td>
+      <td>0.153586</td>
+      <td>0.182188</td>
+      <td>0.192320</td>
+      <td>0.208964</td>
+      <td>0.219493</td>
+      <td>0.182108</td>
+      <td>0.615929</td>
+      <td>0.777903</td>
+    </tr>
+    <tr>
+      <th>30091</th>
+      <td>0.273508</td>
+      <td>0.286791</td>
+      <td>0.311400</td>
+      <td>0.354187</td>
+      <td>0.364996</td>
+      <td>0.365819</td>
+      <td>0.326117</td>
+      <td>0.672874</td>
+      <td>0.772222</td>
+    </tr>
+    <tr>
+      <th>30095</th>
+      <td>0.187818</td>
+      <td>0.191772</td>
+      <td>0.224002</td>
+      <td>0.235997</td>
+      <td>0.253845</td>
+      <td>0.276657</td>
+      <td>0.228349</td>
+      <td>0.643495</td>
+      <td>0.782373</td>
+    </tr>
+    <tr>
+      <th>30096</th>
+      <td>0.222224</td>
+      <td>0.228443</td>
+      <td>0.249932</td>
+      <td>0.269266</td>
+      <td>0.283944</td>
+      <td>0.297537</td>
+      <td>0.258558</td>
+      <td>0.594267</td>
+      <td>0.659666</td>
+    </tr>
+    <tr>
+      <th>30105</th>
+      <td>0.211510</td>
+      <td>0.248873</td>
+      <td>0.256363</td>
+      <td>0.264915</td>
+      <td>0.281065</td>
+      <td>0.291438</td>
+      <td>0.259027</td>
+      <td>0.641905</td>
+      <td>0.798025</td>
+    </tr>
+    <tr>
+      <th>30116</th>
+      <td>0.131349</td>
+      <td>0.138503</td>
+      <td>0.149393</td>
+      <td>0.175342</td>
+      <td>0.197964</td>
+      <td>0.221281</td>
+      <td>0.168972</td>
+      <td>0.522488</td>
+      <td>0.770570</td>
+    </tr>
+    <tr>
+      <th>30118</th>
+      <td>0.207441</td>
+      <td>0.216434</td>
+      <td>0.237074</td>
+      <td>0.262465</td>
+      <td>0.277329</td>
+      <td>0.288303</td>
+      <td>0.248174</td>
+      <td>0.696792</td>
+      <td>0.788283</td>
+    </tr>
+    <tr>
+      <th>30119</th>
+      <td>0.211479</td>
+      <td>0.228016</td>
+      <td>0.237332</td>
+      <td>0.241103</td>
+      <td>0.246751</td>
+      <td>0.259512</td>
+      <td>0.237366</td>
+      <td>0.660408</td>
+      <td>0.809342</td>
+    </tr>
+    <tr>
+      <th>30128</th>
+      <td>0.270713</td>
+      <td>0.276872</td>
+      <td>0.298984</td>
+      <td>0.310428</td>
+      <td>0.314186</td>
+      <td>0.322733</td>
+      <td>0.298986</td>
+      <td>0.705976</td>
+      <td>0.802885</td>
+    </tr>
+    <tr>
+      <th>30181</th>
+      <td>0.183332</td>
+      <td>0.191663</td>
+      <td>0.211563</td>
+      <td>0.222401</td>
+      <td>0.244196</td>
+      <td>0.252811</td>
+      <td>0.217661</td>
+      <td>0.547193</td>
+      <td>0.726577</td>
+    </tr>
+    <tr>
+      <th>30217</th>
+      <td>0.194492</td>
+      <td>0.212391</td>
+      <td>0.229566</td>
+      <td>0.244119</td>
+      <td>0.254657</td>
+      <td>0.261715</td>
+      <td>0.232823</td>
+      <td>0.675195</td>
+      <td>0.770638</td>
+    </tr>
+    <tr>
+      <th>30227</th>
+      <td>0.089519</td>
+      <td>0.114408</td>
+      <td>0.122703</td>
+      <td>0.139373</td>
+      <td>0.155570</td>
+      <td>0.172438</td>
+      <td>0.132335</td>
+      <td>0.608723</td>
+      <td>0.776327</td>
+    </tr>
+    <tr>
+      <th>30236</th>
+      <td>0.235840</td>
+      <td>0.250040</td>
+      <td>0.255039</td>
+      <td>0.273540</td>
+      <td>0.280844</td>
+      <td>0.292396</td>
+      <td>0.264616</td>
+      <td>0.688199</td>
+      <td>0.755971</td>
+    </tr>
+    <tr>
+      <th>30242</th>
+      <td>0.211605</td>
+      <td>0.239198</td>
+      <td>0.257623</td>
+      <td>0.274870</td>
+      <td>0.285973</td>
+      <td>0.298519</td>
+      <td>0.261298</td>
+      <td>0.780154</td>
+      <td>0.767476</td>
+    </tr>
+    <tr>
+      <th>30255</th>
+      <td>0.141518</td>
+      <td>0.156021</td>
+      <td>0.198318</td>
+      <td>0.213449</td>
+      <td>0.216235</td>
+      <td>0.220418</td>
+      <td>0.190993</td>
+      <td>0.527988</td>
+      <td>0.823346</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>40519</th>
+      <td>0.263510</td>
+      <td>0.307434</td>
+      <td>0.314381</td>
+      <td>0.332081</td>
+      <td>0.349709</td>
+      <td>0.349556</td>
+      <td>0.319445</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40520</th>
+      <td>0.247048</td>
+      <td>0.261188</td>
+      <td>0.260302</td>
+      <td>0.265082</td>
+      <td>0.274627</td>
+      <td>0.303576</td>
+      <td>0.268637</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40524</th>
+      <td>0.206104</td>
+      <td>0.223814</td>
+      <td>0.255644</td>
+      <td>0.279449</td>
+      <td>0.295708</td>
+      <td>0.304227</td>
+      <td>0.260824</td>
+      <td>0.725563</td>
+      <td>0.804479</td>
+    </tr>
+    <tr>
+      <th>40547</th>
+      <td>0.205715</td>
+      <td>0.214170</td>
+      <td>0.237671</td>
+      <td>0.251395</td>
+      <td>0.274884</td>
+      <td>0.280357</td>
+      <td>0.244032</td>
+      <td>0.630580</td>
+      <td>0.757932</td>
+    </tr>
+    <tr>
+      <th>40564</th>
+      <td>0.191020</td>
+      <td>0.209472</td>
+      <td>0.221124</td>
+      <td>0.231981</td>
+      <td>0.237474</td>
+      <td>0.245131</td>
+      <td>0.222700</td>
+      <td>0.744357</td>
+      <td>0.831360</td>
+    </tr>
+    <tr>
+      <th>40615</th>
+      <td>0.184098</td>
+      <td>0.199121</td>
+      <td>0.219724</td>
+      <td>0.247923</td>
+      <td>0.270132</td>
+      <td>0.282880</td>
+      <td>0.233980</td>
+      <td>0.724964</td>
+      <td>0.744126</td>
+    </tr>
+    <tr>
+      <th>40619</th>
+      <td>0.274510</td>
+      <td>0.286188</td>
+      <td>0.301656</td>
+      <td>0.310415</td>
+      <td>0.323066</td>
+      <td>0.324948</td>
+      <td>0.303464</td>
+      <td>0.652862</td>
+      <td>0.837184</td>
+    </tr>
+    <tr>
+      <th>40624</th>
+      <td>0.232400</td>
+      <td>0.250736</td>
+      <td>0.271412</td>
+      <td>0.283834</td>
+      <td>0.304736</td>
+      <td>0.308685</td>
+      <td>0.275300</td>
+      <td>0.754774</td>
+      <td>0.715851</td>
+    </tr>
+    <tr>
+      <th>40638</th>
+      <td>0.262939</td>
+      <td>0.285609</td>
+      <td>0.291172</td>
+      <td>0.298336</td>
+      <td>0.308285</td>
+      <td>0.318926</td>
+      <td>0.294211</td>
+      <td>0.775815</td>
+      <td>0.781468</td>
+    </tr>
+    <tr>
+      <th>40649</th>
+      <td>0.254614</td>
+      <td>0.276558</td>
+      <td>0.302966</td>
+      <td>0.311653</td>
+      <td>0.325893</td>
+      <td>0.325014</td>
+      <td>0.299450</td>
+      <td>0.622868</td>
+      <td>0.765402</td>
+    </tr>
+    <tr>
+      <th>40650</th>
+      <td>0.205110</td>
+      <td>0.219285</td>
+      <td>0.238105</td>
+      <td>0.261308</td>
+      <td>0.266049</td>
+      <td>0.276452</td>
+      <td>0.244385</td>
+      <td>0.639390</td>
+      <td>0.775465</td>
+    </tr>
+    <tr>
+      <th>40656</th>
+      <td>0.263454</td>
+      <td>0.293154</td>
+      <td>0.310974</td>
+      <td>0.324805</td>
+      <td>0.326536</td>
+      <td>0.350078</td>
+      <td>0.311500</td>
+      <td>0.695651</td>
+      <td>0.830270</td>
+    </tr>
+    <tr>
+      <th>40658</th>
+      <td>0.136599</td>
+      <td>0.153949</td>
+      <td>0.154391</td>
+      <td>0.159532</td>
+      <td>0.168101</td>
+      <td>0.187758</td>
+      <td>0.160055</td>
+      <td>0.584700</td>
+      <td>0.765337</td>
+    </tr>
+    <tr>
+      <th>40664</th>
+      <td>0.306546</td>
+      <td>0.337444</td>
+      <td>0.337071</td>
+      <td>0.351031</td>
+      <td>0.360696</td>
+      <td>0.369715</td>
+      <td>0.343751</td>
+      <td>0.708015</td>
+      <td>0.810899</td>
+    </tr>
+    <tr>
+      <th>40665</th>
+      <td>0.161244</td>
+      <td>0.195086</td>
+      <td>0.205820</td>
+      <td>0.223952</td>
+      <td>0.237314</td>
+      <td>0.248957</td>
+      <td>0.212062</td>
+      <td>0.693125</td>
+      <td>0.738280</td>
+    </tr>
+    <tr>
+      <th>40668</th>
+      <td>0.266155</td>
+      <td>0.278022</td>
+      <td>0.298889</td>
+      <td>0.312054</td>
+      <td>0.320379</td>
+      <td>0.328387</td>
+      <td>0.300648</td>
+      <td>0.746395</td>
+      <td>0.786606</td>
+    </tr>
+    <tr>
+      <th>40672</th>
+      <td>0.302744</td>
+      <td>0.321083</td>
+      <td>0.336583</td>
+      <td>0.344380</td>
+      <td>0.345997</td>
+      <td>0.350689</td>
+      <td>0.333579</td>
+      <td>0.760720</td>
+      <td>0.833631</td>
+    </tr>
+    <tr>
+      <th>40685</th>
+      <td>0.238827</td>
+      <td>0.255502</td>
+      <td>0.283774</td>
+      <td>0.292182</td>
+      <td>0.302593</td>
+      <td>0.310041</td>
+      <td>0.280487</td>
+      <td>0.698461</td>
+      <td>0.799109</td>
+    </tr>
+    <tr>
+      <th>40694</th>
+      <td>0.201712</td>
+      <td>0.208300</td>
+      <td>0.227153</td>
+      <td>0.275927</td>
+      <td>0.280596</td>
+      <td>0.288008</td>
+      <td>0.246950</td>
+      <td>0.657175</td>
+      <td>0.688818</td>
+    </tr>
+    <tr>
+      <th>40720</th>
+      <td>0.175193</td>
+      <td>0.185883</td>
+      <td>0.198617</td>
+      <td>0.214391</td>
+      <td>0.227517</td>
+      <td>0.245714</td>
+      <td>0.207886</td>
+      <td>0.735694</td>
+      <td>0.808221</td>
+    </tr>
+    <tr>
+      <th>40738</th>
+      <td>0.112694</td>
+      <td>0.159633</td>
+      <td>0.174533</td>
+      <td>0.206205</td>
+      <td>0.228381</td>
+      <td>0.241940</td>
+      <td>0.187231</td>
+      <td>0.672665</td>
+      <td>0.765724</td>
+    </tr>
+    <tr>
+      <th>40743</th>
+      <td>0.231500</td>
+      <td>0.258863</td>
+      <td>0.266554</td>
+      <td>0.280276</td>
+      <td>0.282909</td>
+      <td>0.301409</td>
+      <td>0.270252</td>
+      <td>0.757636</td>
+      <td>0.784446</td>
+    </tr>
+    <tr>
+      <th>40750</th>
+      <td>0.210551</td>
+      <td>0.226629</td>
+      <td>0.244559</td>
+      <td>0.250693</td>
+      <td>0.264967</td>
+      <td>0.271843</td>
+      <td>0.244874</td>
+      <td>0.576612</td>
+      <td>0.780384</td>
+    </tr>
+    <tr>
+      <th>40773</th>
+      <td>0.252968</td>
+      <td>0.263530</td>
+      <td>0.286691</td>
+      <td>0.293286</td>
+      <td>0.295707</td>
+      <td>0.309972</td>
+      <td>0.283692</td>
+      <td>0.710696</td>
+      <td>0.780540</td>
+    </tr>
+    <tr>
+      <th>40778</th>
+      <td>0.218516</td>
+      <td>0.239810</td>
+      <td>0.244769</td>
+      <td>0.249209</td>
+      <td>0.280793</td>
+      <td>0.282507</td>
+      <td>0.252601</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40796</th>
+      <td>0.191762</td>
+      <td>0.207262</td>
+      <td>0.232851</td>
+      <td>0.245809</td>
+      <td>0.250201</td>
+      <td>0.264484</td>
+      <td>0.232062</td>
+      <td>0.745640</td>
+      <td>0.787141</td>
+    </tr>
+    <tr>
+      <th>40803</th>
+      <td>0.264470</td>
+      <td>0.281718</td>
+      <td>0.304164</td>
+      <td>0.314789</td>
+      <td>0.333685</td>
+      <td>0.338055</td>
+      <td>0.306147</td>
+      <td>0.674810</td>
+      <td>0.741765</td>
+    </tr>
+    <tr>
+      <th>40855</th>
+      <td>0.172914</td>
+      <td>0.205340</td>
+      <td>0.214981</td>
+      <td>0.225995</td>
+      <td>0.234215</td>
+      <td>0.247611</td>
+      <td>0.216843</td>
+      <td>0.732482</td>
+      <td>0.812311</td>
+    </tr>
+    <tr>
+      <th>40861</th>
+      <td>0.246075</td>
+      <td>0.254787</td>
+      <td>0.274314</td>
+      <td>0.283158</td>
+      <td>0.290175</td>
+      <td>0.298779</td>
+      <td>0.274548</td>
+      <td>0.724093</td>
+      <td>0.804171</td>
+    </tr>
+    <tr>
+      <th>40930</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>88 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mod_10</th>
+      <th>mod_12</th>
+      <th>mod_14</th>
+      <th>mod_16</th>
+      <th>mod_18</th>
+      <th>mod_20</th>
+    </tr>
+    <tr>
+      <th>subject</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30004</th>
+      <td>0.125659</td>
+      <td>0.130191</td>
+      <td>0.119558</td>
+      <td>0.111548</td>
+      <td>0.103587</td>
+      <td>0.102346</td>
+    </tr>
+    <tr>
+      <th>30008</th>
+      <td>0.188766</td>
+      <td>0.175560</td>
+      <td>0.163659</td>
+      <td>0.153286</td>
+      <td>0.145088</td>
+      <td>0.139573</td>
+    </tr>
+    <tr>
+      <th>30009</th>
+      <td>0.029908</td>
+      <td>0.032608</td>
+      <td>0.034110</td>
+      <td>0.038122</td>
+      <td>0.044705</td>
+      <td>0.044904</td>
+    </tr>
+    <tr>
+      <th>30015</th>
+      <td>0.104143</td>
+      <td>0.098877</td>
+      <td>0.092724</td>
+      <td>0.085591</td>
+      <td>0.078520</td>
+      <td>0.082808</td>
+    </tr>
+    <tr>
+      <th>30019</th>
+      <td>0.263958</td>
+      <td>0.252200</td>
+      <td>0.244926</td>
+      <td>0.239032</td>
+      <td>0.232553</td>
+      <td>0.219230</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+    <tr>
+      <th>subject</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30004</th>
+      <td>0.115482</td>
+    </tr>
+    <tr>
+      <th>30008</th>
+      <td>0.160989</td>
+    </tr>
+    <tr>
+      <th>30009</th>
+      <td>0.037393</td>
+    </tr>
+    <tr>
+      <th>30015</th>
+      <td>0.090444</td>
+    </tr>
+    <tr>
+      <th>30019</th>
+      <td>0.241983</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pc_10</th>
+      <th>pc_12</th>
+      <th>pc_14</th>
+      <th>pc_16</th>
+      <th>pc_18</th>
+      <th>pc_20</th>
+    </tr>
+    <tr>
+      <th>subject</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30004</th>
+      <td>0.262939</td>
+      <td>0.285609</td>
+      <td>0.291172</td>
+      <td>0.298336</td>
+      <td>0.308285</td>
+      <td>0.318926</td>
+    </tr>
+    <tr>
+      <th>30008</th>
+      <td>0.222224</td>
+      <td>0.228443</td>
+      <td>0.249932</td>
+      <td>0.269266</td>
+      <td>0.283944</td>
+      <td>0.297537</td>
+    </tr>
+    <tr>
+      <th>30009</th>
+      <td>0.120514</td>
+      <td>0.141760</td>
+      <td>0.149292</td>
+      <td>0.179254</td>
+      <td>0.186274</td>
+      <td>0.203321</td>
+    </tr>
+    <tr>
+      <th>30015</th>
+      <td>0.254614</td>
+      <td>0.276558</td>
+      <td>0.302966</td>
+      <td>0.311653</td>
+      <td>0.325893</td>
+      <td>0.325014</td>
+    </tr>
+    <tr>
+      <th>30019</th>
+      <td>0.175193</td>
+      <td>0.185883</td>
+      <td>0.198617</td>
+      <td>0.214391</td>
+      <td>0.227517</td>
+      <td>0.245714</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BCT graph metrics &lt;a id=&#39;bct-graph-metrics&#39;&gt;&lt;/a&gt;</span>
+
+<span class="n">subjects</span>
+
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">visualization</span>
+
+<span class="n">visualization</span><span class="o">.</span><span class="n">reorderMAT</span><span class="p">(</span><span class="n">nbs_edge_z</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">H</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">modularity</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">centrality</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">other</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">visualization</span>
+
+<span class="n">m_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
+<span class="n">pc_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># thresholds = &#39;nbs&#39;</span>
+<span class="c1"># for thr in thresholds: m_colnames.append(&#39;mod_%s&#39; % thr)</span>
+<span class="c1"># for thr in thresholds: pc_colnames.append(&#39;pc_%s&#39; % thr)</span>
+<span class="c1">#wb = np.array(atlas.regions.index)</span>
+
+<span class="n">mod</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">pc_array</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># m = nbs_edge_z</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dmn_fpn&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">]</span>
+<span class="n">pc_array</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">m0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;cue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">:</span>
+    
+    <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="s1">&#39;wb&#39;</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">ni</span><span class="p">:</span> <span class="n">indi</span> <span class="k">for</span> <span class="n">indi</span><span class="p">,</span> <span class="n">ni</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">))}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">communities</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ni</span><span class="p">]</span> <span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">]</span>
+        
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m0</span><span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">)][:,</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">),:]</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">ni</span><span class="p">:</span> <span class="n">indi</span> <span class="k">for</span> <span class="n">indi</span><span class="p">,</span> <span class="n">ni</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">)]))}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">communities</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ni</span><span class="p">]</span> <span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">region</span><span class="p">)]]</span>
+
+    <span class="k">for</span> <span class="n">subject</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">subjects</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])):</span> <span class="c1">#     print(x[&#39;cue&#39;][dmn_fpn][:,dmn_fpn,idx].shape)</span>
+        
+        <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1">#print(subject, idx)</span>
+        
+        <span class="k">for</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+            <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> 
+            <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> 
+            
+            <span class="n">g</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">threshold_proportional</span><span class="p">(</span><span class="n">m</span><span class="p">[:,:,</span><span class="n">idx</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span><span class="o">*</span><span class="mf">.01</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#     g = visualization.reorderMAT(m[:,:,idx], H=5000, cost=&#39;line&#39;)[0]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">subject</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">threshold</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            
+            <span class="n">mod</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;subject&#39;</span><span class="p">:</span> <span class="n">subject</span><span class="p">,</span> <span class="s1">&#39;mod_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span> <span class="p">:</span> <span class="n">modularity</span><span class="o">.</span><span class="n">modularity_und</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kci</span><span class="o">=</span><span class="n">communities</span><span class="p">)[</span><span class="mi">1</span><span class="p">]},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="s1">&#39;wb&#39;</span><span class="p">:</span>
+                <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="n">centrality</span><span class="o">.</span><span class="n">participation_coef</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="n">communities</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span>
+                
+            <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="s1">&#39;dmn_fpn&#39;</span><span class="p">:</span>
+                <span class="n">pc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;subject&#39;</span><span class="p">:</span> <span class="n">subject</span><span class="p">,</span> <span class="s1">&#39;pc_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span> <span class="p">:</span> <span class="n">centrality</span><span class="o">.</span><span class="n">participation_coef</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="n">communities</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">mod</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;subject&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;subject&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+<span class="n">pc</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv&#39;</span><span class="p">)</span>
+<span class="n">mod</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/modularity.csv&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient_nodewise.npy&#39;</span><span class="p">,</span> <span class="n">pc_array</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">10</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">14</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">16</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">18</span><span class="p">]</span> <span class="o">+</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="mi">20</span><span class="p">])</span><span class="o">/</span><span class="mi">6</span>
+    
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient_nodewise.npy&#39;</span><span class="p">,</span> <span class="n">pc_array</span><span class="p">)</span>
+
+<span class="n">pc0</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;pc_dmn_fpn_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc0</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="n">rowIndex</span> <span class="o">=</span> <span class="n">pc0</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">subject</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="n">pc0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rowIndex</span><span class="p">,</span> <span class="s1">&#39;pc_dmn_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">][</span><span class="n">dmn</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">pc0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rowIndex</span><span class="p">,</span> <span class="s1">&#39;pc_fpn_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc_array</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">][</span><span class="n">fpn</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">pc0</span> <span class="o">=</span> <span class="n">pc0</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;subject&#39;</span><span class="p">])</span>
+<span class="n">pc0</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv&#39;</span><span class="p">)</span>
+<span class="n">pc0</span>
+
+<span class="n">mod</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">pc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="NBS.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">NBS <a id='network-based-statistic'></a></p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Statistics.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Statistical Analysis <a id='stats'></a></p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

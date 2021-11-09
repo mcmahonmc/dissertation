@@ -1,0 +1,1087 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>NBS &#8212; My sample book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BCT graph metrics" href="BCT.html" />
+    <link rel="prev" title="Markdown Files" href="markdown.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   NBS
+   <a id="network-based-statistic">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="BCT.html">
+   BCT graph metrics
+   <a id="bct-graph-metrics">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Statistics.html">
+   Statistical Analysis
+   <a id="stats">
+   </a>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/NBS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNBS.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/NBS.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#from-matlab-nbs">
+   From Matlab NBS
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="nbs-a-id-network-based-statistic-a">
+<h1>NBS <a id='network-based-statistic'></a><a class="headerlink" href="#nbs-a-id-network-based-statistic-a" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;&#39;&#39;
+Performs the NBS for populations X and Y for a t-statistic threshold of
+alpha.
+Parameters
+----------
+x : NxNxP np.ndarray
+    matrix representing the first population with P subjects. must be
+    symmetric.
+y : NxNxQ np.ndarray
+    matrix representing the second population with Q subjects. Q need not
+    equal P. must be symmetric.
+thresh : float
+    minimum t-value used as threshold
+k : int
+    number of permutations used to estimate the empirical null 
+    distribution
+tail : {&#39;left&#39;, &#39;right&#39;, &#39;both&#39;}
+    enables specification of particular alternative hypothesis
+    &#39;left&#39; : mean population of X &lt; mean population of Y
+    &#39;right&#39; : mean population of Y &lt; mean population of X
+    &#39;both&#39; : means are unequal (default)
+paired : bool
+    use paired sample t-test instead of population t-test. requires both
+    subject populations to have equal N. default value = False
+verbose : bool
+    print some extra information each iteration. defaults value = False
+seed : hashable, optional
+    If None (default), use the np.random&#39;s global random state to generate random numbers.
+    Otherwise, use a new np.random.RandomState instance seeded with the given value.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>  <span class="c1"># load the beta maps in python</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>  <span class="c1"># plot nifti images</span>
+<span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">nbs</span>
+<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">savemat</span>
+<span class="kn">from</span> <span class="nn">mne.viz</span> <span class="kn">import</span> <span class="n">plot_connectivity_circle</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/nilearn/datasets/__init__.py:96: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
+  &quot;Numpy arrays.&quot;, FutureWarning)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/psybrain/ADM/derivatives&#39;</span>
+<span class="n">results_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/analysis/stats/&#39;</span>
+<span class="n">nibs_dir</span><span class="o">=</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/nibetaseries&#39;</span>
+
+<span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MemMatch1&#39;</span><span class="p">,</span> <span class="s1">&#39;MemMatch2&#39;</span><span class="p">,</span> <span class="s1">&#39;MemMatch3&#39;</span><span class="p">]</span>
+<span class="n">trial_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cue&#39;</span><span class="p">,</span> <span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="s1">&#39;mismatch&#39;</span><span class="p">]</span>
+
+<span class="n">atlas_file</span><span class="o">=</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/power264-master/power264MNI.nii.gz&#39;</span>
+<span class="n">atlas_lut</span><span class="o">=</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/power264_labels.tsv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atlas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">atlas_lut</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+<span class="n">dmn</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">atlas</span><span class="p">[</span><span class="s1">&#39;regions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Default&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">fpn</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">atlas</span><span class="p">[</span><span class="s1">&#39;regions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fronto-parietal&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">dmn_fpn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">dmn</span><span class="p">,</span> <span class="n">fpn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+
+<span class="n">power</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_coords_power_2011</span><span class="p">()</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">power</span><span class="o">.</span><span class="n">rois</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">power</span><span class="o">.</span><span class="n">rois</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">power</span><span class="o">.</span><span class="n">rois</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="from-matlab-nbs">
+<h2>From Matlab NBS<a class="headerlink" href="#from-matlab-nbs" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/memmatch_fc.npy&#39;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fc_subs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/fcsubs.txt&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/analysis/nbs/adj_dmn_ya_gt_oa_t-35_k-5000_extent.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adj</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">nbs_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">adj</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;cue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;cue&#39;</span><span class="p">][</span><span class="n">dmn</span><span class="p">][:,</span><span class="n">dmn</span><span class="p">,:]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">nbs_mat</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">edges_fc</span> <span class="o">=</span> <span class="n">nbs_mat</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">nbs_mat</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]))]</span>
+<span class="n">edges_fc</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(58, 58)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 88)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;cue&#39;</span><span class="p">][</span><span class="n">dmn</span><span class="p">][:,</span><span class="n">dmn</span><span class="p">,:]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(58, 58, 88)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">n_lines</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">nbs_mat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">node_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">coords</span><span class="p">[</span><span class="n">dmn</span><span class="p">],</span> <span class="n">atlas</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dmn</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+
+<span class="n">plot_connectivity_circle</span><span class="p">(</span><span class="n">nbs_mat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">node_labels</span><span class="p">,</span> <span class="n">n_lines</span><span class="o">=</span><span class="n">n_lines</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;retrieval ya &gt; oa DMN&#39;</span><span class="p">,</span> 
+                         <span class="n">fontsize_title</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">textcolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> 
+                         <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">node_colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">],</span> 
+                         <span class="n">node_edgecolor</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">],</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">interactive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1080x1080 with 2 Axes&gt;,
+ &lt;matplotlib.axes._subplots.PolarAxesSubplot at 0x1232a07d0&gt;)
+</pre></div>
+</div>
+<img alt="_images/NBS_9_1.png" src="_images/NBS_9_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_connectome</span><span class="p">(</span><span class="n">nbs_mat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">coords</span><span class="p">[</span><span class="n">dmn</span><span class="p">],</span> 
+                         <span class="n">node_size</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">edge_cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gist_gray</span><span class="p">,</span>
+                        <span class="n">output_file</span> <span class="o">=</span> <span class="n">results_dir</span> <span class="o">+</span> <span class="s1">&#39;glass_brain.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_connectome</span><span class="p">(</span><span class="n">nbs_mat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">coords</span><span class="p">[</span><span class="n">dmn</span><span class="p">],</span> <span class="n">edge_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;retrieval fc young &gt; old, t=3.5, p=0.022, k=5000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoProjector at 0x125e626d0&gt;
+</pre></div>
+</div>
+<img alt="_images/NBS_11_1.png" src="_images/NBS_11_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbs_mat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(58, 58, 88)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fc_subs</span><span class="p">[:</span><span class="mi">87</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;30004&#39;, &#39;30008&#39;, &#39;30009&#39;, &#39;30015&#39;, &#39;30019&#39;, &#39;30020&#39;, &#39;30023&#39;,
+       &#39;30040&#39;, &#39;30057&#39;, &#39;30064&#39;, &#39;30066&#39;, &#39;30069&#39;, &#39;30074&#39;, &#39;30085&#39;,
+       &#39;30088&#39;, &#39;30090&#39;, &#39;30091&#39;, &#39;30095&#39;, &#39;30096&#39;, &#39;30105&#39;, &#39;30116&#39;,
+       &#39;30118&#39;, &#39;30119&#39;, &#39;30128&#39;, &#39;30181&#39;, &#39;30217&#39;, &#39;30227&#39;, &#39;30236&#39;,
+       &#39;30242&#39;, &#39;30255&#39;, &#39;30274&#39;, &#39;30283&#39;, &#39;30295&#39;, &#39;30330&#39;, &#39;30346&#39;,
+       &#39;30376&#39;, &#39;30395&#39;, &#39;30400&#39;, &#39;30403&#39;, &#39;30412&#39;, &#39;30426&#39;, &#39;30432&#39;,
+       &#39;30466&#39;, &#39;30469&#39;, &#39;30478&#39;, &#39;30568&#39;, &#39;30570&#39;, &#39;30581&#39;, &#39;30584&#39;,
+       &#39;30588&#39;, &#39;40160&#39;, &#39;40170&#39;, &#39;40175&#39;, &#39;40288&#39;, &#39;40351&#39;, &#39;40490&#39;,
+       &#39;40512&#39;, &#39;40519&#39;, &#39;40520&#39;, &#39;40524&#39;, &#39;40547&#39;, &#39;40564&#39;, &#39;40615&#39;,
+       &#39;40619&#39;, &#39;40624&#39;, &#39;40638&#39;, &#39;40649&#39;, &#39;40650&#39;, &#39;40656&#39;, &#39;40658&#39;,
+       &#39;40664&#39;, &#39;40665&#39;, &#39;40668&#39;, &#39;40672&#39;, &#39;40685&#39;, &#39;40694&#39;, &#39;40720&#39;,
+       &#39;40738&#39;, &#39;40743&#39;, &#39;40750&#39;, &#39;40778&#39;, &#39;40796&#39;, &#39;40803&#39;, &#39;40855&#39;,
+       &#39;40861&#39;, &#39;40961&#39;, &#39;40968&#39;], dtype=&#39;&lt;U5&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="n">edges_fc</span><span class="p">[:,:</span><span class="mi">87</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">edges_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">fc_subs</span><span class="p">[:</span><span class="mi">87</span><span class="p">]</span>
+<span class="n">edges_df</span> <span class="o">=</span> <span class="n">edges_df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="c1"># edges_df = edges_df[:87]</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">edges_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> <span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;edge_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">))</span>
+<span class="n">edges_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+
+<span class="n">edges_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/analysis/edges_df.csv&#39;</span><span class="p">)</span>
+<span class="n">edges_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>edge_0</th>
+      <th>edge_1</th>
+      <th>edge_2</th>
+      <th>edge_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30004</th>
+      <td>0.451471</td>
+      <td>0.509899</td>
+      <td>0.257227</td>
+      <td>0.688757</td>
+    </tr>
+    <tr>
+      <th>30008</th>
+      <td>0.425655</td>
+      <td>0.824386</td>
+      <td>1.032888</td>
+      <td>0.311497</td>
+    </tr>
+    <tr>
+      <th>30009</th>
+      <td>0.508419</td>
+      <td>0.634550</td>
+      <td>0.578941</td>
+      <td>0.278736</td>
+    </tr>
+    <tr>
+      <th>30015</th>
+      <td>0.264530</td>
+      <td>0.418911</td>
+      <td>0.402329</td>
+      <td>0.096133</td>
+    </tr>
+    <tr>
+      <th>30019</th>
+      <td>0.365178</td>
+      <td>0.379545</td>
+      <td>0.701750</td>
+      <td>0.334316</td>
+    </tr>
+    <tr>
+      <th>30020</th>
+      <td>1.129555</td>
+      <td>0.482186</td>
+      <td>0.290999</td>
+      <td>1.015736</td>
+    </tr>
+    <tr>
+      <th>30023</th>
+      <td>0.193597</td>
+      <td>0.437271</td>
+      <td>0.817750</td>
+      <td>0.375620</td>
+    </tr>
+    <tr>
+      <th>30040</th>
+      <td>0.670385</td>
+      <td>0.435313</td>
+      <td>0.287747</td>
+      <td>0.322722</td>
+    </tr>
+    <tr>
+      <th>30057</th>
+      <td>0.072768</td>
+      <td>0.378579</td>
+      <td>0.562540</td>
+      <td>0.173406</td>
+    </tr>
+    <tr>
+      <th>30064</th>
+      <td>0.643378</td>
+      <td>0.987714</td>
+      <td>1.129634</td>
+      <td>0.696325</td>
+    </tr>
+    <tr>
+      <th>30066</th>
+      <td>0.453863</td>
+      <td>0.339565</td>
+      <td>0.394364</td>
+      <td>0.708878</td>
+    </tr>
+    <tr>
+      <th>30069</th>
+      <td>0.432517</td>
+      <td>0.654720</td>
+      <td>0.895318</td>
+      <td>0.463110</td>
+    </tr>
+    <tr>
+      <th>30074</th>
+      <td>0.500848</td>
+      <td>0.583016</td>
+      <td>0.703643</td>
+      <td>0.475013</td>
+    </tr>
+    <tr>
+      <th>30085</th>
+      <td>0.634698</td>
+      <td>0.904125</td>
+      <td>0.609425</td>
+      <td>0.827517</td>
+    </tr>
+    <tr>
+      <th>30088</th>
+      <td>0.279554</td>
+      <td>0.436021</td>
+      <td>0.743615</td>
+      <td>0.540494</td>
+    </tr>
+    <tr>
+      <th>30090</th>
+      <td>0.526438</td>
+      <td>0.500529</td>
+      <td>0.502833</td>
+      <td>0.954626</td>
+    </tr>
+    <tr>
+      <th>30091</th>
+      <td>0.681715</td>
+      <td>0.427660</td>
+      <td>0.721008</td>
+      <td>0.585630</td>
+    </tr>
+    <tr>
+      <th>30095</th>
+      <td>0.387988</td>
+      <td>0.266819</td>
+      <td>0.593919</td>
+      <td>0.537448</td>
+    </tr>
+    <tr>
+      <th>30096</th>
+      <td>0.436575</td>
+      <td>0.659086</td>
+      <td>0.629624</td>
+      <td>0.475863</td>
+    </tr>
+    <tr>
+      <th>30105</th>
+      <td>0.410974</td>
+      <td>0.504266</td>
+      <td>0.715116</td>
+      <td>0.619630</td>
+    </tr>
+    <tr>
+      <th>30116</th>
+      <td>0.364369</td>
+      <td>0.847291</td>
+      <td>0.788135</td>
+      <td>0.129133</td>
+    </tr>
+    <tr>
+      <th>30118</th>
+      <td>0.049707</td>
+      <td>0.191686</td>
+      <td>0.080932</td>
+      <td>0.495585</td>
+    </tr>
+    <tr>
+      <th>30119</th>
+      <td>0.507050</td>
+      <td>0.760610</td>
+      <td>0.833752</td>
+      <td>0.394296</td>
+    </tr>
+    <tr>
+      <th>30128</th>
+      <td>0.253656</td>
+      <td>0.246347</td>
+      <td>0.571028</td>
+      <td>0.498416</td>
+    </tr>
+    <tr>
+      <th>30181</th>
+      <td>0.350547</td>
+      <td>0.292317</td>
+      <td>0.712633</td>
+      <td>0.543390</td>
+    </tr>
+    <tr>
+      <th>30217</th>
+      <td>0.690923</td>
+      <td>0.367660</td>
+      <td>0.680516</td>
+      <td>0.330267</td>
+    </tr>
+    <tr>
+      <th>30227</th>
+      <td>0.562985</td>
+      <td>0.624407</td>
+      <td>0.843373</td>
+      <td>0.874910</td>
+    </tr>
+    <tr>
+      <th>30236</th>
+      <td>0.381564</td>
+      <td>0.340110</td>
+      <td>0.582143</td>
+      <td>0.161840</td>
+    </tr>
+    <tr>
+      <th>30242</th>
+      <td>0.972904</td>
+      <td>0.788247</td>
+      <td>0.154667</td>
+      <td>0.443424</td>
+    </tr>
+    <tr>
+      <th>30255</th>
+      <td>0.704338</td>
+      <td>0.836602</td>
+      <td>0.678619</td>
+      <td>0.845747</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>40519</th>
+      <td>0.002190</td>
+      <td>0.639616</td>
+      <td>0.582443</td>
+      <td>0.134722</td>
+    </tr>
+    <tr>
+      <th>40520</th>
+      <td>0.295987</td>
+      <td>0.120498</td>
+      <td>0.491908</td>
+      <td>-0.100953</td>
+    </tr>
+    <tr>
+      <th>40524</th>
+      <td>-0.083679</td>
+      <td>0.462385</td>
+      <td>0.482217</td>
+      <td>0.264471</td>
+    </tr>
+    <tr>
+      <th>40547</th>
+      <td>0.366970</td>
+      <td>0.542048</td>
+      <td>0.041770</td>
+      <td>0.161257</td>
+    </tr>
+    <tr>
+      <th>40564</th>
+      <td>0.157483</td>
+      <td>0.373119</td>
+      <td>0.457944</td>
+      <td>0.576476</td>
+    </tr>
+    <tr>
+      <th>40615</th>
+      <td>0.133520</td>
+      <td>0.568410</td>
+      <td>0.498870</td>
+      <td>0.331736</td>
+    </tr>
+    <tr>
+      <th>40619</th>
+      <td>0.266649</td>
+      <td>0.073601</td>
+      <td>0.277257</td>
+      <td>0.493250</td>
+    </tr>
+    <tr>
+      <th>40624</th>
+      <td>0.812096</td>
+      <td>0.351418</td>
+      <td>1.154106</td>
+      <td>0.207776</td>
+    </tr>
+    <tr>
+      <th>40638</th>
+      <td>0.170508</td>
+      <td>0.410206</td>
+      <td>0.216978</td>
+      <td>0.213416</td>
+    </tr>
+    <tr>
+      <th>40649</th>
+      <td>0.345711</td>
+      <td>0.206867</td>
+      <td>0.461655</td>
+      <td>0.353251</td>
+    </tr>
+    <tr>
+      <th>40650</th>
+      <td>0.206166</td>
+      <td>0.219587</td>
+      <td>0.068164</td>
+      <td>0.474500</td>
+    </tr>
+    <tr>
+      <th>40656</th>
+      <td>0.101233</td>
+      <td>0.776052</td>
+      <td>0.390157</td>
+      <td>0.171165</td>
+    </tr>
+    <tr>
+      <th>40658</th>
+      <td>0.632079</td>
+      <td>0.459685</td>
+      <td>0.835456</td>
+      <td>0.395761</td>
+    </tr>
+    <tr>
+      <th>40664</th>
+      <td>0.380705</td>
+      <td>0.122879</td>
+      <td>0.245532</td>
+      <td>0.187047</td>
+    </tr>
+    <tr>
+      <th>40665</th>
+      <td>0.345552</td>
+      <td>0.241537</td>
+      <td>0.275919</td>
+      <td>0.467250</td>
+    </tr>
+    <tr>
+      <th>40668</th>
+      <td>0.810587</td>
+      <td>0.380372</td>
+      <td>0.430010</td>
+      <td>0.647743</td>
+    </tr>
+    <tr>
+      <th>40672</th>
+      <td>0.308229</td>
+      <td>0.462500</td>
+      <td>0.325805</td>
+      <td>0.299382</td>
+    </tr>
+    <tr>
+      <th>40685</th>
+      <td>0.321064</td>
+      <td>0.323395</td>
+      <td>0.455376</td>
+      <td>0.375709</td>
+    </tr>
+    <tr>
+      <th>40694</th>
+      <td>0.341824</td>
+      <td>0.525042</td>
+      <td>0.416071</td>
+      <td>0.271734</td>
+    </tr>
+    <tr>
+      <th>40720</th>
+      <td>0.707908</td>
+      <td>0.135386</td>
+      <td>0.488943</td>
+      <td>0.201493</td>
+    </tr>
+    <tr>
+      <th>40738</th>
+      <td>0.167175</td>
+      <td>0.613897</td>
+      <td>0.091523</td>
+      <td>-0.202160</td>
+    </tr>
+    <tr>
+      <th>40743</th>
+      <td>-0.059187</td>
+      <td>0.636874</td>
+      <td>0.653760</td>
+      <td>-0.083534</td>
+    </tr>
+    <tr>
+      <th>40750</th>
+      <td>-0.013104</td>
+      <td>-0.160333</td>
+      <td>-0.136124</td>
+      <td>-0.261621</td>
+    </tr>
+    <tr>
+      <th>40778</th>
+      <td>0.585584</td>
+      <td>0.542070</td>
+      <td>0.591311</td>
+      <td>0.660232</td>
+    </tr>
+    <tr>
+      <th>40796</th>
+      <td>-0.050495</td>
+      <td>0.400790</td>
+      <td>0.126170</td>
+      <td>0.577118</td>
+    </tr>
+    <tr>
+      <th>40803</th>
+      <td>-0.214645</td>
+      <td>0.292696</td>
+      <td>0.429955</td>
+      <td>-0.000272</td>
+    </tr>
+    <tr>
+      <th>40855</th>
+      <td>0.002908</td>
+      <td>0.196810</td>
+      <td>0.334331</td>
+      <td>-0.083593</td>
+    </tr>
+    <tr>
+      <th>40861</th>
+      <td>0.351552</td>
+      <td>0.386455</td>
+      <td>0.557694</td>
+      <td>0.199891</td>
+    </tr>
+    <tr>
+      <th>40961</th>
+      <td>0.043115</td>
+      <td>0.397583</td>
+      <td>0.175153</td>
+      <td>0.148561</td>
+    </tr>
+    <tr>
+      <th>40968</th>
+      <td>-0.019515</td>
+      <td>0.167773</td>
+      <td>0.243646</td>
+      <td>0.077841</td>
+    </tr>
+  </tbody>
+</table>
+<p>87 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fc_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span> <span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">55</span><span class="p">),</span> <span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">55</span><span class="p">)]</span>
+<span class="n">fc_edges0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">]</span>
+<span class="n">fc_edges1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">53</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">53</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">dmn</span><span class="p">][</span><span class="n">fc_edges0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">dmn</span><span class="p">][</span><span class="n">fc_edges1</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/analysis/nbs/dmn_t-31_edges0.txt&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="p">[</span><span class="n">dmn</span><span class="p">][</span><span class="n">fc_edges0</span><span class="p">],</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/analysis/nbs/dmn_t-31_edges1.txt&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="p">[</span><span class="n">dmn</span><span class="p">][</span><span class="n">fc_edges1</span><span class="p">],</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  6  54  16]
+ [  6  54  16]
+ [ -8  48  23]
+ [ 65 -12 -19]]
+[[ 47 -50  29]
+ [-31  19 -19]
+ [-31  19 -19]
+ [ 47 -50  29]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+
+cd /Volumes/schnyer/Megan/adm_mem-fc/analysis/nbs
+i=1
+for coord in `cat dmn_t-31_edges0.txt`; do
+    echo $i
+    echo $coord
+    atlasquery -a &#39;Harvard-Oxford Cortical Structural Atlas&#39; -c $coord
+    echo `cat dmn_t-31_edges1.txt | head -$i | tail -1`
+    atlasquery -a &#39;Harvard-Oxford Cortical Structural Atlas&#39; -c `cat dmn_t-31_edges1.txt | head -$i | tail -1`
+    printf &#39;\n\n&#39;
+    ((i=i+1))
+done
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+6,54,16
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;39% Paracingulate Gyrus, 19% Superior Frontal Gyrus, 15% Frontal Pole
+47,-50,29
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;51% Angular Gyrus, 4% Supramarginal Gyrus, posterior division
+
+
+2
+6,54,16
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;39% Paracingulate Gyrus, 19% Superior Frontal Gyrus, 15% Frontal Pole
+-31,19,-19
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;82% Frontal Orbital Cortex
+
+
+3
+-8,48,23
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;34% Paracingulate Gyrus, 20% Superior Frontal Gyrus, 1% Frontal Pole
+-31,19,-19
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;82% Frontal Orbital Cortex
+
+
+4
+65,-12,-19
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;65% Middle Temporal Gyrus, posterior division, 13% Middle Temporal Gyrus, anterior division
+47,-50,29
+&lt;b&gt;Harvard-Oxford Cortical Structural Atlas&lt;/b&gt;&lt;br&gt;51% Angular Gyrus, 4% Supramarginal Gyrus, posterior division
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="markdown.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Markdown Files</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="BCT.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">BCT graph metrics <a id='bct-graph-metrics'></a></p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
