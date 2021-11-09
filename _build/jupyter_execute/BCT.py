@@ -19,7 +19,7 @@ from scipy.io import savemat
 from mne.viz import plot_connectivity_circle
 
 
-# In[ ]:
+# In[2]:
 
 
 data_dir = '/Volumes/psybrain/ADM/derivatives'
@@ -33,7 +33,7 @@ atlas_file='/Volumes/psybrain/ADM/derivatives/nibs/power264-master/power264MNI.n
 atlas_lut='/Volumes/psybrain/ADM/derivatives/nibs/power264_labels.tsv'
 
 
-# In[ ]:
+# In[3]:
 
 
 subjects = np.loadtxt(data_dir + '/nibs/subjects.txt', dtype=str)

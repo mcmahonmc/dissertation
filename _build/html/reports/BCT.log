@@ -17,26 +17,37 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
-import numpy as np
-import os
-import glob
-import matplotlib.pyplot as plt
-import seaborn as sns
-import nibabel as nib  # load the beta maps in python
-from nilearn import plotting  # plot nifti images
-from bct import nbs
-from scipy.io import savemat
-from mne.viz import plot_connectivity_circle
+subjects = np.loadtxt(data_dir + '/nibs/subjects.txt', dtype=str)
+subjects
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/var/folders/ld/qzxjl7f92_5gzy756sfjkjfh0000gn/T/ipykernel_54286/1733440709.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      9[0m [0;32mfrom[0m [0mbct[0m [0;32mimport[0m [0mnbs[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     10[0m [0;32mfrom[0m [0mscipy[0m[0;34m.[0m[0mio[0m [0;32mimport[0m [0msavemat[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 11[0;31m [0;32mfrom[0m [0mmne[0m[0;34m.[0m[0mviz[0m [0;32mimport[0m [0mplot_connectivity_circle[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;31mModuleNotFoundError[0m: No module named 'mne'
-ModuleNotFoundError: No module named 'mne'
+[0;31mOSError[0m                                   Traceback (most recent call last)
+[0;32m/var/folders/ld/qzxjl7f92_5gzy756sfjkjfh0000gn/T/ipykernel_54587/2168185686.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0msubjects[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mloadtxt[0m[0;34m([0m[0mdata_dir[0m [0;34m+[0m [0;34m'/nibs/subjects.txt'[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mstr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0msubjects[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.9/site-packages/numpy/lib/npyio.py[0m in [0;36mloadtxt[0;34m(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, like)[0m
+[1;32m   1065[0m             [0mfname[0m [0;34m=[0m [0mos_fspath[0m[0;34m([0m[0mfname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1066[0m         [0;32mif[0m [0m_is_string_like[0m[0;34m([0m[0mfname[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1067[0;31m             [0mfh[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mlib[0m[0;34m.[0m[0m_datasource[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0mfname[0m[0;34m,[0m [0;34m'rt'[0m[0;34m,[0m [0mencoding[0m[0;34m=[0m[0mencoding[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1068[0m             [0mfencoding[0m [0;34m=[0m [0mgetattr[0m[0;34m([0m[0mfh[0m[0;34m,[0m [0;34m'encoding'[0m[0;34m,[0m [0;34m'latin1'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1069[0m             [0mfh[0m [0;34m=[0m [0miter[0m[0;34m([0m[0mfh[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.9/site-packages/numpy/lib/_datasource.py[0m in [0;36mopen[0;34m(path, mode, destpath, encoding, newline)[0m
+[1;32m    191[0m [0;34m[0m[0m
+[1;32m    192[0m     [0mds[0m [0;34m=[0m [0mDataSource[0m[0;34m([0m[0mdestpath[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 193[0;31m     [0;32mreturn[0m [0mds[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0mpath[0m[0;34m,[0m [0mmode[0m[0;34m,[0m [0mencoding[0m[0;34m=[0m[0mencoding[0m[0;34m,[0m [0mnewline[0m[0;34m=[0m[0mnewline[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    194[0m [0;34m[0m[0m
+[1;32m    195[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.9/site-packages/numpy/lib/_datasource.py[0m in [0;36mopen[0;34m(self, path, mode, encoding, newline)[0m
+[1;32m    531[0m                                       encoding=encoding, newline=newline)
+[1;32m    532[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 533[0;31m             [0;32mraise[0m [0mIOError[0m[0;34m([0m[0;34m"%s not found."[0m [0;34m%[0m [0mpath[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    534[0m [0;34m[0m[0m
+[1;32m    535[0m [0;34m[0m[0m
+
+[0;31mOSError[0m: /Volumes/psybrain/ADM/derivatives/nibs/subjects.txt not found.
+OSError: /Volumes/psybrain/ADM/derivatives/nibs/subjects.txt not found.
 
