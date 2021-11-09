@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Statistical Analysis &#8212; My sample book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -301,7 +300,7 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="statistical-analysis-a-id-stats-a">
+  <div class="tex2jax_ignore mathjax_ignore section" id="statistical-analysis-a-id-stats-a">
 <h1>Statistical Analysis <a id='stats'></a><a class="headerlink" href="#statistical-analysis-a-id-stats-a" title="Permalink to this headline">¶</a></h1>
 <ol class="simple">
 <li><p>Age group differences <br></p>
@@ -337,8 +336,18 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/nilearn/datasets/__init__.py:96: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
-  &quot;Numpy arrays.&quot;, FutureWarning)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/nilearn/datasets/__init__.py:86: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
+  warn(&quot;Fetchers from the nilearn.datasets module will be &quot;
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">ld</span><span class="o">/</span><span class="n">qzxjl7f92_5gzy756sfjkjfh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_54307</span><span class="o">/</span><span class="mf">1733440709.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">nbs</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">savemat</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">mne.viz</span> <span class="kn">import</span> <span class="n">plot_connectivity_circle</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;mne&#39;
 </pre></div>
 </div>
 </div>
@@ -394,19 +403,1540 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">9</span><span class="n">c</span><span class="o">/</span><span class="n">c825cr816cg14jn4bs40my5h0000gr</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_24395</span><span class="o">/</span><span class="mf">4002236818.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">mod</span><span class="p">[[</span><span class="s1">&#39;subject&#39;</span><span class="p">,</span> <span class="s1">&#39;mod_mean&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">),</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pc0</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">),</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">22</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">edges_df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;outer&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;record_id&#39;</span><span class="p">,</span> <span class="s1">&#39;files&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="c1"># df = pd.merge(df, pd.DataFrame({&#39;subject&#39;: subjects, &#39;dmn_fpn_fc&#39;: x[&#39;cue&#39;][dmn][:,fpn].mean(axis=1).mean(axis=0)}).set_index(&#39;subject&#39;), left_index=True, right_index=True, how = &#39;outer&#39;)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;edges_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cc_fa</th>
+      <th>ccbody_fa</th>
+      <th>splenium_fa</th>
+      <th>genu_fa</th>
+      <th>coronaradiata_fa</th>
+      <th>postthalamicradiation_fa</th>
+      <th>suplongfasciculus_fa</th>
+      <th>externalcapsule_fa</th>
+      <th>global_fa</th>
+      <th>IS</th>
+      <th>...</th>
+      <th>pc_dmn_fpn_18</th>
+      <th>pc_dmn_fpn_20</th>
+      <th>pc_dmn_fpn_mean</th>
+      <th>pc_dmn_mean</th>
+      <th>pc_fpn_mean</th>
+      <th>edge_0</th>
+      <th>edge_1</th>
+      <th>edge_2</th>
+      <th>edge_3</th>
+      <th>acc_mean_test_log</th>
+    </tr>
+    <tr>
+      <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30004</th>
+      <td>0.582804</td>
+      <td>0.611310</td>
+      <td>0.566238</td>
+      <td>0.562470</td>
+      <td>0.428863</td>
+      <td>0.576000</td>
+      <td>0.501343</td>
+      <td>0.418372</td>
+      <td>0.265914</td>
+      <td>0.43</td>
+      <td>...</td>
+      <td>0.205587</td>
+      <td>0.218853</td>
+      <td>0.178769</td>
+      <td>0.585333</td>
+      <td>0.755358</td>
+      <td>0.451471</td>
+      <td>0.509899</td>
+      <td>0.257227</td>
+      <td>0.688757</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30008</th>
+      <td>0.559800</td>
+      <td>0.576979</td>
+      <td>0.558679</td>
+      <td>0.534799</td>
+      <td>0.447307</td>
+      <td>0.550600</td>
+      <td>0.531205</td>
+      <td>0.432240</td>
+      <td>0.267034</td>
+      <td>0.48</td>
+      <td>...</td>
+      <td>0.206955</td>
+      <td>0.218107</td>
+      <td>0.194311</td>
+      <td>0.586016</td>
+      <td>0.720762</td>
+      <td>0.425655</td>
+      <td>0.824386</td>
+      <td>1.032888</td>
+      <td>0.311497</td>
+      <td>-0.057158</td>
+    </tr>
+    <tr>
+      <th>30009</th>
+      <td>0.601367</td>
+      <td>0.623060</td>
+      <td>0.591248</td>
+      <td>0.582314</td>
+      <td>0.495590</td>
+      <td>0.572924</td>
+      <td>0.527700</td>
+      <td>0.446727</td>
+      <td>0.280366</td>
+      <td>0.42</td>
+      <td>...</td>
+      <td>0.211377</td>
+      <td>0.222053</td>
+      <td>0.192073</td>
+      <td>0.482981</td>
+      <td>0.814453</td>
+      <td>0.508419</td>
+      <td>0.634550</td>
+      <td>0.578941</td>
+      <td>0.278736</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30012</th>
+      <td>0.587033</td>
+      <td>0.610001</td>
+      <td>0.575670</td>
+      <td>0.567798</td>
+      <td>0.460135</td>
+      <td>0.568308</td>
+      <td>0.544943</td>
+      <td>0.414709</td>
+      <td>0.277720</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.216223</td>
+    </tr>
+    <tr>
+      <th>30015</th>
+      <td>0.586247</td>
+      <td>0.612781</td>
+      <td>0.574272</td>
+      <td>0.562366</td>
+      <td>0.440007</td>
+      <td>0.578826</td>
+      <td>0.520022</td>
+      <td>0.438469</td>
+      <td>0.275071</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.261610</td>
+      <td>0.277564</td>
+      <td>0.237269</td>
+      <td>0.651844</td>
+      <td>0.738657</td>
+      <td>0.264530</td>
+      <td>0.418911</td>
+      <td>0.402329</td>
+      <td>0.096133</td>
+      <td>-0.117783</td>
+    </tr>
+    <tr>
+      <th>30019</th>
+      <td>0.569355</td>
+      <td>0.589439</td>
+      <td>0.574998</td>
+      <td>0.530129</td>
+      <td>0.449558</td>
+      <td>0.563344</td>
+      <td>0.542302</td>
+      <td>0.421112</td>
+      <td>0.265660</td>
+      <td>0.45</td>
+      <td>...</td>
+      <td>0.318376</td>
+      <td>0.331827</td>
+      <td>0.302502</td>
+      <td>0.715599</td>
+      <td>0.830522</td>
+      <td>0.365178</td>
+      <td>0.379545</td>
+      <td>0.701750</td>
+      <td>0.334316</td>
+      <td>-0.057158</td>
+    </tr>
+    <tr>
+      <th>30020</th>
+      <td>0.568377</td>
+      <td>0.592735</td>
+      <td>0.567359</td>
+      <td>0.532109</td>
+      <td>0.449781</td>
+      <td>0.587501</td>
+      <td>0.518815</td>
+      <td>0.390100</td>
+      <td>0.270295</td>
+      <td>0.63</td>
+      <td>...</td>
+      <td>0.234516</td>
+      <td>0.238569</td>
+      <td>0.214476</td>
+      <td>0.690589</td>
+      <td>0.742340</td>
+      <td>1.129555</td>
+      <td>0.482186</td>
+      <td>0.290999</td>
+      <td>1.015736</td>
+      <td>-0.251314</td>
+    </tr>
+    <tr>
+      <th>30023</th>
+      <td>0.543015</td>
+      <td>0.552323</td>
+      <td>0.537372</td>
+      <td>0.536714</td>
+      <td>0.398651</td>
+      <td>0.519216</td>
+      <td>0.523368</td>
+      <td>0.406923</td>
+      <td>0.257512</td>
+      <td>0.45</td>
+      <td>...</td>
+      <td>0.259999</td>
+      <td>0.278324</td>
+      <td>0.243712</td>
+      <td>0.608987</td>
+      <td>0.779721</td>
+      <td>0.193597</td>
+      <td>0.437271</td>
+      <td>0.817750</td>
+      <td>0.375620</td>
+      <td>-0.057158</td>
+    </tr>
+    <tr>
+      <th>30040</th>
+      <td>0.583833</td>
+      <td>0.606491</td>
+      <td>0.575018</td>
+      <td>0.561411</td>
+      <td>0.449930</td>
+      <td>0.572092</td>
+      <td>0.523948</td>
+      <td>0.398419</td>
+      <td>0.268391</td>
+      <td>0.43</td>
+      <td>...</td>
+      <td>0.324340</td>
+      <td>0.327024</td>
+      <td>0.299483</td>
+      <td>0.685136</td>
+      <td>0.810084</td>
+      <td>0.670385</td>
+      <td>0.435313</td>
+      <td>0.287747</td>
+      <td>0.322722</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30057</th>
+      <td>0.580506</td>
+      <td>0.594134</td>
+      <td>0.581252</td>
+      <td>0.558321</td>
+      <td>0.495273</td>
+      <td>0.557340</td>
+      <td>0.527598</td>
+      <td>0.420987</td>
+      <td>0.274390</td>
+      <td>0.60</td>
+      <td>...</td>
+      <td>0.287274</td>
+      <td>0.293760</td>
+      <td>0.264605</td>
+      <td>0.610554</td>
+      <td>0.768614</td>
+      <td>0.072768</td>
+      <td>0.378579</td>
+      <td>0.562540</td>
+      <td>0.173406</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>30064</th>
+      <td>0.532679</td>
+      <td>0.551308</td>
+      <td>0.528586</td>
+      <td>0.509709</td>
+      <td>0.420977</td>
+      <td>0.539927</td>
+      <td>0.503209</td>
+      <td>0.402103</td>
+      <td>0.252842</td>
+      <td>0.34</td>
+      <td>...</td>
+      <td>0.239595</td>
+      <td>0.257184</td>
+      <td>0.224179</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.643378</td>
+      <td>0.987714</td>
+      <td>1.129634</td>
+      <td>0.696325</td>
+      <td>-0.149532</td>
+    </tr>
+    <tr>
+      <th>30066</th>
+      <td>0.570270</td>
+      <td>0.601601</td>
+      <td>0.553028</td>
+      <td>0.546531</td>
+      <td>0.445134</td>
+      <td>0.560414</td>
+      <td>0.551469</td>
+      <td>0.436120</td>
+      <td>0.273592</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.290717</td>
+      <td>0.301039</td>
+      <td>0.268570</td>
+      <td>0.706609</td>
+      <td>0.782234</td>
+      <td>0.453863</td>
+      <td>0.339565</td>
+      <td>0.394364</td>
+      <td>0.708878</td>
+      <td>-0.216223</td>
+    </tr>
+    <tr>
+      <th>30069</th>
+      <td>0.593968</td>
+      <td>0.609111</td>
+      <td>0.583467</td>
+      <td>0.585614</td>
+      <td>0.479513</td>
+      <td>0.579421</td>
+      <td>0.550837</td>
+      <td>0.426976</td>
+      <td>0.282632</td>
+      <td>0.37</td>
+      <td>...</td>
+      <td>0.265093</td>
+      <td>0.276495</td>
+      <td>0.242048</td>
+      <td>0.714717</td>
+      <td>0.741703</td>
+      <td>0.432517</td>
+      <td>0.654720</td>
+      <td>0.895318</td>
+      <td>0.463110</td>
+      <td>-0.251314</td>
+    </tr>
+    <tr>
+      <th>30074</th>
+      <td>0.565319</td>
+      <td>0.589059</td>
+      <td>0.568415</td>
+      <td>0.524091</td>
+      <td>0.447130</td>
+      <td>0.531607</td>
+      <td>0.539614</td>
+      <td>0.429922</td>
+      <td>0.266135</td>
+      <td>0.42</td>
+      <td>...</td>
+      <td>0.254669</td>
+      <td>0.281467</td>
+      <td>0.237898</td>
+      <td>0.588815</td>
+      <td>0.769115</td>
+      <td>0.500848</td>
+      <td>0.583016</td>
+      <td>0.703643</td>
+      <td>0.475013</td>
+      <td>-0.057158</td>
+    </tr>
+    <tr>
+      <th>30085</th>
+      <td>0.545990</td>
+      <td>0.573410</td>
+      <td>0.542863</td>
+      <td>0.508011</td>
+      <td>0.409573</td>
+      <td>0.527572</td>
+      <td>0.501082</td>
+      <td>0.386275</td>
+      <td>0.255397</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.236239</td>
+      <td>0.249632</td>
+      <td>0.219824</td>
+      <td>0.601120</td>
+      <td>0.714416</td>
+      <td>0.634698</td>
+      <td>0.904125</td>
+      <td>0.609425</td>
+      <td>0.827517</td>
+      <td>-0.364643</td>
+    </tr>
+    <tr>
+      <th>30088</th>
+      <td>0.573761</td>
+      <td>0.581497</td>
+      <td>0.575071</td>
+      <td>0.559891</td>
+      <td>0.472852</td>
+      <td>0.549241</td>
+      <td>0.537528</td>
+      <td>0.417717</td>
+      <td>0.274232</td>
+      <td>0.45</td>
+      <td>...</td>
+      <td>0.222175</td>
+      <td>0.225642</td>
+      <td>0.202964</td>
+      <td>0.546176</td>
+      <td>0.688633</td>
+      <td>0.279554</td>
+      <td>0.436021</td>
+      <td>0.743615</td>
+      <td>0.540494</td>
+      <td>-0.364643</td>
+    </tr>
+    <tr>
+      <th>30090</th>
+      <td>0.570879</td>
+      <td>0.604128</td>
+      <td>0.546536</td>
+      <td>0.554380</td>
+      <td>0.420794</td>
+      <td>0.549528</td>
+      <td>0.528858</td>
+      <td>0.423846</td>
+      <td>0.272523</td>
+      <td>0.60</td>
+      <td>...</td>
+      <td>0.208964</td>
+      <td>0.219493</td>
+      <td>0.182108</td>
+      <td>0.615929</td>
+      <td>0.777903</td>
+      <td>0.526438</td>
+      <td>0.500529</td>
+      <td>0.502833</td>
+      <td>0.954626</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>30091</th>
+      <td>0.572795</td>
+      <td>0.599213</td>
+      <td>0.560099</td>
+      <td>0.550131</td>
+      <td>0.484670</td>
+      <td>0.575535</td>
+      <td>0.544414</td>
+      <td>0.416884</td>
+      <td>0.271156</td>
+      <td>0.48</td>
+      <td>...</td>
+      <td>0.364996</td>
+      <td>0.365819</td>
+      <td>0.326117</td>
+      <td>0.672874</td>
+      <td>0.772222</td>
+      <td>0.681715</td>
+      <td>0.427660</td>
+      <td>0.721008</td>
+      <td>0.585630</td>
+      <td>-0.087011</td>
+    </tr>
+    <tr>
+      <th>30095</th>
+      <td>0.533181</td>
+      <td>0.538655</td>
+      <td>0.546363</td>
+      <td>0.505743</td>
+      <td>0.431512</td>
+      <td>0.556636</td>
+      <td>0.508489</td>
+      <td>0.427316</td>
+      <td>0.264120</td>
+      <td>0.47</td>
+      <td>...</td>
+      <td>0.253845</td>
+      <td>0.276657</td>
+      <td>0.228349</td>
+      <td>0.643495</td>
+      <td>0.782373</td>
+      <td>0.387988</td>
+      <td>0.266819</td>
+      <td>0.593919</td>
+      <td>0.537448</td>
+      <td>-0.087011</td>
+    </tr>
+    <tr>
+      <th>30096</th>
+      <td>0.582589</td>
+      <td>0.605038</td>
+      <td>0.571529</td>
+      <td>0.563718</td>
+      <td>0.457261</td>
+      <td>0.552199</td>
+      <td>0.527577</td>
+      <td>0.416759</td>
+      <td>0.266216</td>
+      <td>0.37</td>
+      <td>...</td>
+      <td>0.283944</td>
+      <td>0.297537</td>
+      <td>0.258558</td>
+      <td>0.594267</td>
+      <td>0.659666</td>
+      <td>0.436575</td>
+      <td>0.659086</td>
+      <td>0.629624</td>
+      <td>0.475863</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30105</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.281065</td>
+      <td>0.291438</td>
+      <td>0.259027</td>
+      <td>0.641905</td>
+      <td>0.798025</td>
+      <td>0.410974</td>
+      <td>0.504266</td>
+      <td>0.715116</td>
+      <td>0.619630</td>
+      <td>-0.251314</td>
+    </tr>
+    <tr>
+      <th>30116</th>
+      <td>0.588749</td>
+      <td>0.608477</td>
+      <td>0.583099</td>
+      <td>0.566313</td>
+      <td>0.465100</td>
+      <td>0.554800</td>
+      <td>0.544884</td>
+      <td>0.432822</td>
+      <td>0.277242</td>
+      <td>0.62</td>
+      <td>...</td>
+      <td>0.197964</td>
+      <td>0.221281</td>
+      <td>0.168972</td>
+      <td>0.522488</td>
+      <td>0.770570</td>
+      <td>0.364369</td>
+      <td>0.847291</td>
+      <td>0.788135</td>
+      <td>0.129133</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30118</th>
+      <td>0.578216</td>
+      <td>0.610416</td>
+      <td>0.546867</td>
+      <td>0.573420</td>
+      <td>0.442523</td>
+      <td>0.549631</td>
+      <td>0.538201</td>
+      <td>0.402994</td>
+      <td>0.274111</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.277329</td>
+      <td>0.288303</td>
+      <td>0.248174</td>
+      <td>0.696792</td>
+      <td>0.788283</td>
+      <td>0.049707</td>
+      <td>0.191686</td>
+      <td>0.080932</td>
+      <td>0.495585</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30119</th>
+      <td>0.592311</td>
+      <td>0.616116</td>
+      <td>0.580759</td>
+      <td>0.572048</td>
+      <td>0.464157</td>
+      <td>0.612942</td>
+      <td>0.560061</td>
+      <td>0.429965</td>
+      <td>0.281884</td>
+      <td>0.62</td>
+      <td>...</td>
+      <td>0.246751</td>
+      <td>0.259512</td>
+      <td>0.237366</td>
+      <td>0.660408</td>
+      <td>0.809342</td>
+      <td>0.507050</td>
+      <td>0.760610</td>
+      <td>0.833752</td>
+      <td>0.394296</td>
+      <td>-0.087011</td>
+    </tr>
+    <tr>
+      <th>30128</th>
+      <td>0.575980</td>
+      <td>0.586542</td>
+      <td>0.574861</td>
+      <td>0.561228</td>
+      <td>0.438717</td>
+      <td>0.541368</td>
+      <td>0.509283</td>
+      <td>0.426000</td>
+      <td>0.268763</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.314186</td>
+      <td>0.322733</td>
+      <td>0.298986</td>
+      <td>0.705976</td>
+      <td>0.802885</td>
+      <td>0.253656</td>
+      <td>0.246347</td>
+      <td>0.571028</td>
+      <td>0.498416</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>30181</th>
+      <td>0.592463</td>
+      <td>0.619908</td>
+      <td>0.588167</td>
+      <td>0.556128</td>
+      <td>0.450987</td>
+      <td>0.567034</td>
+      <td>0.507141</td>
+      <td>0.420768</td>
+      <td>0.274056</td>
+      <td>0.44</td>
+      <td>...</td>
+      <td>0.244196</td>
+      <td>0.252811</td>
+      <td>0.217661</td>
+      <td>0.547193</td>
+      <td>0.726577</td>
+      <td>0.350547</td>
+      <td>0.292317</td>
+      <td>0.712633</td>
+      <td>0.543390</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>30217</th>
+      <td>0.594070</td>
+      <td>0.623150</td>
+      <td>0.562756</td>
+      <td>0.594054</td>
+      <td>0.465877</td>
+      <td>0.576189</td>
+      <td>0.552228</td>
+      <td>0.421011</td>
+      <td>0.276932</td>
+      <td>0.37</td>
+      <td>...</td>
+      <td>0.254657</td>
+      <td>0.261715</td>
+      <td>0.232823</td>
+      <td>0.675195</td>
+      <td>0.770638</td>
+      <td>0.690923</td>
+      <td>0.367660</td>
+      <td>0.680516</td>
+      <td>0.330267</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>30227</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.155570</td>
+      <td>0.172438</td>
+      <td>0.132335</td>
+      <td>0.608723</td>
+      <td>0.776327</td>
+      <td>0.562985</td>
+      <td>0.624407</td>
+      <td>0.843373</td>
+      <td>0.874910</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30236</th>
+      <td>0.569896</td>
+      <td>0.579711</td>
+      <td>0.578539</td>
+      <td>0.542259</td>
+      <td>0.426979</td>
+      <td>0.583634</td>
+      <td>0.531568</td>
+      <td>0.434485</td>
+      <td>0.270806</td>
+      <td>0.27</td>
+      <td>...</td>
+      <td>0.280844</td>
+      <td>0.292396</td>
+      <td>0.264616</td>
+      <td>0.688199</td>
+      <td>0.755971</td>
+      <td>0.381564</td>
+      <td>0.340110</td>
+      <td>0.582143</td>
+      <td>0.161840</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>30242</th>
+      <td>0.583541</td>
+      <td>0.623678</td>
+      <td>0.555861</td>
+      <td>0.561175</td>
+      <td>0.424582</td>
+      <td>0.555952</td>
+      <td>0.500783</td>
+      <td>0.422758</td>
+      <td>0.270143</td>
+      <td>0.46</td>
+      <td>...</td>
+      <td>0.285973</td>
+      <td>0.298519</td>
+      <td>0.261298</td>
+      <td>0.780154</td>
+      <td>0.767476</td>
+      <td>0.972904</td>
+      <td>0.788247</td>
+      <td>0.154667</td>
+      <td>0.443424</td>
+      <td>-0.149532</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>40694</th>
+      <td>0.542426</td>
+      <td>0.519584</td>
+      <td>0.628220</td>
+      <td>0.454425</td>
+      <td>0.430756</td>
+      <td>0.567417</td>
+      <td>0.495686</td>
+      <td>0.419788</td>
+      <td>0.260117</td>
+      <td>0.55</td>
+      <td>...</td>
+      <td>0.280596</td>
+      <td>0.288008</td>
+      <td>0.246950</td>
+      <td>0.657175</td>
+      <td>0.688818</td>
+      <td>0.341824</td>
+      <td>0.525042</td>
+      <td>0.416071</td>
+      <td>0.271734</td>
+      <td>-0.364643</td>
+    </tr>
+    <tr>
+      <th>40707</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40720</th>
+      <td>0.550534</td>
+      <td>0.545126</td>
+      <td>0.616687</td>
+      <td>0.463773</td>
+      <td>0.415906</td>
+      <td>0.533466</td>
+      <td>0.493270</td>
+      <td>0.399382</td>
+      <td>0.263811</td>
+      <td>0.45</td>
+      <td>...</td>
+      <td>0.227517</td>
+      <td>0.245714</td>
+      <td>0.207886</td>
+      <td>0.735694</td>
+      <td>0.808221</td>
+      <td>0.707908</td>
+      <td>0.135386</td>
+      <td>0.488943</td>
+      <td>0.201493</td>
+      <td>-0.216223</td>
+    </tr>
+    <tr>
+      <th>40728</th>
+      <td>0.581575</td>
+      <td>0.558214</td>
+      <td>0.671598</td>
+      <td>0.488298</td>
+      <td>0.454601</td>
+      <td>0.570320</td>
+      <td>0.521942</td>
+      <td>0.444489</td>
+      <td>0.289619</td>
+      <td>0.79</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.216223</td>
+    </tr>
+    <tr>
+      <th>40730</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.149532</td>
+    </tr>
+    <tr>
+      <th>40738</th>
+      <td>0.566591</td>
+      <td>0.574310</td>
+      <td>0.642924</td>
+      <td>0.444857</td>
+      <td>0.417414</td>
+      <td>0.527066</td>
+      <td>0.530601</td>
+      <td>0.408437</td>
+      <td>0.262820</td>
+      <td>0.47</td>
+      <td>...</td>
+      <td>0.228381</td>
+      <td>0.241940</td>
+      <td>0.187231</td>
+      <td>0.672665</td>
+      <td>0.765724</td>
+      <td>0.167175</td>
+      <td>0.613897</td>
+      <td>0.091523</td>
+      <td>-0.202160</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40743</th>
+      <td>0.571058</td>
+      <td>0.556156</td>
+      <td>0.650806</td>
+      <td>0.479454</td>
+      <td>0.450972</td>
+      <td>0.564530</td>
+      <td>0.545080</td>
+      <td>0.451900</td>
+      <td>0.272259</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.282909</td>
+      <td>0.301409</td>
+      <td>0.270252</td>
+      <td>0.757636</td>
+      <td>0.784446</td>
+      <td>-0.059187</td>
+      <td>0.636874</td>
+      <td>0.653760</td>
+      <td>-0.083534</td>
+      <td>-0.251314</td>
+    </tr>
+    <tr>
+      <th>40750</th>
+      <td>0.487322</td>
+      <td>0.487218</td>
+      <td>0.537547</td>
+      <td>0.415252</td>
+      <td>0.398339</td>
+      <td>0.457968</td>
+      <td>0.481734</td>
+      <td>0.397017</td>
+      <td>0.242442</td>
+      <td>0.52</td>
+      <td>...</td>
+      <td>0.264967</td>
+      <td>0.271843</td>
+      <td>0.244874</td>
+      <td>0.576612</td>
+      <td>0.780384</td>
+      <td>-0.013104</td>
+      <td>-0.160333</td>
+      <td>-0.136124</td>
+      <td>-0.261621</td>
+      <td>-0.325422</td>
+    </tr>
+    <tr>
+      <th>40758</th>
+      <td>0.502469</td>
+      <td>0.491916</td>
+      <td>0.564998</td>
+      <td>0.428889</td>
+      <td>0.388471</td>
+      <td>0.467791</td>
+      <td>0.488350</td>
+      <td>0.403607</td>
+      <td>0.249628</td>
+      <td>0.66</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.057158</td>
+    </tr>
+    <tr>
+      <th>40767</th>
+      <td>0.590859</td>
+      <td>0.593154</td>
+      <td>0.666698</td>
+      <td>0.478234</td>
+      <td>0.434925</td>
+      <td>0.571625</td>
+      <td>0.544487</td>
+      <td>0.447680</td>
+      <td>0.275381</td>
+      <td>0.68</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.057158</td>
+    </tr>
+    <tr>
+      <th>40768</th>
+      <td>0.564852</td>
+      <td>0.558669</td>
+      <td>0.649664</td>
+      <td>0.452456</td>
+      <td>0.407475</td>
+      <td>0.566554</td>
+      <td>0.499437</td>
+      <td>0.415174</td>
+      <td>0.267156</td>
+      <td>0.49</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.182322</td>
+    </tr>
+    <tr>
+      <th>40769</th>
+      <td>0.549313</td>
+      <td>0.549762</td>
+      <td>0.617301</td>
+      <td>0.450842</td>
+      <td>0.394669</td>
+      <td>0.489207</td>
+      <td>0.527916</td>
+      <td>0.443118</td>
+      <td>0.263186</td>
+      <td>0.39</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>40773</th>
+      <td>0.542321</td>
+      <td>0.544973</td>
+      <td>0.613387</td>
+      <td>0.436010</td>
+      <td>0.397640</td>
+      <td>0.533706</td>
+      <td>0.489687</td>
+      <td>0.401660</td>
+      <td>0.254282</td>
+      <td>0.56</td>
+      <td>...</td>
+      <td>0.295707</td>
+      <td>0.309972</td>
+      <td>0.283692</td>
+      <td>0.710696</td>
+      <td>0.780540</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.087011</td>
+    </tr>
+    <tr>
+      <th>40775</th>
+      <td>0.497430</td>
+      <td>0.474024</td>
+      <td>0.588982</td>
+      <td>0.402022</td>
+      <td>0.361706</td>
+      <td>0.496309</td>
+      <td>0.509498</td>
+      <td>0.409459</td>
+      <td>0.240829</td>
+      <td>0.62</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.325422</td>
+    </tr>
+    <tr>
+      <th>40777</th>
+      <td>0.522048</td>
+      <td>0.507362</td>
+      <td>0.613329</td>
+      <td>0.413522</td>
+      <td>0.376224</td>
+      <td>0.540462</td>
+      <td>0.513318</td>
+      <td>0.378932</td>
+      <td>0.245361</td>
+      <td>0.45</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.325422</td>
+    </tr>
+    <tr>
+      <th>40778</th>
+      <td>0.557264</td>
+      <td>0.561107</td>
+      <td>0.627307</td>
+      <td>0.450578</td>
+      <td>0.423850</td>
+      <td>0.510909</td>
+      <td>0.516481</td>
+      <td>0.424923</td>
+      <td>0.261232</td>
+      <td>0.49</td>
+      <td>...</td>
+      <td>0.280793</td>
+      <td>0.282507</td>
+      <td>0.252601</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.585584</td>
+      <td>0.542070</td>
+      <td>0.591311</td>
+      <td>0.660232</td>
+      <td>-0.216223</td>
+    </tr>
+    <tr>
+      <th>40779</th>
+      <td>0.495938</td>
+      <td>0.475550</td>
+      <td>0.591000</td>
+      <td>0.390807</td>
+      <td>0.350899</td>
+      <td>0.476327</td>
+      <td>0.475258</td>
+      <td>0.376862</td>
+      <td>0.235337</td>
+      <td>0.59</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.405465</td>
+    </tr>
+    <tr>
+      <th>40782</th>
+      <td>0.575679</td>
+      <td>0.566118</td>
+      <td>0.655753</td>
+      <td>0.475331</td>
+      <td>0.444706</td>
+      <td>0.550167</td>
+      <td>0.528455</td>
+      <td>0.448151</td>
+      <td>0.279002</td>
+      <td>0.71</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.087011</td>
+    </tr>
+    <tr>
+      <th>40784</th>
+      <td>0.534342</td>
+      <td>0.519854</td>
+      <td>0.615713</td>
+      <td>0.439762</td>
+      <td>0.388862</td>
+      <td>0.540900</td>
+      <td>0.505365</td>
+      <td>0.417399</td>
+      <td>0.256521</td>
+      <td>0.61</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.149532</td>
+    </tr>
+    <tr>
+      <th>40796</th>
+      <td>0.539433</td>
+      <td>0.523014</td>
+      <td>0.630323</td>
+      <td>0.434156</td>
+      <td>0.386635</td>
+      <td>0.533987</td>
+      <td>0.482966</td>
+      <td>0.379915</td>
+      <td>0.255621</td>
+      <td>0.58</td>
+      <td>...</td>
+      <td>0.250201</td>
+      <td>0.264484</td>
+      <td>0.232062</td>
+      <td>0.745640</td>
+      <td>0.787141</td>
+      <td>-0.050495</td>
+      <td>0.400790</td>
+      <td>0.126170</td>
+      <td>0.577118</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40803</th>
+      <td>0.563705</td>
+      <td>0.558717</td>
+      <td>0.621430</td>
+      <td>0.488414</td>
+      <td>0.444094</td>
+      <td>0.567435</td>
+      <td>0.534277</td>
+      <td>0.449246</td>
+      <td>0.272074</td>
+      <td>0.61</td>
+      <td>...</td>
+      <td>0.333685</td>
+      <td>0.338055</td>
+      <td>0.306147</td>
+      <td>0.674810</td>
+      <td>0.741765</td>
+      <td>-0.214645</td>
+      <td>0.292696</td>
+      <td>0.429955</td>
+      <td>-0.000272</td>
+      <td>-0.287682</td>
+    </tr>
+    <tr>
+      <th>40811</th>
+      <td>0.487569</td>
+      <td>0.465714</td>
+      <td>0.577726</td>
+      <td>0.391767</td>
+      <td>0.353981</td>
+      <td>0.479734</td>
+      <td>0.456857</td>
+      <td>0.366953</td>
+      <td>0.236688</td>
+      <td>0.36</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.364643</td>
+    </tr>
+    <tr>
+      <th>40825</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40855</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.234215</td>
+      <td>0.247611</td>
+      <td>0.216843</td>
+      <td>0.732482</td>
+      <td>0.812311</td>
+      <td>0.002908</td>
+      <td>0.196810</td>
+      <td>0.334331</td>
+      <td>-0.083593</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40859</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.149532</td>
+    </tr>
+    <tr>
+      <th>40861</th>
+      <td>0.488233</td>
+      <td>0.469504</td>
+      <td>0.563969</td>
+      <td>0.408327</td>
+      <td>0.382839</td>
+      <td>0.466866</td>
+      <td>0.451136</td>
+      <td>0.400556</td>
+      <td>0.246927</td>
+      <td>0.33</td>
+      <td>...</td>
+      <td>0.290175</td>
+      <td>0.298779</td>
+      <td>0.274548</td>
+      <td>0.724093</td>
+      <td>0.804171</td>
+      <td>0.351552</td>
+      <td>0.386455</td>
+      <td>0.557694</td>
+      <td>0.199891</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40876</th>
+      <td>0.524456</td>
+      <td>0.515666</td>
+      <td>0.605092</td>
+      <td>0.422108</td>
+      <td>0.376215</td>
+      <td>0.525267</td>
+      <td>0.486128</td>
+      <td>0.389070</td>
+      <td>0.249327</td>
+      <td>0.49</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.149532</td>
+    </tr>
+    <tr>
+      <th>40878</th>
+      <td>0.511366</td>
+      <td>0.499269</td>
+      <td>0.596394</td>
+      <td>0.407821</td>
+      <td>0.369748</td>
+      <td>0.518514</td>
+      <td>0.519333</td>
+      <td>0.424200</td>
+      <td>0.252155</td>
+      <td>0.64</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.251314</td>
+    </tr>
+    <tr>
+      <th>40961</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.043115</td>
+      <td>0.397583</td>
+      <td>0.175153</td>
+      <td>0.148561</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40968</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.019515</td>
+      <td>0.167773</td>
+      <td>0.243646</td>
+      <td>0.077841</td>
+      <td>-0.087011</td>
+    </tr>
+  </tbody>
+</table>
+<p>122 rows × 790 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -481,7 +2011,7 @@
 </table>
 </div></div></div>
 </div>
-<section id="memory-performance-a-id-memory-performance-a">
+<div class="section" id="memory-performance-a-id-memory-performance-a">
 <h2>Memory Performance <a id='memory-performance'></a><a class="headerlink" href="#memory-performance-a-id-memory-performance-a" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -707,8 +2237,8 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <img alt="_images/Statistics_22_1.png" src="_images/Statistics_22_1.png" />
 </div>
 </div>
-</section>
-<section id="network-measures-a-id-network-measures-a">
+</div>
+<div class="section" id="network-measures-a-id-network-measures-a">
 <h2>Network measures <a id='network-measures'></a><a class="headerlink" href="#network-measures-a-id-network-measures-a" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -890,8 +2420,8 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <img alt="_images/Statistics_29_0.png" src="_images/Statistics_29_0.png" />
 </div>
 </div>
-</section>
-<section id="rest-activity-measures-a-id-rest-activity-measures-a">
+</div>
+<div class="section" id="rest-activity-measures-a-id-rest-activity-measures-a">
 <h2>Rest-activity measures <a id='rest-activity-measures'></a><a class="headerlink" href="#rest-activity-measures-a-id-rest-activity-measures-a" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -941,8 +2471,8 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <img alt="_images/Statistics_33_1.png" src="_images/Statistics_33_1.png" />
 </div>
 </div>
-</section>
-<section id="nbs-analysis-a-id-nbs-analysis-a">
+</div>
+<div class="section" id="nbs-analysis-a-id-nbs-analysis-a">
 <h2>NBS analysis <a id='nbs-analysis'></a><a class="headerlink" href="#nbs-analysis-a-id-nbs-analysis-a" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2074,10 +3604,10 @@ Name: rt_c_mean_test, dtype: float64
 </tr>
 </table></div></div>
 </div>
-<section id="rest-activity-rhythms-and-memory-performance-a-id-rar-memory-a">
+<div class="section" id="rest-activity-rhythms-and-memory-performance-a-id-rar-memory-a">
 <h3>Rest-activity rhythms and memory performance <a id='rar-memory'></a><a class="headerlink" href="#rest-activity-rhythms-and-memory-performance-a-id-rar-memory-a" title="Permalink to this headline">¶</a></h3>
-</section>
-<section id="amplitude">
+</div>
+<div class="section" id="amplitude">
 <h3>Amplitude<a class="headerlink" href="#amplitude" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2227,8 +3757,8 @@ Name: rt_c_mean_test, dtype: float64
 <img alt="_images/Statistics_69_0.png" src="_images/Statistics_69_0.png" />
 </div>
 </div>
-</section>
-<section id="relative-amplitude">
+</div>
+<div class="section" id="relative-amplitude">
 <h3>Relative amplitude<a class="headerlink" href="#relative-amplitude" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2258,8 +3788,8 @@ Name: rt_c_mean_test, dtype: float64
 <img alt="_images/Statistics_72_1.png" src="_images/Statistics_72_1.png" />
 </div>
 </div>
-</section>
-<section id="acrophase">
+</div>
+<div class="section" id="acrophase">
 <h3>Acrophase<a class="headerlink" href="#acrophase" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2350,8 +3880,8 @@ Name: rt_c_mean_test, dtype: float64
 </tr>
 </table></div></div>
 </div>
-</section>
-<section id="fc-and-memory-performance-a-id-fc-memory-a">
+</div>
+<div class="section" id="fc-and-memory-performance-a-id-fc-memory-a">
 <h3>FC and memory performance <a id='fc-memory'></a><a class="headerlink" href="#fc-and-memory-performance-a-id-fc-memory-a" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3387,8 +4917,8 @@ Index: []
 </tr>
 </table></div></div>
 </div>
-</section>
-<section id="rest-activity-rhythms-and-fc-a-id-rar-fc-a">
+</div>
+<div class="section" id="rest-activity-rhythms-and-fc-a-id-rar-fc-a">
 <h3>Rest-activity rhythms and FC <a id='rar-fc'></a><a class="headerlink" href="#rest-activity-rhythms-and-fc-a-id-rar-fc-a" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5082,9 +6612,9 @@ Name: actamp, dtype: float64
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
