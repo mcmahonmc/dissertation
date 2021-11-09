@@ -25,7 +25,7 @@ from scipy.io import savemat
 from mne.viz import plot_connectivity_circle
 
 
-# In[2]:
+# In[30]:
 
 
 data_dir = '/Volumes/psybrain/ADM/derivatives'
@@ -39,14 +39,14 @@ atlas_file='/Volumes/psybrain/ADM/derivatives/nibs/power264-master/power264MNI.n
 atlas_lut='/Volumes/psybrain/ADM/derivatives/nibs/power264_labels.tsv'
 
 
-# In[3]:
+# In[31]:
 
 
 subjects = np.loadtxt(data_dir + '/nibs/subjects.txt', dtype=str)
 subjects
 
 
-# In[4]:
+# In[32]:
 
 
 atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
@@ -54,13 +54,13 @@ atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
 atlas.regions.unique()
 
 
-# In[5]:
+# In[33]:
 
 
 atlas.columns
 
 
-# In[6]:
+# In[34]:
 
 
 atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
@@ -70,7 +70,7 @@ fpn = atlas.loc[atlas['regions'].str.contains('Fronto-parietal')].index.tolist()
 dmn_fpn = np.concatenate((dmn, fpn))
 
 
-# In[7]:
+# In[35]:
 
 
 from nilearn import datasets
@@ -202,7 +202,7 @@ coords = np.vstack((power.rois['x'], power.rois['y'], power.rois['z'])).T
 # 
 # ```
 
-# In[8]:
+# In[81]:
 
 
 confounds.drop(['bad_tr', 'ones', 'zeros'], axis=1)
@@ -359,52 +359,114 @@ nibs -c a_comp_cor_00 trans_x trans_y trans_z rot_x rot_y rot_z motion_outlier_0
 
 # ## Correlation results
 
-# In[2]:
+# In[64]:
 
 
-glob.glob('/Volumes/psybrain/ADM/sub-30004/func/*MemMatch1*[0-9]_events.tsv')
+event_files = glob.glob('/Volumes/psybrain/ADM/sub-*/func/*MemMatch1*[0-9]_events.tsv')
+event_files
 
 
-# In[3]:
+# 1 = face-object-match
+# 2 = face-object-mismatch
+# 3 = scene-object-match
+# 4 = scene-object-mismatch
+
+# In[67]:
 
 
-os.listdir(out_dir + "/nibs/nibetaseries/sub-30004/func")
+pd.read_csv(event_files[0], sep = '\t')[:5]
+
+
+# In[68]:
+
+
+pd.read_csv(event_files_og[0], sep = '\t')[:5]
 
 
 # ### Edit remaining events files
 
-# In[5]:
+# In[71]:
 
 
-# pd.read_csv('/Volumes/psybrain/ADM/sub-30008/func/sub-30008_task-MemMatch1_run-01_events.tsv', sep = '\t')
-pd.read_csv('/Volumes/psybrain/ADM/sub-40930/func/sub-40930_task-MemMatch1_run-01_events.tsv', sep = '\t')
+pd.read_csv('/Volumes/schnyer/Aging_DecMem/Scan_Data/Behavioral/30004/Memory/match_run2_30004_2_cs2.txt', sep='\t')
 
 
-# In[1]:
+# In[77]:
 
 
-events = pd.read_csv('/Volumes/psybrain/ADM/sub-40782/func/sub-40782_task-MemMatch3_run-01_events.tsv', sep = '\t')
-# eventsnew = events.copy()
-# eventsnew['trial_type'] = np.where(eventsnew['Trial_type'].str.contains('mismatch'), 'mismatch', 'match')
-# eventsnew['onset'] = events['onset'] + 10.5
-# eventsnew['duration'] = 3.0
-# eventsnew['response_time'] = eventsnew['Resp_time']
-# eventsnew['correct'] = np.where(events['answer'] == events['Response'], 'Y', 'N')
-# eventsnew = eventsnew[['onset', 'duration', 'trial_type', 'correct', 'response_time']]
-# print(eventsnew)
+for subject in subjects:
+    event_files_ = sorted(glob.glob('/Volumes/schnyer/Aging_DecMem/Scan_Data/Behavioral/%s/Memory/match_*%s*.txt' % (subject, subject)))
+    
+    run = 1
+    
+    
+    for event_file in event_files_:
+        print(run)
+        
+        events = pd.read_csv(event_file, sep = '\t')
+        
+        events[' cond'] = events[' cond'].replace([1, 2, 3, 4], ['face-object-match', 'face-object-mismatch',
+                                                              'scene-object-match', 'scene-object-mismatch'])
+        eventsnew = events.copy()
+        eventsnew['trial_type'] = np.where(eventsnew[' cond'].str.contains('mismatch'), 'mismatch', 'match')
+        eventsnew['onset'] = events['onset'] + 10.5
+        eventsnew['duration'] = 3.0
+        eventsnew['response_time'] = eventsnew[' RT']
+        eventsnew['correct'] = np.where(events[' isCorrect'] == 1, 'Y', 'N')
+        eventsnew = eventsnew[['onset', 'duration', 'trial_type', 'correct', 'response_time']]
 
-# eventscue = events.copy()
-# eventscue['trial_type'] = 'cue'
-# eventscue['duration'] = 6.0
-# eventscue['onset'] = events['onset'] + 1.5
-# eventscue['correct'] = np.where(events['answer'] == events['Response'], 'Y', 'N')
-# eventscue['response_time'] = eventscue['Resp_time']
-# eventscue = eventscue[['onset', 'duration', 'trial_type', 'correct', 'response_time']]
-# print(eventscue)
 
-# eventsn = pd.concat((eventscue, eventsnew))
-# eventsn.to_csv('/Volumes/psybrain/ADM/sub-40782/func/sub-40782_task-MemMatch3_run-01_events.tsv')
-events
+        eventscue = events.copy()
+        eventscue['trial_type'] = 'cue'
+        eventscue['duration'] = 6.0
+        eventscue['onset'] = events['onset'] + 1.5
+        eventscue['correct'] = np.where(events[' isCorrect'] == 1, 'Y', 'N')
+        eventscue['response_time'] = eventscue[' RT']
+        eventscue = eventscue[['onset', 'duration', 'trial_type', 'correct', 'response_time']]
+
+        eventsn = pd.concat((eventscue, eventsnew))
+        eventsn.to_csv('/Volumes/psybrain/ADM/sub-%s/func/sub-%s_task-MemMatch_run-%s_events.tsv' % (subject, subject, str(run).zfill(2)), sep='\t', index=None)
+        print(eventsn)
+        print('\n\n\n\n\n')
+        
+        run+=1
+
+
+# In[63]:
+
+
+for subject in subjects:
+    event_files_ = glob.glob('/Volumes/schnyer/Aging_DecMem/Scan_Data/Behavioral/%s/Memory/match_*%s*.txt' % (subject, subject))
+    print(event_files_)
+    events = pd.concat((pd.read_csv(event_files_[0], sep = '\t'), pd.read_csv(event_files_[1], sep = '\t'), pd.read_csv(event_files_[2], sep = '\t')))
+    events[' cond'] = events[' cond'].replace([1, 2, 3, 4], ['face-object-match', 'face-object-mismatch',
+                                                          'scene-object-match', 'scene-object-mismatch'])
+    eventsnew = events.copy()
+    eventsnew['trial_type'] = np.where(eventsnew[' cond'].str.contains('mismatch'), 'mismatch', 'match')
+    eventsnew['onset'] = events['onset'] + 10.5
+    eventsnew['duration'] = 3.0
+    eventsnew['response_time'] = eventsnew[' RT']
+    eventsnew['correct'] = np.where(events[' isCorrect'] == 1, 'Y', 'N')
+    eventsnew = eventsnew[['onset', 'duration', 'trial_type', 'correct', 'response_time']]
+
+    
+    eventscue = events.copy()
+    eventscue['trial_type'] = 'cue'
+    eventscue['duration'] = 6.0
+    eventscue['onset'] = events['onset'] + 1.5
+    eventscue['correct'] = np.where(events[' isCorrect'] == 1, 'Y', 'N')
+    eventscue['response_time'] = eventscue[' RT']
+    eventscue = eventscue[['onset', 'duration', 'trial_type', 'correct', 'response_time']]
+
+    eventsn = pd.concat((eventscue, eventsnew))
+    eventsn.to_csv('/Volumes/psybrain/ADM/sub-%s/func/sub-%s_task-MemMatch_run-concat_events.tsv' % (subject, subject), sep='\t')
+    print(eventsn)
+
+
+# In[57]:
+
+
+cols_
 
 
 # ### Concatenate runs 1, 2, and 3 of MemMatch task in 4th dimension for each subject
@@ -587,18 +649,6 @@ for trial_type in trial_types:
 np.savetxt('/Volumes/psybrain/ADM/derivatives/nibs/fcsubs.txt', fc_subs, fmt='%s')
 np.save('/Volumes/psybrain/ADM/derivatives/nibs/memmatch_fc.npy', x)
 savemat('/Volumes/psybrain/ADM/derivatives/nibs/memmatch_fc.mat', x)
-
-
-# In[466]:
-
-
-x['cue'][dmn][:,dmn].shape
-
-
-# In[ ]:
-
-
-
 
 
 # In[382]:

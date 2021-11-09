@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NBS &#8212; My sample book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -241,7 +240,7 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="nbs-a-id-network-based-statistic-a">
+  <div class="tex2jax_ignore mathjax_ignore section" id="nbs-a-id-network-based-statistic-a">
 <h1>NBS <a id='network-based-statistic'></a><a class="headerlink" href="#nbs-a-id-network-based-statistic-a" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;&#39;&#39;
 Performs the NBS for populations X and Y for a t-statistic threshold of
@@ -291,8 +290,18 @@ seed : hashable, optional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/nilearn/datasets/__init__.py:96: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
-  &quot;Numpy arrays.&quot;, FutureWarning)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/nilearn/datasets/__init__.py:86: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
+  warn(&quot;Fetchers from the nilearn.datasets module will be &quot;
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">ld</span><span class="o">/</span><span class="n">qzxjl7f92_5gzy756sfjkjfh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_54302</span><span class="o">/</span><span class="mf">1733440709.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">nbs</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">savemat</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">mne.viz</span> <span class="kn">import</span> <span class="n">plot_connectivity_circle</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;mne&#39;
 </pre></div>
 </div>
 </div>
@@ -333,7 +342,7 @@ seed : hashable, optional
 </div>
 </div>
 </div>
-<section id="from-matlab-nbs">
+<div class="section" id="from-matlab-nbs">
 <h2>From Matlab NBS<a class="headerlink" href="#from-matlab-nbs" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -391,7 +400,7 @@ seed : hashable, optional
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1080x1080 with 2 Axes&gt;,
- &lt;matplotlib.axes._subplots.PolarAxesSubplot at 0x1232a07d0&gt;)
+ &lt;matplotlib.axes._subplots.PolarAxesSubplot at 0x12dfa0dd0&gt;)
 </pre></div>
 </div>
 <img alt="_images/NBS_9_1.png" src="_images/NBS_9_1.png" />
@@ -418,7 +427,7 @@ seed : hashable, optional
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoProjector at 0x125e626d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoProjector at 0x130dcb650&gt;
 </pre></div>
 </div>
 <img alt="_images/NBS_11_1.png" src="_images/NBS_11_1.png" />
@@ -1009,8 +1018,8 @@ done
 </div>
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

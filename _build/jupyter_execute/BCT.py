@@ -19,7 +19,7 @@ from scipy.io import savemat
 from mne.viz import plot_connectivity_circle
 
 
-# In[2]:
+# In[ ]:
 
 
 data_dir = '/Volumes/psybrain/ADM/derivatives'
@@ -33,14 +33,14 @@ atlas_file='/Volumes/psybrain/ADM/derivatives/nibs/power264-master/power264MNI.n
 atlas_lut='/Volumes/psybrain/ADM/derivatives/nibs/power264_labels.tsv'
 
 
-# In[3]:
+# In[ ]:
 
 
 subjects = np.loadtxt(data_dir + '/nibs/subjects.txt', dtype=str)
 subjects
 
 
-# In[4]:
+# In[ ]:
 
 
 atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
@@ -48,7 +48,7 @@ atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
 atlas.regions.unique()
 
 
-# In[5]:
+# In[ ]:
 
 
 atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
@@ -58,7 +58,7 @@ fpn = atlas.loc[atlas['regions'].str.contains('Fronto-parietal')].index.tolist()
 dmn_fpn = np.concatenate((dmn, fpn))
 
 
-# In[6]:
+# In[ ]:
 
 
 from nilearn import datasets
@@ -67,20 +67,20 @@ power = datasets.fetch_coords_power_2011()
 coords = np.vstack((power.rois['x'], power.rois['y'], power.rois['z'])).T
 
 
-# In[7]:
+# In[ ]:
 
 
 x = np.load('/Volumes/psybrain/ADM/derivatives/nibs/memmatch_fc.npy', allow_pickle=True).flat[0]
 fc_subs = np.loadtxt('/Volumes/psybrain/ADM/derivatives/nibs/fcsubs.txt', dtype=str)
 
 
-# In[8]:
+# In[293]:
 
 
 subjects
 
 
-# In[9]:
+# In[475]:
 
 
 from bct import visualization

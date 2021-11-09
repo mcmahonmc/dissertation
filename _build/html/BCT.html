@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BCT graph metrics &#8212; My sample book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -228,7 +227,7 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="bct-graph-metrics-a-id-bct-graph-metrics-a">
+  <div class="tex2jax_ignore mathjax_ignore section" id="bct-graph-metrics-a-id-bct-graph-metrics-a">
 <h1>BCT graph metrics <a id='bct-graph-metrics'></a><a class="headerlink" href="#bct-graph-metrics-a-id-bct-graph-metrics-a" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -247,8 +246,18 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/nilearn/datasets/__init__.py:96: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
-  &quot;Numpy arrays.&quot;, FutureWarning)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/nilearn/datasets/__init__.py:86: FutureWarning: Fetchers from the nilearn.datasets module will be updated in version 0.9 to return python strings instead of bytes and Pandas dataframes instead of Numpy arrays.
+  warn(&quot;Fetchers from the nilearn.datasets module will be &quot;
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">ld</span><span class="o">/</span><span class="n">qzxjl7f92_5gzy756sfjkjfh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_54286</span><span class="o">/</span><span class="mf">1733440709.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">nbs</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">savemat</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">mne.viz</span> <span class="kn">import</span> <span class="n">plot_connectivity_circle</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;mne&#39;
 </pre></div>
 </div>
 </div>
@@ -275,39 +284,12 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;30004&#39;, &#39;30008&#39;, &#39;30009&#39;, &#39;30015&#39;, &#39;30019&#39;, &#39;30020&#39;, &#39;30023&#39;,
-       &#39;30040&#39;, &#39;30057&#39;, &#39;30064&#39;, &#39;30066&#39;, &#39;30069&#39;, &#39;30074&#39;, &#39;30085&#39;,
-       &#39;30088&#39;, &#39;30090&#39;, &#39;30091&#39;, &#39;30095&#39;, &#39;30096&#39;, &#39;30105&#39;, &#39;30116&#39;,
-       &#39;30118&#39;, &#39;30119&#39;, &#39;30128&#39;, &#39;30181&#39;, &#39;30217&#39;, &#39;30227&#39;, &#39;30236&#39;,
-       &#39;30242&#39;, &#39;30255&#39;, &#39;30274&#39;, &#39;30283&#39;, &#39;30295&#39;, &#39;30330&#39;, &#39;30346&#39;,
-       &#39;30376&#39;, &#39;30395&#39;, &#39;30400&#39;, &#39;30403&#39;, &#39;30412&#39;, &#39;30426&#39;, &#39;30432&#39;,
-       &#39;30466&#39;, &#39;30469&#39;, &#39;30476&#39;, &#39;30478&#39;, &#39;30568&#39;, &#39;30570&#39;, &#39;30581&#39;,
-       &#39;30584&#39;, &#39;30588&#39;, &#39;40160&#39;, &#39;40170&#39;, &#39;40175&#39;, &#39;40288&#39;, &#39;40351&#39;,
-       &#39;40490&#39;, &#39;40512&#39;, &#39;40519&#39;, &#39;40520&#39;, &#39;40524&#39;, &#39;40547&#39;, &#39;40564&#39;,
-       &#39;40615&#39;, &#39;40619&#39;, &#39;40624&#39;, &#39;40638&#39;, &#39;40649&#39;, &#39;40650&#39;, &#39;40656&#39;,
-       &#39;40658&#39;, &#39;40664&#39;, &#39;40665&#39;, &#39;40668&#39;, &#39;40672&#39;, &#39;40685&#39;, &#39;40694&#39;,
-       &#39;40720&#39;, &#39;40738&#39;, &#39;40743&#39;, &#39;40750&#39;, &#39;40773&#39;, &#39;40778&#39;, &#39;40796&#39;,
-       &#39;40803&#39;, &#39;40855&#39;, &#39;40861&#39;, &#39;40930&#39;, &#39;40961&#39;, &#39;40968&#39;], dtype=&#39;&lt;U5&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atlas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">atlas_lut</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 
 <span class="n">atlas</span><span class="o">.</span><span class="n">regions</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Uncertain&#39;, &#39;Sensory/somatomotor Hand&#39;,
-       &#39;Sensory/somatomotor Mouth&#39;, &#39;Cingulo-opercular Task Control&#39;,
-       &#39;Auditory&#39;, &#39;Default mode&#39;, &#39;Memory retrieval?&#39;,
-       &#39;Ventral attention&#39;, &#39;Visual&#39;, &#39;Fronto-parietal Task Control&#39;,
-       &#39;Salience&#39;, &#39;Subcortical&#39;, &#39;Cerebellar&#39;, &#39;Dorsal attention&#39;],
-      dtype=object)
 </pre></div>
 </div>
 </div>
@@ -374,14 +356,50 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">9</span><span class="n">c</span><span class="o">/</span><span class="n">c825cr816cg14jn4bs40my5h0000gr</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_24320</span><span class="o">/</span><span class="mf">3497309559.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">bct</span> <span class="kn">import</span> <span class="n">visualization</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">visualization</span><span class="o">.</span><span class="n">reorderMAT</span><span class="p">(</span><span class="n">nbs_edge_z</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">H</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;nbs_edge_z&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[ 0.        ,  0.12128273,  0.12128273,  0.19842009,  0.05218095,
+          0.02865889,  0.12128273,  0.19842009,  0.        , -0.19716169,
+         -0.19716169, -0.10733827,  0.16009695,  0.        ],
+        [ 0.57895376,  0.        ,  0.57895376,  0.0635338 ,  0.34021789,
+          0.04968686,  0.57895376,  0.0635338 ,  0.16009695,  0.17945112,
+          0.17945112,  0.05033267,  0.        ,  0.16009695],
+        [ 0.16506049,  0.16506049,  0.        ,  0.19811561,  0.37756139,
+          0.53139219,  0.16506049,  0.19811561, -0.10733827,  0.20148167,
+          0.20148167,  0.        ,  0.05033267, -0.10733827],
+        [ 0.21300719,  0.21300719,  0.21300719,  0.        ,  0.35655462,
+          0.47565916,  0.21300719,  0.36651432, -0.19716169,  0.        ,
+          0.        ,  0.20148167,  0.17945112, -0.19716169],
+        [ 0.21300719,  0.21300719,  0.21300719,  0.36651432,  0.        ,
+          0.47565916,  0.21300719,  0.36651432, -0.19716169,  0.        ,
+          0.        ,  0.20148167,  0.17945112, -0.19716169],
+        [ 0.12128273,  0.12128273,  0.12128273,  0.19842009,  0.05218095,
+          0.        ,  0.12128273,  0.19842009,  0.        , -0.19716169,
+         -0.19716169, -0.10733827,  0.16009695,  0.        ],
+        [ 0.09065242,  0.09065242,  0.09065242,  0.        ,  0.23145057,
+          0.43675663,  0.        ,  0.        ,  0.19842009,  0.36651432,
+          0.36651432,  0.19811561,  0.0635338 ,  0.19842009],
+        [ 0.        ,  0.        ,  0.        ,  0.09065242,  0.18971351,
+          0.35558279,  0.        ,  0.        ,  0.12128273,  0.21300719,
+          0.21300719,  0.16506049,  0.57895376,  0.12128273],
+        [ 0.35558279,  0.35558279,  0.35558279,  0.43675663,  0.36938652,
+          0.        ,  0.35558279,  0.43675663,  0.        ,  0.47565916,
+          0.47565916,  0.53139219,  0.04968686,  0.02865889],
+        [ 0.18971351,  0.18971351,  0.18971351,  0.23145057,  0.        ,
+          0.36938652,  0.18971351,  0.23145057,  0.05218095,  0.        ,
+          0.35655462,  0.37756139,  0.34021789,  0.05218095],
+        [ 0.09065242,  0.09065242,  0.09065242,  0.        ,  0.23145057,
+          0.43675663,  0.09065242,  0.        ,  0.19842009,  0.36651432,
+          0.        ,  0.19811561,  0.0635338 ,  0.19842009],
+        [ 0.        ,  0.        ,  0.        ,  0.09065242,  0.18971351,
+          0.35558279,  0.        ,  0.09065242,  0.12128273,  0.21300719,
+          0.21300719,  0.        ,  0.57895376,  0.12128273],
+        [ 0.        ,  0.        ,  0.        ,  0.09065242,  0.18971351,
+          0.35558279,  0.        ,  0.09065242,  0.12128273,  0.21300719,
+          0.21300719,  0.16506049,  0.        ,  0.12128273],
+        [ 0.        ,  0.        ,  0.        ,  0.09065242,  0.18971351,
+          0.35558279,  0.        ,  0.09065242,  0.12128273,  0.21300719,
+          0.21300719,  0.16506049,  0.57895376,  0.        ]]),
+ array([ 2,  4,  3,  8,  7,  1,  6, 13,  9,  0,  5, 11, 12, 10]),
+ 0.570296469959597)
 </pre></div>
 </div>
 </div>
@@ -3012,7 +3030,7 @@ subject
 </div>
 </div>
 </div>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
