@@ -51,12 +51,12 @@ df
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/ld/qzxjl7f92_5gzy756sfjkjfh0000gn/T/ipykernel_54614/4002236818.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;32mimport[0m [0mre[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0mmod[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m'/Volumes/psybrain/ADM/derivatives/nibs/results/modularity.csv'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0mmod[0m[0;34m[[0m[0;34m'subject'[0m[0;34m][0m [0;34m=[0m [0mmod[0m[0;34m[[0m[0;34m'subject'[0m[0;34m][0m[0;34m.[0m[0mastype[0m[0;34m([0m[0mstr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;34m[0m[0m
-[1;32m      5[0m [0mpc0[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m'/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/var/folders/ld/qzxjl7f92_5gzy756sfjkjfh0000gn/T/ipykernel_60838/4002236818.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m [0mpc0[0m[0;34m[[0m[0;34m'subject'[0m[0;34m][0m [0;34m=[0m [0mpc0[0m[0;34m[[0m[0;34m'subject'[0m[0;34m][0m[0;34m.[0m[0mastype[0m[0;34m([0m[0mstr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;34m[0m[0m
+[0;32m----> 8[0;31m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m'/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      9[0m [0mdf[0m[0;34m[[0m[0;34m'subject'[0m[0;34m][0m [0;34m=[0m [0mdf[0m[0;34m[[0m[0;34m'record_id'[0m[0;34m][0m[0;34m.[0m[0mastype[0m[0;34m([0m[0mstr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     10[0m [0mdf[0m[0;34m.[0m[0mset_index[0m[0;34m([0m[0;34m'subject'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/usr/local/lib/python3.9/site-packages/pandas/util/_decorators.py[0m in [0;36mwrapper[0;34m(*args, **kwargs)[0m
 [1;32m    309[0m                     [0mstacklevel[0m[0;34m=[0m[0mstacklevel[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
@@ -114,6 +114,6 @@ df
 [0m[1;32m    702[0m                 [0mhandle[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 [1;32m    703[0m                 [0mioargs[0m[0;34m.[0m[0mmode[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/Volumes/psybrain/ADM/derivatives/nibs/results/modularity.csv'
-FileNotFoundError: [Errno 2] No such file or directory: '/Volumes/psybrain/ADM/derivatives/nibs/results/modularity.csv'
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv'
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv'
 
