@@ -53,13 +53,18 @@ mod['subject'] = mod['subject'].astype(str)
 pc0 = pd.read_csv('/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv')
 pc0['subject'] = pc0['subject'].astype(str)
 
-df = pd.read_csv('/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv')
+df = pd.read_csv('/Users/mcmahonmc/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv')
 df['subject'] = df['record_id'].astype(str)
 df.set_index('subject')
 
-mem = pd.read_csv('/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/mri-behavioral/mem_results_06-2021.csv')
+mem = pd.read_csv('/Users/mcmahonmc/Box/CogNeuroLab/Aging Decision Making R01/data/mri-behavioral/mem_results_06-2021.csv')
 mem['subject'] = mem['record_id'].astype(str)
 mem.set_index('subject')
+
+edges_df = pd.read_csv('/Volumes/schnyer/Megan/adm_mem-fc/analysis/edges_df.csv')
+edges_df.columns = edges_df.columns.str.replace('Unnamed: 0', 'subject')
+edges_df['subject'] = edges_df['subject'].astype(str)
+edges_df = edges_df.set_index('subject')
 
 # edges['subject'] = edges.index.astype(str)
 # edges.reset_index().set_index('subject')
@@ -70,23 +75,35 @@ df = pd.merge(df, pc0.set_index('subject'), left_index=True, right_index=True, h
 df = pd.merge(df, edges_df, left_index=True, right_index=True, how = 'outer').drop(['Unnamed: 0', 'record_id', 'files'], axis=1)
 # df = pd.merge(df, pd.DataFrame({'subject': subjects, 'dmn_fpn_fc': x['cue'][dmn][:,fpn].mean(axis=1).mean(axis=0)}).set_index('subject'), left_index=True, right_index=True, how = 'outer')
 df = df.reset_index().dropna(how='all')
-df['Group'] = np.where(df['index'].astype(int) > 40000, "Older Adults", "Young Adults")
-df = df.set_index('index')
+
+
+df['Group'] = np.where(df['subject'].astype(int) > 40000, "Older Adults", "Young Adults")
+df = df.set_index('subject')
 df.columns = [re.sub("[ ,-]", "_", re.sub("[\.,`,\$]", "_", str(c))) for c in df.columns]
 df = df.drop('40930')
 df['acc_mean_test_log'] = np.log(df['acc_mean_test'])
+df = df.loc[:, ~df.columns.str.endswith('_fa')]
+df = df.drop(['cc_vol'], axis=1)
+
+df.to_csv('/Volumes/schnyer/Megan/adm_mem-fc/data/dataset_2021-11-10.csv')
 df
 
 
-# In[243]:
+# In[4]:
 
 
-df.groupby('Group')['age'].describe()
+df.groupby(['Group', 'sex'])['age'].describe()
+
+
+# In[5]:
+
+
+df.dropna(subset=['mod_mean', 'actamp']).groupby('Group')['age'].describe()
 
 
 # ## Memory Performance <a id='memory-performance'></a>
 
-# In[151]:
+# In[6]:
 
 
 sns.distplot(df[df['Group'] == 'Young Adults']['acc_mean_learning'].dropna(), label = 'YA', color = 'red')
@@ -97,7 +114,7 @@ plt.xlabel('Accuracy')
 plt.savefig(results_dir + 'hist_accuracy-learning.png', dpi=300)
 
 
-# In[150]:
+# In[7]:
 
 
 sns.distplot(df[df['Group'] == 'Young Adults']['acc_mean_test'].dropna(), label = 'YA', color = 'red')
@@ -108,7 +125,7 @@ plt.xlabel('Accuracy')
 plt.savefig(results_dir + 'hist_accuracy-test.png', dpi=300)
 
 
-# In[511]:
+# In[8]:
 
 
 sns.distplot(df[df['Group'] == 'Older Adults']['acc_mean_test'].dropna(), label = 'OA')
@@ -122,7 +139,7 @@ plt.xlabel('Accuracy')
 plt.savefig(results_dir + 'hist_accuracy-test-log.png', dpi=300)
 
 
-# In[152]:
+# In[9]:
 
 
 sns.distplot(df[df['Group'] == 'Young Adults']['rt_c_mean_test'].dropna(), label = 'YA', color = 'red')
@@ -133,7 +150,7 @@ plt.xlabel('Response Time (ms)')
 plt.savefig(results_dir + 'hist_rtc-test.png', dpi=300)
 
 
-# In[153]:
+# In[10]:
 
 
 sns.lmplot(data=df, x="rt_c_mean_test", y="acc_mean_test", hue="Group", palette = 'Set1')
@@ -142,7 +159,7 @@ plt.xlabel('Response Time (ms)'); plt.ylabel('Accuracy')
 plt.savefig(results_dir + 'scatter_rtc-accuracy.png', dpi=300)
 
 
-# In[502]:
+# In[11]:
 
 
 sns.jointplot(data=df[df['Group'] == "Young Adults"], x="age", y="acc_mean_test_log", color='red')
@@ -151,7 +168,7 @@ plt.xlabel('Age'); plt.ylabel('Accuracy')
 plt.savefig(results_dir + 'scatter_ya-age-accuracy.png', dpi=300)
 
 
-# In[503]:
+# In[12]:
 
 
 sns.jointplot(data=df[df['Group'] == "Older Adults"], x="age", y="acc_mean_test", kind='reg')
@@ -160,7 +177,7 @@ plt.xlabel('Age'); plt.ylabel('Accuracy')
 plt.savefig(results_dir + 'scatter_oa-age-accuracy.png', dpi=300)
 
 
-# In[504]:
+# In[13]:
 
 
 sns.jointplot(data=df[df['Group'] == "Older Adults"], x="age", y="rt_c_mean_test", kind='reg')
@@ -171,7 +188,7 @@ plt.savefig(results_dir + 'scatter_oa-age-rt.png', dpi=300)
 
 # [RT Transformations resource](https://lindeloev.github.io/shiny-rt/)
 
-# In[245]:
+# In[14]:
 
 
 df['rt_c_mean_log_test'] = np.log(df['rt_c_mean_test'])
@@ -182,7 +199,7 @@ plt.title('Log Mean Response Time')
 plt.savefig(results_dir + 'hist_rtc-log.png', dpi=300)
 
 
-# In[568]:
+# In[15]:
 
 
 zscore = lambda x: (x - x.mean()) / x.std()
@@ -190,7 +207,7 @@ zscore = lambda x: (x - x.mean()) / x.std()
 df['rt_c_mean_test_z'] = df.groupby(['Group']).rt_c_mean_test.transform(zscore)
 
 
-# In[569]:
+# In[16]:
 
 
 sns.distplot(df[df['Group'] == 'Older Adults']['rt_c_mean_test_z'].dropna(), label = 'OA z', color = 'darkblue')
@@ -202,7 +219,7 @@ plt.xlabel('Response Time')
 plt.savefig(results_dir + 'hist_rtc-test-z.png', dpi=300)
 
 
-# In[66]:
+# In[17]:
 
 
 df0 = df.copy()
@@ -210,13 +227,13 @@ df = df[(df['acc_mean_test'] > 0.56)  & df['acc_mean_learning'] > 0.33]
 print('dropped %.f subjects' % (len(df0) - len(df)))
 
 
-# In[49]:
+# In[18]:
 
 
 len(df)
 
 
-# In[159]:
+# In[19]:
 
 
 sns.distplot(df[df['Group'] == 'Young Adults']['acc_mean_learning'].dropna(), label = 'YA', color = 'red')
@@ -227,7 +244,7 @@ plt.xlabel('Accuracy')
 plt.savefig(results_dir + 'hist_accuracy-learning.png', dpi=300)
 
 
-# In[516]:
+# In[20]:
 
 
 df['acc_mean_learning_log'] = np.log(df['acc_mean_learning'])
@@ -244,7 +261,7 @@ plt.savefig(results_dir + 'hist_accuracy-learning-log.png', dpi=300)
 
 # ## Network measures <a id='network-measures'></a>
 
-# In[561]:
+# In[21]:
 
 
 fig, axes = plt.subplots(2, 3, figsize=(15, 5), sharey=True)
