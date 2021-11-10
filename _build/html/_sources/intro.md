@@ -1,16 +1,11 @@
-# Welcome to your Jupyter Book
+# Rest-Activity Rhythms and Retrieval-Related Functional Connectivity
 
-This is a small sample book to give you a feel for how book content is
-structured.
+There is substantial research and clinical interest in identifying factors that may protect against age-related cognitive decline, particularly in structures and networks that are prone to age-related changes. Given the remarkable parallelism of age-related changes in cognition and sleep, these provide one potential protective factor of significant interest. In humans, it is well known that acute or chronic lack of sleep is associated with impaired attention and long-term memory, however, the way in which more subtle individual differences in patterns of sleep and activity may relate to neurocognitive changes in aging is not yet well understood. <br>
 
-:::{note}
-Here is a note!
-:::
+A prior study conducted by Sherman et al. (2015) used both actigraphy and fMRI to investigate whether greater rest-activity rhythm consistency was associated with patterns of neural activity supporting better episodic memory performance in healthy older adults (Sherman et al., 2015). The researchers found that hippocampal activity mediated the relationship between rhythm robustness, or how well an individual’s rhythm conforms to a modified cosinor model (F-statistic), and associative memory performance. This is consistent with a number of other studies, which echo the importance of rest-activity rhythm stability for episodic memory in older adults (Kyle et al., 2017; Oosterman et al., 2009; Tranah et al., 2011; Walsh et al., 2014). However, these other studies lack accompanying task-related brain imaging data, making it difficult to understand what neural changes may underlie this relationship. Additionally, there are few existing imaging studies of rest-activity rhythms and neurocognitive health include both older and young adult groups (McMahon et al., 2021), which limits our current knowledge of how relationships among circadian rhythms, cognition, and the brain may manifest across different periods of adult development. The proposed research aims to address these two primary limitations in the existing literature. <br>
 
-And here is a code block:
+Task-based FC studies have shown that successful retrieval depends on a network of interactions between the medial temporal lobe structures, including medial prefrontal cortex, posterior cingulate cortex, angular gyrus, and medial temporal lobes, as well as their more widespread connections with distributed cortical areas (for review, see Rugg & Vilberg, 2013). Episodic retrieval studies examining large-scale network interactions have reported complementary findings, such that successful retrieval appears to be supported by increased connectivity between the default mode and frontoparietal networks (Westphal et al., 2017). The increased integration of these networks may facilitate communication between frontoparietal goal-directed control and default mode self-referential processing, both of which are key components for successful episodic retrieval. Few studies have investigated network interactions during episodic retrieval with respect to aging. These studies have found that relative to young adults, older adults show greater frontoparietal network integration with other networks during retrieval (Deng et al., 2021; King et al., 2018; McCormick et al., 2010), and decreased default mode network integration (Deng et al., 2021). Further, there is evidence that increased frontoparietal network integration in older adults is associated with greater recollection performance (Deng et al., 2021; King et al., 2018). Altogether, these findings suggest an age-related shifts toward greater demand for neural resources recruited during episodic memory. <br>
 
-```
-e = mc^2
-```
+Following from Sherman et al. (2015), we will: (1) Investigate how age-related differences in functional integration during retrieval may mediate the relationship between rest-activity rhythm characteristics and memory performance; (2) Based on our prior work (McMahon et al., 2021) demonstrating how rhythm stability is important for neurocognitive health among not only older adults, but young adults as well, we will analyze this relationship in both age group cohorts to test whether the mediation model is moderated by age group. <br>
 
-Check out the content pages bundled with this sample book to see more.
+
