@@ -366,13 +366,18 @@
 <span class="n">pc0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/psybrain/ADM/derivatives/nibs/results/participation_coefficient.csv&#39;</span><span class="p">)</span>
 <span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/mcmahonmc/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;record_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">)</span>
 
-<span class="n">mem</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/mri-behavioral/mem_results_06-2021.csv&#39;</span><span class="p">)</span>
+<span class="n">mem</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/mcmahonmc/Box/CogNeuroLab/Aging Decision Making R01/data/mri-behavioral/mem_results_06-2021.csv&#39;</span><span class="p">)</span>
 <span class="n">mem</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mem</span><span class="p">[</span><span class="s1">&#39;record_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">mem</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">)</span>
+
+<span class="n">edges_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/analysis/edges_df.csv&#39;</span><span class="p">)</span>
+<span class="n">edges_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">edges_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">)</span>
+<span class="n">edges_df</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_df</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">edges_df</span> <span class="o">=</span> <span class="n">edges_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">)</span>
 
 <span class="c1"># edges[&#39;subject&#39;] = edges.index.astype(str)</span>
 <span class="c1"># edges.reset_index().set_index(&#39;subject&#39;)</span>
@@ -383,89 +388,463 @@
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">edges_df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;outer&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;record_id&#39;</span><span class="p">,</span> <span class="s1">&#39;files&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># df = pd.merge(df, pd.DataFrame({&#39;subject&#39;: subjects, &#39;dmn_fpn_fc&#39;: x[&#39;cue&#39;][dmn][:,fpn].mean(axis=1).mean(axis=0)}).set_index(&#39;subject&#39;), left_index=True, right_index=True, how = &#39;outer&#39;)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">40000</span><span class="p">,</span> <span class="s2">&quot;Older Adults&quot;</span><span class="p">,</span> <span class="s2">&quot;Young Adults&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">40000</span><span class="p">,</span> <span class="s2">&quot;Older Adults&quot;</span><span class="p">,</span> <span class="s2">&quot;Young Adults&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[ ,-]&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[\.,`,\$]&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;40930&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;acc_mean_test_log&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;acc_mean_test&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_fa&#39;</span><span class="p">)]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;cc_vol&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/Volumes/schnyer/Megan/adm_mem-fc/data/dataset_2021-11-10.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">ld</span><span class="o">/</span><span class="n">qzxjl7f92_5gzy756sfjkjfh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_60838</span><span class="o">/</span><span class="mf">4002236818.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pc0</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;record_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">)</span>
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span> 
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> 
-<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span> 
-<span class="g g-Whitespace">    </span><span class="mi">588</span> 
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span> 
-<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span> 
-<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">809</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">810</span> 
-<span class="ne">--&gt; </span><span class="mi">811</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">812</span> 
-<span class="g g-Whitespace">    </span><span class="mi">813</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1040</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1041</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1042</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/io/parsers/c_parser_wrapper.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> 
-<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="c1"># open handles</span>
-<span class="ne">---&gt; </span><span class="mi">51</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> 
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/io/parsers/base_parser.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="n">Let</span> <span class="n">the</span> <span class="n">readers</span> <span class="nb">open</span> <span class="n">IOHandles</span> <span class="n">after</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span> <span class="n">their</span> <span class="n">potential</span> <span class="n">raises</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">222</span><span class="s2">         self.handles = get_handle(</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span><span class="s2">             src,</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">             &quot;r&quot;,</span>
-
-<span class="nn">/usr/local/lib/python3.9/site-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span><span class="s2">         if ioargs.encoding and &quot;b&quot; not in ioargs.mode:</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span><span class="s2">             # Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">701</span><span class="s2">             handle = open(</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2">                 handle,</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">                 ioargs.mode,</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/PSYC-mcm5324/Box/CogNeuroLab/Aging Decision Making R01/data/dataset_2020-10-10.csv&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/ld/qzxjl7f92_5gzy756sfjkjfh0000gn/T/ipykernel_62451/2438831985.py:24: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with &#39;numeric_only=None&#39;) is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
+  mod[&#39;mod_mean&#39;] = mod.mean(axis=1)
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IS</th>
+      <th>IV</th>
+      <th>RA</th>
+      <th>L5</th>
+      <th>L5_starttime</th>
+      <th>M10</th>
+      <th>M10_starttime</th>
+      <th>duration_mean_active</th>
+      <th>duration_mean_daily</th>
+      <th>duration_mean_rest</th>
+      <th>...</th>
+      <th>pc_dmn_fpn_18</th>
+      <th>pc_dmn_fpn_20</th>
+      <th>pc_dmn_fpn_mean</th>
+      <th>pc_dmn_mean</th>
+      <th>pc_fpn_mean</th>
+      <th>edge_0</th>
+      <th>edge_1</th>
+      <th>edge_2</th>
+      <th>edge_3</th>
+      <th>acc_mean_test_log</th>
+    </tr>
+    <tr>
+      <th>subject</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30004</th>
+      <td>0.43</td>
+      <td>0.57</td>
+      <td>0.85</td>
+      <td>12.61</td>
+      <td>19:54:30</td>
+      <td>156.15</td>
+      <td>5:17:30</td>
+      <td>937.071429</td>
+      <td>1263.428571</td>
+      <td>436.428571</td>
+      <td>...</td>
+      <td>0.205587</td>
+      <td>0.218853</td>
+      <td>0.178769</td>
+      <td>0.585333</td>
+      <td>0.755358</td>
+      <td>0.451471</td>
+      <td>0.509899</td>
+      <td>0.257227</td>
+      <td>0.688757</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30008</th>
+      <td>0.48</td>
+      <td>0.68</td>
+      <td>0.90</td>
+      <td>7.56</td>
+      <td>20:26:30</td>
+      <td>147.40</td>
+      <td>2:00:30</td>
+      <td>872.928571</td>
+      <td>1251.214286</td>
+      <td>501.857143</td>
+      <td>...</td>
+      <td>0.206955</td>
+      <td>0.218107</td>
+      <td>0.194311</td>
+      <td>0.586016</td>
+      <td>0.720762</td>
+      <td>0.425655</td>
+      <td>0.824386</td>
+      <td>1.032888</td>
+      <td>0.311497</td>
+      <td>-0.057158</td>
+    </tr>
+    <tr>
+      <th>30009</th>
+      <td>0.42</td>
+      <td>1.31</td>
+      <td>0.92</td>
+      <td>11.58</td>
+      <td>19:34:30</td>
+      <td>286.35</td>
+      <td>6:21:30</td>
+      <td>981.214286</td>
+      <td>1317.000000</td>
+      <td>455.142857</td>
+      <td>...</td>
+      <td>0.211377</td>
+      <td>0.222053</td>
+      <td>0.192073</td>
+      <td>0.482981</td>
+      <td>0.814453</td>
+      <td>0.508419</td>
+      <td>0.634550</td>
+      <td>0.578941</td>
+      <td>0.278736</td>
+      <td>-0.028171</td>
+    </tr>
+    <tr>
+      <th>30012</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>914.857143</td>
+      <td>1288.571429</td>
+      <td>465.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.216223</td>
+    </tr>
+    <tr>
+      <th>30015</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>899.857143</td>
+      <td>1438.714286</td>
+      <td>452.000000</td>
+      <td>...</td>
+      <td>0.261610</td>
+      <td>0.277564</td>
+      <td>0.237269</td>
+      <td>0.651844</td>
+      <td>0.738657</td>
+      <td>0.264530</td>
+      <td>0.418911</td>
+      <td>0.402329</td>
+      <td>0.096133</td>
+      <td>-0.117783</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>40861</th>
+      <td>0.33</td>
+      <td>1.33</td>
+      <td>0.59</td>
+      <td>26.04</td>
+      <td>15:42:30</td>
+      <td>102.37</td>
+      <td>0:49:30</td>
+      <td>809.000000</td>
+      <td>1439.928571</td>
+      <td>569.428571</td>
+      <td>...</td>
+      <td>0.290175</td>
+      <td>0.298779</td>
+      <td>0.274548</td>
+      <td>0.724093</td>
+      <td>0.804171</td>
+      <td>0.351552</td>
+      <td>0.386455</td>
+      <td>0.557694</td>
+      <td>0.199891</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40876</th>
+      <td>0.49</td>
+      <td>0.93</td>
+      <td>0.83</td>
+      <td>14.47</td>
+      <td>21:08:30</td>
+      <td>152.05</td>
+      <td>7:38:30</td>
+      <td>829.214286</td>
+      <td>1268.500000</td>
+      <td>536.125000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.149532</td>
+    </tr>
+    <tr>
+      <th>40878</th>
+      <td>0.64</td>
+      <td>0.56</td>
+      <td>0.88</td>
+      <td>11.87</td>
+      <td>18:31:30</td>
+      <td>179.77</td>
+      <td>5:42:30</td>
+      <td>877.000000</td>
+      <td>1440.000000</td>
+      <td>472.642857</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.251314</td>
+    </tr>
+    <tr>
+      <th>40961</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.043115</td>
+      <td>0.397583</td>
+      <td>0.175153</td>
+      <td>0.148561</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40968</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.019515</td>
+      <td>0.167773</td>
+      <td>0.243646</td>
+      <td>0.077841</td>
+      <td>-0.087011</td>
+    </tr>
+  </tbody>
+</table>
+<p>122 rows × 780 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Group&#39;</span><span class="p">)[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">])[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Group</th>
+      <th>sex</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Older Adults</th>
+      <th>Female</th>
+      <td>45.0</td>
+      <td>67.844444</td>
+      <td>5.563499</td>
+      <td>60.0</td>
+      <td>64.00</td>
+      <td>67.0</td>
+      <td>71.00</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>12.0</td>
+      <td>69.083333</td>
+      <td>6.082140</td>
+      <td>60.0</td>
+      <td>65.50</td>
+      <td>69.5</td>
+      <td>71.25</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Young Adults</th>
+      <th>Female</th>
+      <td>28.0</td>
+      <td>21.535714</td>
+      <td>3.815001</td>
+      <td>18.0</td>
+      <td>18.75</td>
+      <td>20.0</td>
+      <td>23.25</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>18.0</td>
+      <td>21.166667</td>
+      <td>3.823303</td>
+      <td>18.0</td>
+      <td>19.00</td>
+      <td>19.5</td>
+      <td>22.50</td>
+      <td>30.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mod_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;actamp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Group&#39;</span><span class="p">)[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -512,24 +891,24 @@
   <tbody>
     <tr>
       <th>Older Adults</th>
-      <td>57.0</td>
-      <td>68.105263</td>
-      <td>5.643214</td>
+      <td>33.0</td>
+      <td>66.575758</td>
+      <td>4.847875</td>
       <td>60.0</td>
-      <td>64.0</td>
-      <td>67.0</td>
-      <td>71.0</td>
-      <td>81.0</td>
+      <td>63.0</td>
+      <td>66.0</td>
+      <td>70.0</td>
+      <td>79.0</td>
     </tr>
     <tr>
       <th>Young Adults</th>
-      <td>46.0</td>
-      <td>21.391304</td>
-      <td>3.779937</td>
+      <td>43.0</td>
+      <td>21.139535</td>
+      <td>3.582905</td>
       <td>18.0</td>
-      <td>19.0</td>
+      <td>18.5</td>
       <td>20.0</td>
-      <td>23.0</td>
+      <td>22.5</td>
       <td>30.0</td>
     </tr>
   </tbody>
@@ -550,7 +929,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_7_0.png" src="_images/Statistics_7_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/Statistics_8_1.png" src="_images/Statistics_8_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -565,7 +950,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_8_0.png" src="_images/Statistics_8_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/Statistics_9_1.png" src="_images/Statistics_9_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -583,7 +974,17 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_9_0.png" src="_images/Statistics_9_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/Statistics_10_1.png" src="_images/Statistics_10_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -598,7 +999,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_10_0.png" src="_images/Statistics_10_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/Statistics_11_1.png" src="_images/Statistics_11_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -611,7 +1018,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_11_0.png" src="_images/Statistics_11_0.png" />
+<img alt="_images/Statistics_12_0.png" src="_images/Statistics_12_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -624,7 +1031,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_12_0.png" src="_images/Statistics_12_0.png" />
+<img alt="_images/Statistics_13_0.png" src="_images/Statistics_13_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -637,7 +1044,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_13_0.png" src="_images/Statistics_13_0.png" />
+<img alt="_images/Statistics_14_0.png" src="_images/Statistics_14_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -650,7 +1057,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_14_0.png" src="_images/Statistics_14_0.png" />
+<img alt="_images/Statistics_15_0.png" src="_images/Statistics_15_0.png" />
 </div>
 </div>
 <p><a class="reference external" href="https://lindeloev.github.io/shiny-rt/">RT Transformations resource</a></p>
@@ -666,7 +1073,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_16_0.png" src="_images/Statistics_16_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/Statistics_17_1.png" src="_images/Statistics_17_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -691,7 +1104,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_18_0.png" src="_images/Statistics_18_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/Statistics_19_1.png" src="_images/Statistics_19_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -732,7 +1151,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_21_0.png" src="_images/Statistics_21_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/Statistics_22_1.png" src="_images/Statistics_22_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -751,15 +1176,23 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/site-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.9/site-packages/pandas/core/frame.py:3607: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
-See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self._set_item(key, value)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.9/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
 </pre></div>
 </div>
-<img alt="_images/Statistics_22_1.png" src="_images/Statistics_22_1.png" />
+<img alt="_images/Statistics_23_1.png" src="_images/Statistics_23_1.png" />
 </div>
 </div>
 </div>
@@ -806,7 +1239,19 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_24_0.png" src="_images/Statistics_24_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">ld</span><span class="o">/</span><span class="n">qzxjl7f92_5gzy756sfjkjfh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_62451</span><span class="o">/</span><span class="mf">4177041322.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;cue_ya&#39;</span><span class="p">][</span><span class="n">dmn</span><span class="p">][:,</span><span class="n">dmn</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;cue&#39;</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;match_ya&#39;</span><span class="p">][</span><span class="n">dmn</span><span class="p">][:,</span><span class="n">dmn</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;mismatch_ya&#39;</span><span class="p">][</span><span class="n">dmn</span><span class="p">][:,</span><span class="n">dmn</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;mismatch&#39;</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;x&#39; is not defined
+</pre></div>
+</div>
+<img alt="_images/Statistics_25_1.png" src="_images/Statistics_25_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -836,7 +1281,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_25_0.png" src="_images/Statistics_25_0.png" />
+<img alt="_images/Statistics_26_0.png" src="_images/Statistics_26_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -863,7 +1308,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_26_0.png" src="_images/Statistics_26_0.png" />
+<img alt="_images/Statistics_27_0.png" src="_images/Statistics_27_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -890,7 +1335,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_27_0.png" src="_images/Statistics_27_0.png" />
+<img alt="_images/Statistics_28_0.png" src="_images/Statistics_28_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -916,7 +1361,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_28_0.png" src="_images/Statistics_28_0.png" />
+<img alt="_images/Statistics_29_0.png" src="_images/Statistics_29_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -942,7 +1387,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_29_0.png" src="_images/Statistics_29_0.png" />
+<img alt="_images/Statistics_30_0.png" src="_images/Statistics_30_0.png" />
 </div>
 </div>
 </div>
@@ -961,7 +1406,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Rhythm Amplitude&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_31_1.png" src="_images/Statistics_31_1.png" />
+<img alt="_images/Statistics_32_1.png" src="_images/Statistics_32_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -977,7 +1422,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Relative Amplitude&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_32_1.png" src="_images/Statistics_32_1.png" />
+<img alt="_images/Statistics_33_1.png" src="_images/Statistics_33_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -993,7 +1438,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Acrophase&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_33_1.png" src="_images/Statistics_33_1.png" />
+<img alt="_images/Statistics_34_1.png" src="_images/Statistics_34_1.png" />
 </div>
 </div>
 </div>
@@ -1180,7 +1625,7 @@ Name: edge_mean, Length: 103, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_37_0.png" src="_images/Statistics_37_0.png" />
+<img alt="_images/Statistics_38_0.png" src="_images/Statistics_38_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1201,9 +1646,9 @@ Name: edge_mean, Length: 103, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.4631,0.5,&#39;Response Time (ms)&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_38_1.png" src="_images/Statistics_38_1.png" />
-<img alt="_images/Statistics_38_2.png" src="_images/Statistics_38_2.png" />
-<img alt="_images/Statistics_38_3.png" src="_images/Statistics_38_3.png" />
+<img alt="_images/Statistics_39_1.png" src="_images/Statistics_39_1.png" />
+<img alt="_images/Statistics_39_2.png" src="_images/Statistics_39_2.png" />
+<img alt="_images/Statistics_39_3.png" src="_images/Statistics_39_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1216,7 +1661,7 @@ Name: edge_mean, Length: 103, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x12dcd8610&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_39_1.png" src="_images/Statistics_39_1.png" />
+<img alt="_images/Statistics_40_1.png" src="_images/Statistics_40_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1326,7 +1771,7 @@ Name: edge_mean, Length: 103, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_41_3.png" src="_images/Statistics_41_3.png" />
+<img alt="_images/Statistics_42_3.png" src="_images/Statistics_42_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1386,7 +1831,7 @@ Name: edge_mean, Length: 103, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_42_3.png" src="_images/Statistics_42_3.png" />
+<img alt="_images/Statistics_43_3.png" src="_images/Statistics_43_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1444,7 +1889,7 @@ Name: edge_mean, Length: 103, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_43_3.png" src="_images/Statistics_43_3.png" />
+<img alt="_images/Statistics_44_3.png" src="_images/Statistics_44_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1508,7 +1953,7 @@ Name: edge_mean, Length: 103, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_44_3.png" src="_images/Statistics_44_3.png" />
+<img alt="_images/Statistics_45_3.png" src="_images/Statistics_45_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1604,7 +2049,7 @@ Name: edge_mean, Length: 103, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_46_3.png" src="_images/Statistics_46_3.png" />
+<img alt="_images/Statistics_47_3.png" src="_images/Statistics_47_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1650,7 +2095,7 @@ acc_mean_test    -0.697339
 Name: rt_c_mean_test, dtype: float64
 </pre></div>
 </div>
-<img alt="_images/Statistics_48_1.png" src="_images/Statistics_48_1.png" />
+<img alt="_images/Statistics_49_1.png" src="_images/Statistics_49_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1673,7 +2118,7 @@ acc_mean_test    -0.250964
 Name: rt_c_mean_test, dtype: float64
 </pre></div>
 </div>
-<img alt="_images/Statistics_49_1.png" src="_images/Statistics_49_1.png" />
+<img alt="_images/Statistics_50_1.png" src="_images/Statistics_50_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1690,7 +2135,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,0,&#39;Edge Strength&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_50_1.png" src="_images/Statistics_50_1.png" />
+<img alt="_images/Statistics_51_1.png" src="_images/Statistics_51_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1751,7 +2196,7 @@ Name: rt_c_mean_test, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_51_3.png" src="_images/Statistics_51_3.png" />
+<img alt="_images/Statistics_52_3.png" src="_images/Statistics_52_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1859,7 +2304,7 @@ Name: rt_c_mean_test, dtype: float64
 </table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_52_3.png" src="_images/Statistics_52_3.png" />
+<img alt="_images/Statistics_53_3.png" src="_images/Statistics_53_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1938,7 +2383,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,0,&#39;Edge Strength&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_55_1.png" src="_images/Statistics_55_1.png" />
+<img alt="_images/Statistics_56_1.png" src="_images/Statistics_56_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1959,9 +2404,9 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.4631,0.5,&#39;Response Time (ms)&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_56_1.png" src="_images/Statistics_56_1.png" />
-<img alt="_images/Statistics_56_2.png" src="_images/Statistics_56_2.png" />
-<img alt="_images/Statistics_56_3.png" src="_images/Statistics_56_3.png" />
+<img alt="_images/Statistics_57_1.png" src="_images/Statistics_57_1.png" />
+<img alt="_images/Statistics_57_2.png" src="_images/Statistics_57_2.png" />
+<img alt="_images/Statistics_57_3.png" src="_images/Statistics_57_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2051,7 +2496,7 @@ Name: rt_c_mean_test, dtype: float64
 <tr>
   <th>actamp</th>                <td>    0.2016</td> <td>    0.100</td> <td>    2.013</td> <td> 0.048</td> <td>    0.002</td> <td>    0.401</td>
 </tr>
-</table></div><img alt="_images/Statistics_59_1.png" src="_images/Statistics_59_1.png" />
+</table></div><img alt="_images/Statistics_60_1.png" src="_images/Statistics_60_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2093,8 +2538,8 @@ Name: rt_c_mean_test, dtype: float64
 <tr>
   <th>Group[T.Young Adults]:actamp</th> <td>   -0.3127</td> <td>    0.226</td> <td>   -1.380</td> <td> 0.172</td> <td>   -0.764</td> <td>    0.139</td>
 </tr>
-</table></div><img alt="_images/Statistics_60_1.png" src="_images/Statistics_60_1.png" />
-<img alt="_images/Statistics_60_2.png" src="_images/Statistics_60_2.png" />
+</table></div><img alt="_images/Statistics_61_1.png" src="_images/Statistics_61_1.png" />
+<img alt="_images/Statistics_61_2.png" src="_images/Statistics_61_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2145,7 +2590,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Amplitude vs. Accuracy&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_64_1.png" src="_images/Statistics_64_1.png" />
+<img alt="_images/Statistics_65_1.png" src="_images/Statistics_65_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2204,7 +2649,7 @@ Name: rt_c_mean_test, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_66_0.png" src="_images/Statistics_66_0.png" />
+<img alt="_images/Statistics_67_0.png" src="_images/Statistics_67_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2235,7 +2680,7 @@ Name: rt_c_mean_test, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_67_0.png" src="_images/Statistics_67_0.png" />
+<img alt="_images/Statistics_68_0.png" src="_images/Statistics_68_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2266,7 +2711,7 @@ Name: rt_c_mean_test, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_68_0.png" src="_images/Statistics_68_0.png" />
+<img alt="_images/Statistics_69_0.png" src="_images/Statistics_69_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2279,7 +2724,7 @@ Name: rt_c_mean_test, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Statistics_69_0.png" src="_images/Statistics_69_0.png" />
+<img alt="_images/Statistics_70_0.png" src="_images/Statistics_70_0.png" />
 </div>
 </div>
 </div>
@@ -2296,7 +2741,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Relative Amplitude vs. Accuracy&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_71_1.png" src="_images/Statistics_71_1.png" />
+<img alt="_images/Statistics_72_1.png" src="_images/Statistics_72_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2310,7 +2755,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Relative Amplitude vs. Response Time&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_72_1.png" src="_images/Statistics_72_1.png" />
+<img alt="_images/Statistics_73_1.png" src="_images/Statistics_73_1.png" />
 </div>
 </div>
 </div>
@@ -2327,7 +2772,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Acrophase vs. Accuracy&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_74_1.png" src="_images/Statistics_74_1.png" />
+<img alt="_images/Statistics_75_1.png" src="_images/Statistics_75_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2341,7 +2786,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Acrophase vs. Response Time&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_75_1.png" src="_images/Statistics_75_1.png" />
+<img alt="_images/Statistics_76_1.png" src="_images/Statistics_76_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2426,9 +2871,9 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.4631,0.5,&#39;Response Time (ms)&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_79_1.png" src="_images/Statistics_79_1.png" />
-<img alt="_images/Statistics_79_2.png" src="_images/Statistics_79_2.png" />
-<img alt="_images/Statistics_79_3.png" src="_images/Statistics_79_3.png" />
+<img alt="_images/Statistics_80_1.png" src="_images/Statistics_80_1.png" />
+<img alt="_images/Statistics_80_2.png" src="_images/Statistics_80_2.png" />
+<img alt="_images/Statistics_80_3.png" src="_images/Statistics_80_3.png" />
 </div>
 </div>
 <p><a class="reference external" href="http://joelcarlson.github.io/2016/05/10/Exploring-Interactions/">Exploring Linear Regression Coefficients and Interactions</a></p>
@@ -2488,7 +2933,7 @@ Name: rt_c_mean_test, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_81_3.png" src="_images/Statistics_81_3.png" />
+<img alt="_images/Statistics_82_3.png" src="_images/Statistics_82_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2790,7 +3235,7 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x130ed84d0&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_88_1.png" src="_images/Statistics_88_1.png" />
+<img alt="_images/Statistics_89_1.png" src="_images/Statistics_89_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2849,7 +3294,7 @@ Name: rt_c_mean_test, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_89_3.png" src="_images/Statistics_89_3.png" />
+<img alt="_images/Statistics_90_3.png" src="_images/Statistics_90_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2869,9 +3314,9 @@ Name: rt_c_mean_test, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.4631,0.5,&#39;Response Time (ms)&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_90_1.png" src="_images/Statistics_90_1.png" />
-<img alt="_images/Statistics_90_2.png" src="_images/Statistics_90_2.png" />
-<img alt="_images/Statistics_90_3.png" src="_images/Statistics_90_3.png" />
+<img alt="_images/Statistics_91_1.png" src="_images/Statistics_91_1.png" />
+<img alt="_images/Statistics_91_2.png" src="_images/Statistics_91_2.png" />
+<img alt="_images/Statistics_91_3.png" src="_images/Statistics_91_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3041,7 +3486,7 @@ Name: rt_c_mean_test, dtype: float64
 </table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_93_3.png" src="_images/Statistics_93_3.png" />
+<img alt="_images/Statistics_94_3.png" src="_images/Statistics_94_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3147,7 +3592,7 @@ Name: rt_c_mean_test, dtype: float64
 </table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_94_3.png" src="_images/Statistics_94_3.png" />
+<img alt="_images/Statistics_95_3.png" src="_images/Statistics_95_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3250,7 +3695,7 @@ Name: rt_c_mean_test, dtype: float64
 </table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_95_3.png" src="_images/Statistics_95_3.png" />
+<img alt="_images/Statistics_96_3.png" src="_images/Statistics_96_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3362,7 +3807,7 @@ Index: []
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_97_3.png" src="_images/Statistics_97_3.png" />
+<img alt="_images/Statistics_98_3.png" src="_images/Statistics_98_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3409,8 +3854,8 @@ Index: []
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.4631,0.5,&#39;Response Time (ms)&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_99_1.png" src="_images/Statistics_99_1.png" />
-<img alt="_images/Statistics_99_2.png" src="_images/Statistics_99_2.png" />
+<img alt="_images/Statistics_100_1.png" src="_images/Statistics_100_1.png" />
+<img alt="_images/Statistics_100_2.png" src="_images/Statistics_100_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3460,8 +3905,8 @@ Index: []
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.2557,0.5,&#39;DMN Participation Coefficient&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_102_1.png" src="_images/Statistics_102_1.png" />
-<img alt="_images/Statistics_102_2.png" src="_images/Statistics_102_2.png" />
+<img alt="_images/Statistics_103_1.png" src="_images/Statistics_103_1.png" />
+<img alt="_images/Statistics_103_2.png" src="_images/Statistics_103_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3535,7 +3980,7 @@ Name: actamp, dtype: float64
 </table></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1800 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/Statistics_104_3.png" src="_images/Statistics_104_3.png" />
+<img alt="_images/Statistics_105_3.png" src="_images/Statistics_105_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3623,8 +4068,8 @@ Name: actamp, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.2557,0.5,&#39;DMN Participation Coefficient&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_107_1.png" src="_images/Statistics_107_1.png" />
-<img alt="_images/Statistics_107_2.png" src="_images/Statistics_107_2.png" />
+<img alt="_images/Statistics_108_1.png" src="_images/Statistics_108_1.png" />
+<img alt="_images/Statistics_108_2.png" src="_images/Statistics_108_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3642,8 +4087,8 @@ Name: actamp, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(37.2557,0.5,&#39;DMN Participation Coefficient&#39;)
 </pre></div>
 </div>
-<img alt="_images/Statistics_108_1.png" src="_images/Statistics_108_1.png" />
-<img alt="_images/Statistics_108_2.png" src="_images/Statistics_108_2.png" />
+<img alt="_images/Statistics_109_1.png" src="_images/Statistics_109_1.png" />
+<img alt="_images/Statistics_109_2.png" src="_images/Statistics_109_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
