@@ -40,7 +40,7 @@ subjects = np.loadtxt(data_dir + '/nibs/subjects.txt', dtype=str)
 subjects
 
 
-# In[ ]:
+# In[4]:
 
 
 atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
@@ -48,7 +48,7 @@ atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
 atlas.regions.unique()
 
 
-# In[ ]:
+# In[5]:
 
 
 atlas = pd.read_csv(atlas_lut, sep='\t').set_index('index')
@@ -58,7 +58,7 @@ fpn = atlas.loc[atlas['regions'].str.contains('Fronto-parietal')].index.tolist()
 dmn_fpn = np.concatenate((dmn, fpn))
 
 
-# In[ ]:
+# In[6]:
 
 
 from nilearn import datasets
@@ -67,7 +67,7 @@ power = datasets.fetch_coords_power_2011()
 coords = np.vstack((power.rois['x'], power.rois['y'], power.rois['z'])).T
 
 
-# In[ ]:
+# In[7]:
 
 
 x = np.load('/Volumes/psybrain/ADM/derivatives/nibs/memmatch_fc.npy', allow_pickle=True).flat[0]
