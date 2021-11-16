@@ -8,3 +8,4 @@ chapters:
 - file: NBS.ipynb
 - file: BCT.ipynb
 - file: Statistics.ipynb
+- file: Seed-based FC.ipynb
