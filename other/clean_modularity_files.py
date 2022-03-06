@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+import glob
+
 modularity_files = sorted(glob.glob('/Volumes/psybrain/ADM/derivatives/nibs/results/modularity*rest.csv'))
 mod_df = pd.DataFrame()
 mod_df_new = pd.DataFrame()
