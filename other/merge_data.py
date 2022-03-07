@@ -59,7 +59,7 @@ cr3 = cr.fillna(cr2)
 cr = cr3.copy()
 cr['subject'] = cr['subject'].astype(str)
 
-hc = pd.read_csv('../data/hc_dmn_fpn.csv')
+hc = pd.read_csv('../data/fcdf.csv')
 hc['subject'] = hc['subject'].astype(str)
 print('hc', hc.shape)
 
