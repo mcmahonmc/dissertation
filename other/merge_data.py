@@ -31,9 +31,9 @@ df0['sex'] = np.where(df0['sex'].str.startswith('M'), 'Male', df0['sex'])
 df0['sex'] = np.where(df0['sex'].isna(), 'Other', df0['sex'])
 df0 = df0.reset_index(drop=True)
 
-sl = pd.read_csv('../data/sleep.csv')
-sl['subject'] = sl['subject_id'].astype(str)
-sl = sl[['subject', 'sleep_time_mean_sleep', 'total_ac_mean_active', 'efficiency_mean_sleep']]
+sl = pd.read_csv('../data/sleepStats.csv')
+sl.columns = ['subject', 'sleep_time', 'sleep_efficiency', 'total_activity']
+sl['subject'] = sl['subject'].astype(str)
 
 mem = pd.read_csv('../data/memmatch_test.csv')
 mem = mem.groupby(['subject']).mean()[['acc_test', 'rt_c_test']].join(mem.groupby(['subject']).std()[['acc_test', 'rt_c_test']], lsuffix='_mean', rsuffix='_std').reset_index()
@@ -45,17 +45,21 @@ learn['subject'] = learn['subject'].astype(str)
 learn = learn.drop(['run'], axis=1)
 learn['acc_learning_log'] = np.log10(learn['acc_learning'])
 
-cr = pd.read_csv('../data/cr.csv')
-cr['subject'] = cr['record_id'].astype(str)
+cr = pd.read_csv('../data/cr_act.csv')
+cr = cr.dropna(subset=['subject'])
+cr['subject'] = cr['subject'].astype(int).astype(str)
 cr = cr[['subject', 'actamp', 'actphi']]
+print(cr.shape)
 
 cr2 = pd.read_csv('../data/cr2.csv')
 cr2['subject'] = cr2['record_id'].astype(str)
 cr2 = cr2[~cr2['subject'].duplicated()]
 cr2 = cr2[['subject', 'amp_7', 'phi_7']]
 cr2.columns = ['subject', 'actamp', 'actphi']
+print(cr2.shape)
 
 cr3 = cr.fillna(cr2)
+print(cr3.shape)
 cr = cr3.copy()
 cr['subject'] = cr['subject'].astype(str)
 
@@ -104,7 +108,7 @@ fcVars = [col for col in df.columns if 'fc' in col]
 memVars = [col for col in df.columns if 'acc_' in col or 'rt_c_' in col]
 edgeVars = [col for col in df if col.startswith('net')]
 pcaVars = ['C1', 'C2', 'C3']
-sleepVars = ['actamp', 'actphi', 'sleep_time_mean_sleep', 'total_ac_mean_active', 'efficiency_mean_sleep']
+sleepVars = ['actamp', 'actphi', 'sleep_time', 'total_activity', 'sleep_efficiency']
 
 df = df[['Group', 'GroupBin', 'age', 'sex'] + memVars + sleepVars + modVars + pcVars + fcVars + edgeVars + pcaVars]
 df.to_csv('../data/03_fc_data.csv', index=True)
