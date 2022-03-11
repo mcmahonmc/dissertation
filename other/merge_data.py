@@ -45,23 +45,23 @@ learn['subject'] = learn['subject'].astype(str)
 learn = learn.drop(['run'], axis=1)
 learn['acc_learning_log'] = np.log10(learn['acc_learning'])
 
-cr = pd.read_csv('../data/cr_act.csv')
-cr = cr.dropna(subset=['subject'])
-cr['subject'] = cr['subject'].astype(int).astype(str)
+cr = pd.read_csv('../data/cr1.csv')
+cr = cr.dropna(subset=['actamp'])
+cr['subject'] = cr['record_id'].astype(str)
 cr = cr[['subject', 'actamp', 'actphi']]
 print(cr.shape)
 
-cr2 = pd.read_csv('../data/cr2.csv')
-cr2['subject'] = cr2['record_id'].astype(str)
-cr2 = cr2[~cr2['subject'].duplicated()]
-cr2 = cr2[['subject', 'amp_7', 'phi_7']]
-cr2.columns = ['subject', 'actamp', 'actphi']
-print(cr2.shape)
-
-cr3 = cr.fillna(cr2)
-print(cr3.shape)
-cr = cr3.copy()
-cr['subject'] = cr['subject'].astype(str)
+# cr2 = pd.read_csv('../data/cr2.csv')
+# cr2['subject'] = cr2['record_id'].astype(str)
+# cr2 = cr2.dropna(subset=['amp_7'])
+# cr2 = cr2[['subject', 'amp_7', 'phi_7']]
+# cr2.columns = ['subject', 'actamp', 'actphi']
+# print(cr2.shape)
+#
+# cr3 = cr.fillna(cr2)
+# print(cr3.shape)
+# cr = cr3.copy()
+# cr['subject'] = cr['subject'].astype(str)
 
 hc = pd.read_csv('../data/fcdf.csv')
 hc['subject'] = hc['subject'].astype(str)
